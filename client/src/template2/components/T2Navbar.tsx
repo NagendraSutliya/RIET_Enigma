@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Sparkles, Menu, X, ArrowRight, Volume2 } from "lucide-react";
+import { Sparkles, Menu, X, ArrowRight } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useTemplate } from "@/context/TemplateContext";
 import { loadingSounds } from "@/components/loadingSounds";
@@ -190,16 +190,7 @@ export default function T2Navbar({ onRegisterClick }: T2NavbarProps) {
         </nav>
 
         {/* Right CTA Button */}
-        <div className="hidden sm:flex items-center gap-2.5">
-          <button
-            onClick={triggerLaunchWithSound}
-            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-mono font-medium text-violet-200 bg-white/5 hover:bg-white/10 border border-violet-500/30 hover:border-violet-400/50 transition-all cursor-pointer shadow-sm"
-            title="Replay Launcher Animation & Sound"
-          >
-            <Volume2 className="w-3.5 h-3.5 text-fuchsia-400 animate-pulse" />
-            <span>Intro</span>
-          </button>
-
+        <div className="hidden sm:flex items-center gap-3">
           <button
             onClick={onRegisterClick}
             className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-xs sm:text-sm text-white overflow-hidden shadow-lg shadow-violet-600/30 hover:shadow-violet-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all group bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600"
@@ -246,17 +237,7 @@ export default function T2Navbar({ onRegisterClick }: T2NavbarProps) {
               </a>
             );
           })}
-          <div className="pt-2 mt-1 border-t border-white/10 flex flex-col gap-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                triggerLaunchWithSound();
-              }}
-              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-mono text-xs text-violet-200 bg-white/5 border border-violet-500/20 hover:bg-white/10 transition-colors"
-            >
-              <Volume2 className="w-4 h-4 text-fuchsia-400" />
-              <span>Replay Launch Intro & Sound</span>
-            </button>
+          <div className="pt-2 mt-1 border-t border-white/10">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
