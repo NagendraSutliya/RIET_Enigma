@@ -14,7 +14,7 @@ interface SpeakerItem {
   telemetry: string;
 }
 
-export default function T3Speakers() {
+export default function T2Speakers() {
   const speakers: SpeakerItem[] = [
     {
       name: "Dr. Aarav Sharma",

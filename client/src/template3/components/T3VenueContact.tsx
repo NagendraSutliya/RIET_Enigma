@@ -1,7 +1,7 @@
 import React from "react";
 import { MapPin, Phone, Mail, Navigation, ExternalLink, ShieldCheck, Heart } from "lucide-react";
 
-export default function T2VenueContact() {
+export default function T3VenueContact() {
   return (
     <section className="py-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import T2Navbar from "../components/T2Navbar";
-import T2Footer from "../components/T2Footer";
-import T2RulesSection from "../components/T2RulesSection";
-import T2RegistrationModal from "../components/T2RegistrationModal";
+import T3Navbar from "../components/T3Navbar";
+import T3Footer from "../components/T3Footer";
+import T3RulesSection from "../components/T3RulesSection";
+import T3RegistrationModal from "../components/T3RegistrationModal";
 import { ArrowLeft, BookOpen, Sparkles } from "lucide-react";
 import { Link } from "wouter";
 
-export default function T2Rules() {
+export default function T3Rules() {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
   return (
@@ -18,15 +18,15 @@ export default function T2Rules() {
       </div>
 
       <div className="relative z-10 pt-10">
-        <T2Navbar onRegisterClick={() => setIsRegisterOpen(true)} />
+        <T3Navbar onRegisterClick={() => setIsRegisterOpen(true)} />
 
         <main>
-          <T2RulesSection />
+          <T3RulesSection />
         </main>
 
-        <T2Footer />
+        <T3Footer />
 
-        <T2RegistrationModal
+        <T3RegistrationModal
           isOpen={isRegisterOpen}
           onClose={() => setIsRegisterOpen(false)}
         />

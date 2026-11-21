@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Share2, Copy, Check, Instagram, Twitter, Linkedin, Terminal, Award, Video, Flame } from "lucide-react";
 import { TechCorner } from "@/components/TechDecorations";
 
-export default function T3Campaign() {
+export default function T2Campaign() {
   const [copiedTag, setCopiedTag] = useState<string | null>(null);
 
   const hashtags = [

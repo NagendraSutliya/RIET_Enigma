@@ -1,202 +1,227 @@
 import React, { useState } from "react";
-import { Calendar, Clock, MapPin, Sparkles, CheckCircle, Flag, Coffee, Code2, Users, Award } from "lucide-react";
+import { Clock, Calendar, MapPin, Coffee, Utensils, Award, Zap, Code, CheckCircle, Terminal } from "lucide-react";
+
+interface TimelineEvent {
+  time: string;
+  title: string;
+  description: string;
+  location: string;
+  code: string;
+  icon: any;
+}
 
 export default function T2Timeline() {
   const [activeDay, setActiveDay] = useState<"day1" | "day2">("day1");
 
-  const scheduleDay1 = [
+  const day1Events: TimelineEvent[] = [
     {
-      time: "08:30 AM – 10:00 AM",
-      title: "Hacker Check-in & Welcome Kit Distribution",
-      desc: "Arrive at RIET campus, complete biometric/QR verification, collect official ENIGMA2.0 hacker kits and badges.",
-      location: "Main Reception & Registration Desk",
-      icon: Users,
-      badge: "Arrival",
-    },
-    {
-      time: "10:00 AM – 11:00 AM",
-      title: "Grand Opening Ceremony & Keynotes",
-      desc: "Welcome address by college leadership, hackathon briefing, problem statement release, and rules overview.",
-      location: "Auditorium A",
-      icon: Flag,
-      badge: "Ceremony",
-    },
-    {
-      time: "11:00 AM SHARP",
-      title: "🚀 Hacking Commences! (24-Hour Timer Starts)",
-      desc: "Teams settle into labs, configure environments, create git repositories, and start ideating.",
-      location: "Central Hack Arena & Labs",
-      icon: Code2,
-      badge: "Hacking Begins",
-    },
-    {
-      time: "01:30 PM – 02:30 PM",
-      title: "Buffet Lunch & Sponsor Meet & Greet",
-      desc: "Complimentary lunch served in the campus cafeteria. Networking booths open.",
-      location: "Cafeteria & Lawn",
-      icon: Coffee,
-      badge: "Meal",
-    },
-    {
-      time: "04:30 PM – 06:30 PM",
-      title: "Mentorship Review Round 1 (Architecture & Feasibility)",
-      desc: "Industry mentors visit each table to review architecture diagrams, UX wireframes, and offer technical advice.",
-      location: "Hack Arena",
+      time: "08:30 AM",
+      code: "MILESTONE_01 // INTAKE",
+      title: "Check-in & Badge Distribution",
+      description: "Arrival at RIET Campus, physical verification of team college IDs, and welcome swag kit distribution.",
+      location: "Campus Central Foyer",
       icon: CheckCircle,
-      badge: "Mentorship",
     },
     {
-      time: "08:30 PM – 09:30 PM",
-      title: "Dinner & Energy Refresh",
-      desc: "Hot dinner buffet, coffee bars open.",
-      location: "Cafeteria",
-      icon: Coffee,
-      badge: "Meal",
+      time: "10:00 AM",
+      code: "MILESTONE_02 // KEYNOTE",
+      title: "Opening Ceremony & Problem Statement Briefing",
+      description: "Inaugural address by college leadership, keynote speaker session, and unveiling of challenge problem statements.",
+      location: "Main Auditorium",
+      icon: Zap,
     },
     {
-      time: "11:30 PM – Midnight",
-      title: "Midnight Snacks & Esports Gaming Break",
-      desc: "Fresh pizza boxes, RedBull cans, and a fun multiplayer gaming lounge to blow off steam.",
-      location: "Activity Hall",
-      icon: Sparkles,
-      badge: "Midnight Fuel",
-    },
-  ];
-
-  const scheduleDay2 = [
-    {
-      time: "01:00 AM – 06:00 AM",
-      title: "Midnight Deep Coding Sprint",
-      desc: "Core coding phase. Mentors on stand-by, 24/7 technical team active, snack bars open.",
-      location: "Hack Arena",
-      icon: Code2,
-      badge: "Deep Work",
+      time: "11:00 AM",
+      code: "MILESTONE_03 // CODE_START",
+      title: "⚡ 24-Hour Hackathon Timer Commences",
+      description: "Hack clocks start ticking! Teams set up dev environments, initialize GitHub repos, and begin coding.",
+      location: "Hack Labs A, B & C",
+      icon: Code,
     },
     {
-      time: "07:30 AM – 08:30 AM",
-      title: "Breakfast & Fresh Morning Brew",
-      desc: "Piping hot breakfast, tea, and coffee to kickstart the final hours.",
-      location: "Cafeteria",
-      icon: Coffee,
-      badge: "Meal",
+      time: "01:30 PM",
+      code: "MILESTONE_04 // FUEL_01",
+      title: "Networking Lunch & Refreshments",
+      description: "Buffet lunch served to all hackathon teams with high-energy hydration stations.",
+      location: "College Dining Hall",
+      icon: Utensils,
     },
     {
-      time: "09:00 AM – 10:30 AM",
-      title: "Mentorship Review Round 2 (Working Prototype & Polish)",
-      desc: "Second evaluation round focusing on core functionality, test cases, and presentation pitch tips.",
-      location: "Hack Arena",
-      icon: CheckCircle,
-      badge: "Mentorship",
-    },
-    {
-      time: "11:00 AM SHARP",
-      title: "🛑 Code Freeze & Final Submission",
-      desc: "All repositories must be pushed and GitHub/Devpost submission links finalized. No further commits allowed.",
-      location: "Online Portal",
-      icon: Flag,
-      badge: "Code Freeze",
-    },
-    {
-      time: "11:30 AM – 01:30 PM",
-      title: "Grand Jury Pitching & Live Demonstrations",
-      desc: "Top shortlisted teams present their working prototypes on stage in front of the judge panel.",
-      location: "Main Stage / Auditorium",
-      icon: Users,
-      badge: "Demos",
-    },
-    {
-      time: "02:30 PM – 04:00 PM",
-      title: "Valedictory Ceremony, Awards & Prize Distribution",
-      desc: "Announcement of winners, distribution of ₹1,00,000+ prizes, certificates, and closing photo sessions.",
-      location: "Auditorium A",
+      time: "05:00 PM",
+      code: "MILESTONE_05 // MENTOR_01",
+      title: "Mentorship Sprint 1: Architecture Review",
+      description: "Industry architects conduct 1-on-1 table visits to evaluate system design, tech stack, and scalability.",
+      location: "Hack Stations",
       icon: Award,
-      badge: "Awards",
+    },
+    {
+      time: "08:30 PM",
+      code: "MILESTONE_06 // FUEL_02",
+      title: "Dinner & Night Fueling Round",
+      description: "Hot dinner served to energize hackers for the nocturnal sprint.",
+      location: "College Dining Hall",
+      icon: Utensils,
+    },
+    {
+      time: "11:30 PM",
+      code: "MILESTONE_07 // MIDNIGHT",
+      title: "Midnight Energizer & Jamming Session",
+      description: "Cold brew coffee, snacks, Red Bull, and acoustic campus jamming to refresh tired minds.",
+      location: "Recreation Lawn",
+      icon: Coffee,
     },
   ];
 
-  const currentSchedule = activeDay === "day1" ? scheduleDay1 : scheduleDay2;
+  const day2Events: TimelineEvent[] = [
+    {
+      time: "02:30 AM",
+      code: "MILESTONE_08 // DEEP_SPRINT",
+      title: "Midnight Deep Coding Marathon",
+      description: "Peak development hours. Mentors available on standby on official Discord and in-person labs.",
+      location: "Hack Labs",
+      icon: Code,
+    },
+    {
+      time: "07:30 AM",
+      code: "MILESTONE_09 // FUEL_03",
+      title: "Morning Breakfast & Coffee Bar",
+      description: "Fresh breakfast and coffee bar opens to fuel final polishing and bug fixes.",
+      location: "Dining Hall",
+      icon: Utensils,
+    },
+    {
+      time: "09:30 AM",
+      code: "MILESTONE_10 // MENTOR_02",
+      title: "Mentorship Sprint 2: Pitch Dry-Runs",
+      description: "Mentors review slide decks and live prototypes to prepare teams for final stage evaluation.",
+      location: "Hack Labs",
+      icon: Award,
+    },
+    {
+      time: "11:00 AM",
+      code: "MILESTONE_11 // CODE_FREEZE",
+      title: "🛑 Code Freeze & Repository Lock",
+      description: "All GitHub commits stop! Teams submit final repository links, live URLs, and demo videos.",
+      location: "Central Submission Portal",
+      icon: Zap,
+    },
+    {
+      time: "12:00 PM",
+      code: "MILESTONE_12 // STAGE_DEMO",
+      title: "Grand Stage Pitching & Jury Evaluation",
+      description: "Top shortlisted finalist teams present live product demonstrations before the expert panel.",
+      location: "Main Auditorium",
+      icon: Award,
+    },
+    {
+      time: "03:30 PM",
+      code: "MILESTONE_13 // PODIUM",
+      title: "Valedictory & ₹50,000+ Prize Ceremony",
+      description: "Announcement of winners, trophy presentation, cash distribution, and closing celebration.",
+      location: "Main Auditorium",
+      icon: Award,
+    },
+  ];
+
+  const events = activeDay === "day1" ? day1Events : day2Events;
 
   return (
-    <section id="timeline" className="py-20 relative overflow-hidden">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-violet-500/10 border border-violet-500/25 text-violet-300 text-xs font-mono uppercase tracking-widest mb-4">
-            <Clock className="w-3.5 h-3.5 text-violet-400" />
-            <span>24-Hour Schedule</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-            The Event{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400">
-              Timeline
-            </span>
-          </h2>
-          <p className="text-white/60 text-base">
-            Every milestone carefully timed so you make the most of your 24 hours.
-          </p>
+    <section id="schedule" className="relative py-24 px-4 sm:px-6 max-w-7xl mx-auto">
+      
+      {/* Background Accent */}
+      <div className="absolute top-1/2 right-1/4 w-[600px] h-[350px] bg-emerald-600/10 blur-[160px] pointer-events-none -z-10 rounded-full" />
+
+      {/* Section Header */}
+      <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-wider mb-3">
+          <Clock className="w-3.5 h-3.5" />
+          <span>// 24H_CHRONO_ITINERARY</span>
         </div>
+        <h2 className="text-3xl sm:text-5xl font-serif font-black text-white tracking-tight leading-tight">
+          Event{" "}
+          <span className="font-mono text-emerald-400 drop-shadow-[0_0_20px_rgba(34,197,94,0.6)]">
+            Timeline & Schedule
+          </span>
+        </h2>
+        <p className="text-white/60 font-mono text-xs sm:text-sm mt-2 max-w-xl mx-auto">
+          Every milestone meticulously planned to give you the ultimate 24-hour innovation experience.
+        </p>
+      </div>
 
-        {/* Day 1 / Day 2 Tab Selector */}
-        <div className="flex justify-center mb-12">
-          <div className="p-1 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl flex items-center gap-2">
-            <button
-              onClick={() => setActiveDay("day1")}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                activeDay === "day1"
-                  ? "bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-600/30"
-                  : "text-white/60 hover:text-white"
-              }`}
-            >
-              <Calendar className="w-4 h-4" />
-              <span>Day 1 — Dec 17 (Kickoff & Sprint)</span>
-            </button>
-            <button
-              onClick={() => setActiveDay("day2")}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                activeDay === "day2"
-                  ? "bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white shadow-lg shadow-fuchsia-600/30"
-                  : "text-white/60 hover:text-white"
-              }`}
-            >
-              <Award className="w-4 h-4" />
-              <span>Day 2 — Dec 18 (Demos & Awards)</span>
-            </button>
-          </div>
+      {/* Day Selector Segmented Toggle */}
+      <div className="flex items-center justify-center mb-12">
+        <div className="flex items-center p-1 bg-[#040805] border border-emerald-500/30">
+          <button
+            onClick={() => setActiveDay("day1")}
+            className={`flex items-center gap-2 px-6 py-2.5 text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer ${
+              activeDay === "day1"
+                ? "bg-emerald-400 text-black shadow-md shadow-emerald-500/30"
+                : "text-white/60 hover:text-emerald-300"
+            }`}
+          >
+            <Calendar className="w-4 h-4" />
+            <span>DAY 1: 17 DEC 2026</span>
+          </button>
+          <button
+            onClick={() => setActiveDay("day2")}
+            className={`flex items-center gap-2 px-6 py-2.5 text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer ${
+              activeDay === "day2"
+                ? "bg-emerald-400 text-black shadow-md shadow-emerald-500/30"
+                : "text-white/60 hover:text-emerald-300"
+            }`}
+          >
+            <Calendar className="w-4 h-4" />
+            <span>DAY 2: 18 DEC 2026</span>
+          </button>
         </div>
+      </div>
 
-        {/* Timeline Cards */}
-        <div className="space-y-4 relative">
-          <div className="absolute left-6 top-4 bottom-4 w-px bg-gradient-to-b from-violet-500/40 via-fuchsia-500/40 to-transparent hidden sm:block" />
+      {/* Laser Timeline */}
+      <div className="relative max-w-4xl mx-auto">
+        {/* Central Laser Line */}
+        <div className="absolute top-4 bottom-4 left-4 sm:left-1/2 -translate-x-1/2 w-0.5 bg-gradient-to-b from-emerald-400 via-cyan-400 to-emerald-500 opacity-60 shadow-[0_0_12px_rgba(52,211,153,0.8)]" />
 
-          {currentSchedule.map((item, idx) => {
-            const Icon = item.icon;
+        <div className="space-y-6 sm:space-y-8">
+          {events.map((event, idx) => {
+            const Icon = event.icon;
+            const isEven = idx % 2 === 0;
+
             return (
               <div
                 key={idx}
-                className="relative flex flex-col sm:flex-row items-start gap-4 sm:gap-6 p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-violet-500/30 transition-all hover:bg-white/[0.05] group"
+                className={`relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 ${
+                  isEven ? "sm:flex-row-reverse" : ""
+                }`}
               >
-                {/* Time Indicator Marker */}
-                <div className="sm:w-12 sm:h-12 w-10 h-10 rounded-xl bg-violet-600/20 border border-violet-500/30 flex items-center justify-center shrink-0 text-violet-300 group-hover:scale-110 group-hover:bg-violet-600/30 transition-all">
-                  <Icon className="w-5 h-5" />
+                {/* Content Card */}
+                <div className={`w-full sm:w-[calc(50%-2rem)] pl-12 sm:pl-0 ${isEven ? "sm:text-right" : "sm:text-left"}`}>
+                  <div className="group rounded-none bg-[#050b07] border border-emerald-500/25 hover:border-emerald-400 p-5 shadow-xl transition-all duration-300 hover:scale-[1.02]">
+                    <div className={`flex items-center gap-2 mb-1.5 ${isEven ? "sm:justify-end" : "sm:justify-start"}`}>
+                      <span className="px-2.5 py-0.5 bg-emerald-500/15 text-emerald-300 text-xs font-mono font-bold border border-emerald-500/40">
+                        {event.time}
+                      </span>
+                      <span className="flex items-center gap-1 text-[11px] font-mono text-white/50">
+                        <MapPin className="w-3 h-3 text-emerald-400" />
+                        {event.location}
+                      </span>
+                    </div>
+
+                    <div className="text-[10px] font-mono text-emerald-400/70 mb-1">
+                      {event.code}
+                    </div>
+
+                    <h3 className="text-base sm:text-lg font-bold text-white mb-1 group-hover:text-emerald-300 transition-colors">
+                      {event.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-white/65 leading-relaxed font-sans">
+                      {event.description}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Content */}
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-                    <span className="text-xs font-mono font-bold text-violet-400 bg-violet-500/10 px-2.5 py-0.5 rounded-full border border-violet-500/20">
-                      {item.time}
-                    </span>
-                    <span className="text-[11px] font-mono text-white/50 bg-white/[0.04] px-2 py-0.5 rounded-md flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-fuchsia-400" />
-                      {item.location}
-                    </span>
-                  </div>
-                  <h4 className="text-lg font-bold text-white group-hover:text-violet-200 transition-colors">
-                    {item.title}
-                  </h4>
-                  <p className="text-sm text-white/70 mt-1 leading-relaxed">
-                    {item.desc}
-                  </p>
+                {/* Laser Node */}
+                <div className="absolute left-4 sm:left-1/2 -translate-x-1/2 top-5 sm:top-auto flex items-center justify-center w-8 h-8 bg-black border-2 border-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.9)] z-10">
+                  <Icon className="w-3.5 h-3.5 text-emerald-300" />
                 </div>
               </div>
             );

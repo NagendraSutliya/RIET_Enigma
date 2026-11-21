@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ShieldCheck, Search, CheckCircle2, AlertTriangle, FileText, Download, Code2, Users, Cpu, Award, Terminal } from "lucide-react";
 import { TechCorner } from "@/components/TechDecorations";
 
-export default function T3Rules() {
+export default function T2Rules() {
   const [activeTab, setActiveTab] = useState<string>("general");
   const [searchQuery, setSearchQuery] = useState<string>("");
 

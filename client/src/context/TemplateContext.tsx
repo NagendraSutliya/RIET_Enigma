@@ -28,7 +28,7 @@ export function TemplateProvider({ children }: { children: React.ReactNode }) {
       const stored = localStorage.getItem(TEMPLATE_STORAGE_KEY) as TemplateMode;
       if (stored === "template3" || stored === "template2" || stored === "template1") return stored;
     }
-    return "template3"; // default to the latest modern template 3 so user sees it right away!
+    return "template2"; // default to Template 2 (Cyber Pro ✨)
   });
 
   const setTemplate = (newTemplate: TemplateMode) => {
@@ -39,7 +39,7 @@ export function TemplateProvider({ children }: { children: React.ReactNode }) {
   };
 
   const toggleTemplate = () => {
-    setTemplate(template === "template1" ? "template3" : template === "template3" ? "template2" : "template1");
+    setTemplate(template === "template1" ? "template2" : template === "template2" ? "template3" : "template1");
   };
 
   useEffect(() => {

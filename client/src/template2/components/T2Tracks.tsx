@@ -1,179 +1,216 @@
 import React, { useState } from "react";
-import { Bot, Coins, Cpu, HeartPulse, Wallet, Globe, ArrowUpRight, Sparkles, CheckCircle2 } from "lucide-react";
+import { Brain, Shield, Coins, HeartPulse, Cpu, Sparkles, Terminal, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
+import { TechCorner } from "@/components/TechDecorations";
+
+interface TrackItem {
+  id: string;
+  command: string;
+  title: string;
+  tagline: string;
+  icon: any;
+  bounty: string;
+  techStack: string[];
+  description: string;
+  sampleProblems: string[];
+}
 
 export default function T2Tracks() {
-  const [selectedTrack, setSelectedTrack] = useState<number | null>(null);
+  const [expandedTrack, setExpandedTrack] = useState<string | null>(null);
 
-  const tracks = [
+  const tracks: TrackItem[] = [
     {
-      id: 1,
-      title: "AI & Autonomous Agents",
-      icon: Bot,
-      color: "from-violet-500 to-indigo-500",
-      accent: "text-violet-400",
-      border: "hover:border-violet-500/50",
-      description:
-        "Build next-generation autonomous workflows, multimodal models, real-time agent swarms, and intelligent developer tools that solve complex human tasks.",
-      ideas: ["Autonomous Coding & Debugging Agents", "Personalized Real-Time Education Copilots", "Vision-Driven Defect Detection Systems"],
-      stack: ["OpenAI API", "LangChain / LlamaIndex", "Python", "Transformers", "FastAPI"],
+      id: "ai",
+      command: "$ ./run --track=ai_ml",
+      title: "AI & Generative Intelligence",
+      tagline: "Autonomous Agents, LLMs & Applied Machine Learning",
+      icon: Brain,
+      bounty: "₹15,000 Bounty",
+      techStack: ["LangChain", "PyTorch", "RAG Pipelines", "Whisper", "Vector DBs"],
+      description: "Harness the frontier of generative AI and autonomous workflows to construct intelligent systems that understand, reason, and execute complex workflows without human intervention.",
+      sampleProblems: [
+        "Autonomous multi-agent research and synthesis engine",
+        "Multilingual voice AI assistant for vernacular Indian languages",
+        "Enterprise document retrieval with zero hallucination rate"
+      ],
     },
     {
-      id: 2,
+      id: "web3",
+      command: "$ ./run --track=web3_defi",
       title: "Web3 & Decentralized Systems",
+      tagline: "Smart Contracts, Account Abstraction & Zero-Knowledge Cryptography",
       icon: Coins,
-      color: "from-cyan-500 to-blue-500",
-      accent: "text-cyan-400",
-      border: "hover:border-cyan-500/50",
-      description:
-        "Architect transparent, tamper-proof systems utilizing decentralized storage, smart contracts, zero-knowledge privacy proofs, and on-chain identity.",
-      ideas: ["Zero-Knowledge Credential Verification", "Decentralized Micro-Grant Escrow", "On-Chain Intellectual Property Registry"],
-      stack: ["Solidity", "Ethers.js", "Polygon / Arbitrum", "IPFS", "Hardhat"],
+      bounty: "₹10,000 Bounty",
+      techStack: ["Solidity", "Rust", "EVM", "zk-SNARKs", "IPFS"],
+      description: "Architect trustless, censorship-resistant networks and protocols. Build decentralized finance primitives, verifiable on-chain reputation systems, or zero-knowledge data proofs.",
+      sampleProblems: [
+        "Gasless cross-chain decentralized escrow for gig workers",
+        "ZK-based student credential and degree verification protocol",
+        "Privacy-preserving decentralized voting infrastructure"
+      ],
     },
     {
-      id: 3,
-      title: "IoT, Robotics & Edge Computing",
-      icon: Cpu,
-      color: "from-amber-500 to-orange-500",
-      accent: "text-amber-400",
-      border: "hover:border-amber-500/50",
-      description:
-        "Bridge the physical and digital domains with smart sensor arrays, robotics, automated telemetry, smart campus solutions, and low-latency edge AI.",
-      ideas: ["Smart Campus Energy Optimizer", "Autonomous Delivery Rover Telemetry", "Predictive Agricultural Sensor Mesh"],
-      stack: ["ESP32 / Arduino", "Raspberry Pi", "MQTT", "C++ / MicroPython", "TensorFlow Lite"],
-    },
-    {
-      id: 4,
+      id: "health",
+      command: "$ ./run --track=healthtech",
       title: "HealthTech & Bio-Informatics",
+      tagline: "Remote Diagnostics, Predictive Triage & Patient Security",
       icon: HeartPulse,
-      color: "from-rose-500 to-pink-500",
-      accent: "text-rose-400",
-      border: "hover:border-rose-500/50",
-      description:
-        "Empower healthcare professionals and patients through diagnostic assistance, secure telemedicine, wearable health analytics, and mental well-being tools.",
-      ideas: ["Early Diagnostic Screening via Audio/Images", "Secure EHR Interoperability Hub", "Gamified Physical Rehabilitation Companion"],
-      stack: ["Computer Vision", "HIPAA-Compliant APIs", "React Native", "Node.js", "PostgreSQL"],
+      bounty: "₹8,000 Bounty",
+      techStack: ["Computer Vision", "FHIR APIs", "Edge ML", "Bio-Sensors"],
+      description: "Revolutionize healthcare accessibility and predictive clinical diagnostics. Build AI tools for rural tele-health, automated medical imaging triage, or tamper-proof health records.",
+      sampleProblems: [
+        "Low-bandwidth remote ECG & vital monitoring for rural clinics",
+        "AI-assisted automated X-ray and CT scan abnormality detector",
+        "Cryptographically secure personal health record wallet"
+      ],
     },
     {
-      id: 5,
-      title: "FinTech & Open Commerce",
-      icon: Wallet,
-      color: "from-emerald-500 to-teal-500",
-      accent: "text-emerald-400",
-      border: "hover:border-emerald-500/50",
-      description:
-        "Reimagine finance for the next billion users: automated budgeting, fraud defense algorithms, micro-investing networks, and frictionless digital transactions.",
-      ideas: ["AI Agent for Fraud Prevention", "UPI-Integrated Social Expense Splitter", "Micro-Loan Underwriting for Gig Workers"],
-      stack: ["Plaid / Razorpay APIs", "Python ML", "TypeScript", "Next.js", "Redis"],
+      id: "iot",
+      command: "$ ./run --track=iot_smartcity",
+      title: "Smart Cities & Clean Energy IoT",
+      tagline: "Connected Sensors, Grid Optimization & Environmental Monitoring",
+      icon: Cpu,
+      bounty: "₹7,000 Bounty",
+      techStack: ["ESP32 / Arduino", "MQTT", "Time-Series DB", "Edge AI"],
+      description: "Merge physical hardware with cloud intelligence. Engineer high-impact systems for municipal water management, dynamic traffic congestion relief, or renewable microgrids.",
+      sampleProblems: [
+        "Dynamic traffic light timing using real-time camera edge feeds",
+        "Solar microgrid load balancer with predictive power allocation",
+        "Automated industrial leak & air quality monitoring array"
+      ],
     },
     {
-      id: 6,
-      title: "Open Innovation & Green Tech",
-      icon: Globe,
-      color: "from-fuchsia-500 to-purple-500",
-      accent: "text-fuchsia-400",
-      border: "hover:border-fuchsia-500/50",
-      description:
-        "Got an unconventional, high-impact idea that doesn't fit a standard mold? Tackle climate resilience, civic transparency, disaster aid, or any frontier problem.",
-      ideas: ["Disaster Relief Coordination Grid", "Carbon Footprint Tracking for Campuses", "Accessible Web Tools for Specially-Abled"],
-      stack: ["Any Modern Tech Stack", "Open Source Libraries", "Mapbox / GIS", "Supabase"],
+      id: "fintech",
+      command: "$ ./run --track=cyber_sec",
+      title: "FinTech & Cyber Defense",
+      tagline: "Fraud Interception, Secure Payments & Algorithmic Security",
+      icon: Shield,
+      bounty: "₹6,000 Bounty",
+      techStack: ["Graph Neural Nets", "OAuth 2.1", "WebAuthn", "Kafka"],
+      description: "Defend against sophisticated cyber attacks and modernize financial technology. Build real-time anomaly detection pipelines, anti-phishing shields, or automated KYC systems.",
+      sampleProblems: [
+        "Real-time UPI transaction fraud detection using graph embeddings",
+        "Passwordless biometric authentication with zero credential leakage",
+        "Automated compliance and AML auditor for micro-financers"
+      ],
+    },
+    {
+      id: "open",
+      command: "$ ./run --track=moonshots",
+      title: "Open Innovation & Moonshots",
+      tagline: "EdTech, GovTech, SpaceTech & Unconventional Breakthroughs",
+      icon: Sparkles,
+      bounty: "₹4,000 Bounty",
+      techStack: ["React", "Flutter", "FastAPI", "WebSockets", "Cloud"],
+      description: "Have a radical concept that transcends defined boundaries? Build whatever solves a significant bottleneck in education, accessibility, governance, or developer tooling.",
+      sampleProblems: [
+        "Real-time sign language to speech translation mobile app",
+        "Gamified coding platform for rural school children without computers",
+        "Public transit schedule tracker with crowd-sourced GPS telemetry"
+      ],
     },
   ];
 
   return (
-    <section id="tracks" className="py-20 relative overflow-hidden bg-black/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-violet-500/10 border border-violet-500/25 text-violet-300 text-xs font-mono uppercase tracking-widest mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-violet-400" />
-            <span>Problem Statements & Domains</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Select Your{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-300 to-cyan-400">
-              Battleground Track
-            </span>
-          </h2>
-          <p className="text-white/60 text-base sm:text-lg">
-            Choose from 6 diverse technology verticals. Compete for overall prizes or win dedicated track bounty awards.
-          </p>
+    <section id="tracks" className="relative py-24 px-4 sm:px-6 max-w-7xl mx-auto">
+      
+      {/* Background Accent */}
+      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-emerald-600/10 blur-[160px] pointer-events-none -z-10 rounded-full" />
+
+      {/* Section Header */}
+      <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-wider mb-3">
+          <Terminal className="w-3.5 h-3.5" />
+          <span>// CHALLENGE_DOMAINS</span>
         </div>
+        <h2 className="text-3xl sm:text-5xl font-serif font-black text-white tracking-tight leading-tight">
+          Challenge{" "}
+          <span className="font-mono text-emerald-400 drop-shadow-[0_0_20px_rgba(34,197,94,0.6)]">
+            Tracks & Bounties
+          </span>
+        </h2>
+        <p className="text-white/60 font-mono text-xs sm:text-sm mt-2 max-w-xl mx-auto">
+          Choose your sector, architect your solution, and battle for dedicated track bounties alongside the main grand prize!
+        </p>
+      </div>
 
-        {/* Tracks Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tracks.map((track) => {
-            const Icon = track.icon;
-            const isExpanded = selectedTrack === track.id;
+      {/* Bento Grid: 6 Track Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {tracks.map((track) => {
+          const Icon = track.icon;
+          const isExpanded = expandedTrack === track.id;
 
-            return (
-              <div
-                key={track.id}
-                onClick={() => setSelectedTrack(isExpanded ? null : track.id)}
-                className={`p-7 rounded-3xl bg-white/[0.03] border border-white/10 ${track.border} transition-all duration-300 backdrop-blur-xl shadow-xl flex flex-col justify-between group cursor-pointer relative overflow-hidden ${
-                  isExpanded ? "ring-2 ring-violet-500/50 bg-white/[0.06]" : ""
-                }`}
-              >
-                <div>
-                  {/* Top Bar with Icon & Action */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div
-                      className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${track.color} p-0.5 shadow-lg group-hover:scale-110 transition-transform`}
-                    >
-                      <div className="w-full h-full bg-[#0d0f22] rounded-[14px] flex items-center justify-center text-white">
-                        <Icon className={`w-7 h-7 ${track.accent}`} />
-                      </div>
-                    </div>
-                    <span className="w-8 h-8 rounded-full bg-white/[0.05] border border-white/10 flex items-center justify-center text-white/50 group-hover:text-white group-hover:bg-white/10 transition-colors">
-                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </span>
+          return (
+            <div
+              key={track.id}
+              className="group relative rounded-none bg-[#050b07] border border-emerald-500/25 hover:border-emerald-400 p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-950/50 hover:-translate-y-1"
+            >
+              <TechCorner position="tr" />
+
+              <div>
+                {/* Command & Bounty Row */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-3 bg-black border border-emerald-500/40 text-emerald-400">
+                    <Icon className="w-6 h-6" />
                   </div>
-
-                  {/* Title & Description */}
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-violet-200 transition-colors">
-                    {track.title}
-                  </h3>
-                  <p className="text-white/70 text-sm leading-relaxed mb-6">
-                    {track.description}
-                  </p>
-
-                  {/* Expanded Scope / Ideas (when clicked) */}
-                  {isExpanded && (
-                    <div className="mb-6 pt-4 border-t border-white/10 animate-in fade-in duration-300">
-                      <span className="text-xs font-mono text-violet-300 font-semibold block mb-2 uppercase">
-                        Sample Project Ideas:
-                      </span>
-                      <ul className="space-y-1.5 mb-4">
-                        {track.ideas.map((idea, i) => (
-                          <li key={i} className="flex items-start gap-2 text-xs text-white/80">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
-                            <span>{idea}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                  <span className="px-3 py-1 text-xs font-mono font-bold bg-amber-500/15 text-amber-300 border border-amber-500/40">
+                    {track.bounty}
+                  </span>
                 </div>
+
+                <div className="text-[11px] font-mono text-emerald-400/80 mb-2">
+                  {track.command}
+                </div>
+
+                {/* Title & Tagline */}
+                <h3 className="text-xl font-bold text-white mb-1 group-hover:text-emerald-300 transition-colors">
+                  {track.title}
+                </h3>
+                <p className="text-xs font-mono text-white/50 mb-4 uppercase tracking-wider">
+                  {track.tagline}
+                </p>
+                <p className="text-xs sm:text-sm text-white/70 font-sans leading-relaxed mb-6">
+                  {track.description}
+                </p>
 
                 {/* Tech Stack Chips */}
-                <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-1.5">
-                  {track.stack.slice(0, 3).map((tool, i) => (
+                <div className="flex flex-wrap gap-1.5 mb-6">
+                  {track.techStack.map((tech, i) => (
                     <span
                       key={i}
-                      className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/10 text-[11px] font-mono text-white/60"
+                      className="px-2.5 py-1 text-[10px] font-mono bg-black/60 text-emerald-300 border border-emerald-500/20"
                     >
-                      {tool}
+                      {tech}
                     </span>
                   ))}
-                  {track.stack.length > 3 && (
-                    <span className="px-2 py-1 text-[11px] font-mono text-violet-400">
-                      +{track.stack.length - 3} more
-                    </span>
-                  )}
                 </div>
+
+                {/* Expanded Problem Statements */}
+                {isExpanded && (
+                  <div className="pt-4 border-t border-emerald-500/20 space-y-2 mb-4 animate-fade-in">
+                    <span className="text-[11px] font-mono uppercase text-emerald-400 font-bold block">
+                      // SAMPLE_PROBLEM_STATEMENTS:
+                    </span>
+                    {track.sampleProblems.map((prob, idx) => (
+                      <div key={idx} className="flex items-start gap-2 text-xs text-white/80 font-sans">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
+                        <span>{prob}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-            );
-          })}
-        </div>
+
+              {/* Bottom Expand Toggle Button */}
+              <button
+                onClick={() => setExpandedTrack(isExpanded ? null : track.id)}
+                className="w-full mt-2 py-2.5 px-4 bg-black/70 hover:bg-emerald-950/40 border border-emerald-500/30 text-xs font-mono text-emerald-300 hover:text-white flex items-center justify-center gap-1.5 transition-colors cursor-pointer uppercase tracking-wider"
+              >
+                <span>{isExpanded ? "[-] Hide Details" : "[+] View Problem Statements"}</span>
+                {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+              </button>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

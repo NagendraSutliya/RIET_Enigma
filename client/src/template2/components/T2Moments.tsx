@@ -12,7 +12,7 @@ interface MomentItem {
   hudCode: string;
 }
 
-export default function T3Moments() {
+export default function T2Moments() {
   const moments: MomentItem[] = [
     {
       id: 1,

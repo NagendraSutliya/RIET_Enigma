@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BookOpen, Users, Shield, Award, Code, FileCheck, AlertCircle, CheckCircle2, ChevronRight, Scale, ShieldAlert } from "lucide-react";
 
-export default function T2RulesSection() {
+export default function T3RulesSection() {
   const [activeCategory, setActiveCategory] = useState<string>("eligibility");
 
   const categories = [

@@ -1,158 +1,83 @@
 import React from "react";
-import { ArrowUp, Github, Twitter, Instagram, Linkedin, Terminal } from "lucide-react";
+import { Sparkles, Heart, Github, Twitter, Instagram, Linkedin } from "lucide-react";
 
 export default function T3Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    if (window.location.hash) {
-      history.replaceState(null, "", window.location.pathname + window.location.search);
-    }
-  };
-
-  const navLinks = [
-    { label: "Home", href: "#home" },
-    { label: "Event Moments", href: "#moments" },
-    { label: "Campaign", href: "#campaign" },
-    { label: "Rules", href: "#rules" },
-    { label: "Tracks", href: "#tracks" },
-    { label: "Schedule", href: "#schedule" },
-    { label: "Speakers", href: "#speakers" },
-    { label: "Prizes", href: "#prizes" },
-    { label: "Sponsors", href: "#sponsors" },
-    { label: "FAQ", href: "#faq" },
-  ];
-
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const id = href.replace("#", "");
-    if (id === "home") {
-      scrollToTop();
-      return;
-    }
-    const el = document.getElementById(id);
-    if (el) {
-      const offset = 120;
-      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: Math.max(0, elementPosition - offset),
-        behavior: "smooth"
-      });
-      history.replaceState(null, "", href);
-    }
-  };
-
   return (
-    <footer className="relative border-t border-emerald-500/20 bg-[#020503] pt-16 pb-12 px-4 sm:px-6 overflow-hidden">
-      
-      {/* Background Accent */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-emerald-600/5 blur-[140px] pointer-events-none -z-10" />
-
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-emerald-500/20">
-          
-          {/* Brand Col */}
-          <div className="md:col-span-2 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="font-mono font-black tracking-tight text-white text-2xl flex items-baseline">
+    <footer className="border-t border-white/10 bg-[#060714] relative overflow-hidden py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+          {/* Brand Info */}
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-violet-600 to-fuchsia-500 p-0.5 flex items-center justify-center">
+                <div className="w-full h-full bg-[#0a0a14] rounded-[10px] flex items-center justify-center overflow-hidden">
+                  <img src="/rietlogo.png" alt="RIET Logo" className="w-6 h-6 object-contain" />
+                </div>
+              </div>
+              <span className="font-extrabold text-xl tracking-tight text-white font-sans flex items-baseline">
                 <span>ENIGMA</span>
-                <span className="text-emerald-400 scale-y-135 inline-block origin-bottom font-black ml-0.5">
-                  2.0
-                </span>
+                <span className="text-2xl font-black text-violet-400 scale-y-130 inline-block origin-bottom">2.0</span>
               </span>
             </div>
-
-            <p className="text-xs sm:text-sm text-white/60 max-w-md font-sans leading-relaxed">
-              Rajasthan’s premier 24-hour national hackathon bringing together the brightest minds to code, design, and deploy generational tech solutions.
+            <p className="text-white/60 text-sm max-w-sm leading-relaxed mb-6">
+              The flagship 24-hour national hackathon by Rajasthan Institute of Engineering & Technology, Jaipur. Bringing together visionaries, coders, and makers to pioneer the next wave of tech innovation.
             </p>
-
-            {/* Live Operational Status */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-black/60 border border-emerald-500/30 text-[11px] font-mono text-emerald-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>// ALL SYSTEMS OPERATIONAL • DEC 17–18, 2026</span>
-            </div>
-          </div>
-
-          {/* Quick Links Column */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-300">
-              // INDEX_NAVIGATION
-            </h4>
-            <div className="grid grid-cols-2 gap-2 text-xs text-white/60 font-mono">
-              {navLinks.map((link, i) => (
-                <a
-                  key={i}
-                  href={link.href}
-                  onClick={(e) => handleLinkClick(e, link.href)}
-                  className="hover:text-emerald-300 transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Connect Column */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-300">
-              // TELEMETRY_LINKS
-            </h4>
-            <div className="flex items-center gap-2">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 bg-black/60 hover:bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 hover:text-white transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 bg-black/60 hover:bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 hover:text-white transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 bg-black/60 hover:bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 hover:text-white transition-colors"
-                aria-label="Instagram"
-              >
+            <div className="flex items-center gap-3 text-white/60">
+              <a href="#" className="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center hover:text-white hover:bg-violet-600/20 hover:border-violet-500/40 transition-colors">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 bg-black/60 hover:bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 hover:text-white transition-colors"
-                aria-label="LinkedIn"
-              >
+              <a href="#" className="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center hover:text-white hover:bg-violet-600/20 hover:border-violet-500/40 transition-colors">
                 <Linkedin className="w-4 h-4" />
               </a>
+              <a href="#" className="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center hover:text-white hover:bg-violet-600/20 hover:border-violet-500/40 transition-colors">
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center hover:text-white hover:bg-violet-600/20 hover:border-violet-500/40 transition-colors">
+                <Github className="w-4 h-4" />
+              </a>
             </div>
-            <p className="text-xs text-white/50 pt-2 font-mono">
-              RIET Jaipur Campus, Bhankrota, Ajmer Road, Jaipur
+          </div>
+
+          {/* Navigation Links */}
+          <div>
+            <h4 className="text-xs font-mono uppercase tracking-wider text-violet-300 font-semibold mb-4">
+              Explore Event
+            </h4>
+            <ul className="space-y-2.5 text-sm text-white/70">
+              <li><a href="#overview" className="hover:text-white transition-colors">Event Overview</a></li>
+              <li><a href="#highlights" className="hover:text-white transition-colors">Why Join Us</a></li>
+              <li><a href="#tracks" className="hover:text-white transition-colors">Problem Tracks</a></li>
+              <li><a href="#timeline" className="hover:text-white transition-colors">24h Schedule</a></li>
+              <li><a href="#prizes" className="hover:text-white transition-colors">Prizes & Bounties</a></li>
+              <li><a href="#rules" className="hover:text-white transition-colors">Official Rulebook</a></li>
+            </ul>
+          </div>
+
+          {/* Venue & Organization */}
+          <div>
+            <h4 className="text-xs font-mono uppercase tracking-wider text-fuchsia-300 font-semibold mb-4">
+              Venue & Host
+            </h4>
+            <p className="text-xs text-white/70 leading-relaxed mb-3">
+              Rajasthan Institute of Engineering & Technology (RIET), Bhankrota, Ajmer Road, Jaipur, Rajasthan 302026.
+            </p>
+            <p className="text-xs text-white/50 font-mono">
+              Direct Contact: <br />
+              <a href="mailto:enigma@rietjaipur.ac.in" className="text-violet-300 hover:underline">
+                enigma@rietjaipur.ac.in
+              </a>
             </p>
           </div>
         </div>
 
-        {/* Bottom Strip */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-white/50">
+        {/* Bottom Copyright */}
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
           <div>
-            © 2026 Rajasthan Institute of Engineering & Technology (RIET), Jaipur.
+            © 2026 ENIGMA2.0 Hackathon • Rajasthan Institute of Engineering and Technology. All rights reserved.
           </div>
-
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-2 px-3 py-1.5 bg-black/60 hover:bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 hover:text-emerald-300 transition-all cursor-pointer"
-          >
-            <span>Back to Top</span>
-            <ArrowUp className="w-3.5 h-3.5" />
-          </button>
+          <div className="flex items-center gap-1 font-mono">
+            Crafted with <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 mx-0.5" /> by Team RIET Enigma
+          </div>
         </div>
       </div>
     </footer>

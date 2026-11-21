@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import T2Navbar from "../components/T2Navbar";
-import T2Footer from "../components/T2Footer";
-import T2RegistrationModal from "../components/T2RegistrationModal";
+import T3Navbar from "../components/T3Navbar";
+import T3Footer from "../components/T3Footer";
+import T3RegistrationModal from "../components/T3RegistrationModal";
 import { ArrowLeft, Camera, Instagram, Sparkles, Award, TrendingUp, Users, Video, Zap, Hash, ExternalLink, Heart, Gift } from "lucide-react";
 import { Link } from "wouter";
 
-export default function T2Campaign() {
+export default function T3Campaign() {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
   return (
@@ -17,7 +17,7 @@ export default function T2Campaign() {
       </div>
 
       <div className="relative z-10 pt-10">
-        <T2Navbar onRegisterClick={() => setIsRegisterOpen(true)} />
+        <T3Navbar onRegisterClick={() => setIsRegisterOpen(true)} />
 
         {/* Campaign Hero */}
         <section className="pt-12 pb-20 relative">
@@ -92,9 +92,9 @@ export default function T2Campaign() {
           </div>
         </section>
 
-        <T2Footer />
+        <T3Footer />
 
-        <T2RegistrationModal
+        <T3RegistrationModal
           isOpen={isRegisterOpen}
           onClose={() => setIsRegisterOpen(false)}
         />

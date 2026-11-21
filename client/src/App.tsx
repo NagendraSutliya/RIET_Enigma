@@ -14,16 +14,14 @@ import { TemplateProvider, useTemplate } from "@/context/TemplateContext";
 import TemplateSwitcher from "@/components/TemplateSwitcher";
 import Template2Home from "@/template2/Template2Home";
 import Template3Home from "@/template3/Template3Home";
-import T2Rules from "@/template2/pages/T2Rules";
-import T2Campaign from "@/template2/pages/T2Campaign";
 
 // Check if loading screen was already shown this session
 const LOADING_SHOWN_KEY = "enigma26_loading_shown";
 
 function DynamicHome() {
   const { template } = useTemplate();
-  if (template === "template3") return <Template3Home />;
   if (template === "template2") return <Template2Home />;
+  if (template === "template3") return <Template3Home />;
   return <Home />;
 }
 

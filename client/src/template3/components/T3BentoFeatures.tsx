@@ -1,7 +1,7 @@
 import React from "react";
 import { Zap, Users, Gift, Coffee, Briefcase, Code, ShieldCheck, Sparkles, Layers } from "lucide-react";
 
-export default function T2BentoFeatures() {
+export default function T3BentoFeatures() {
   return (
     <section id="highlights" className="py-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

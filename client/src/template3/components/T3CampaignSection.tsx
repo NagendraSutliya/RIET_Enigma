@@ -1,7 +1,7 @@
 import React from "react";
 import { Camera, Video, Hash, Award, Instagram, Sparkles, ExternalLink, Heart } from "lucide-react";
 
-export default function T2CampaignSection() {
+export default function T3CampaignSection() {
   const steps = [
     {
       step: "01",

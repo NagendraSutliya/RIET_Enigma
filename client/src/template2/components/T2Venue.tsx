@@ -2,7 +2,7 @@ import React from "react";
 import { MapPin, Navigation, Train, Plane, Bus, Wifi, Zap, Shield, Coffee, Terminal } from "lucide-react";
 import { TechCorner } from "@/components/TechDecorations";
 
-export default function T3Venue() {
+export default function T2Venue() {
   const campusHighlights = [
     { icon: Wifi, title: "Gigabit Campus Fiber", desc: "Low-latency Wi-Fi & LAN ports throughout all hack zones" },
     { icon: Zap, title: "100% Uninterrupted Power", desc: "Dual backup generators keeping machines running 24/7" },

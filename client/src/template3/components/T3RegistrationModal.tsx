@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { X, Sparkles, CheckCircle, ArrowRight, ShieldAlert } from "lucide-react";
 
-interface T2RegistrationModalProps {
+interface T3RegistrationModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function T2RegistrationModal({ isOpen, onClose }: T2RegistrationModalProps) {
+export default function T3RegistrationModal({ isOpen, onClose }: T3RegistrationModalProps) {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     teamName: "",

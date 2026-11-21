@@ -1,161 +1,92 @@
 import React, { useState } from "react";
-import { HelpCircle, ChevronDown, Terminal, MessageCircle } from "lucide-react";
-
-interface FAQItem {
-  question: string;
-  answer: string;
-  category: "general" | "reg" | "stay" | "rules";
-}
+import { HelpCircle, ChevronDown, Sparkles } from "lucide-react";
 
 export default function T3FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
 
-  const faqs: FAQItem[] = [
+  const faqs = [
     {
-      category: "general",
-      question: "Who is eligible to participate in ENIGMA2.0?",
-      answer: "Any currently enrolled undergraduate, postgraduate, or diploma student from any recognized college or university across India is eligible. Cross-college and cross-specialization teams are fully permitted.",
+      q: "What is ENIGMA2.0 and who is eligible to participate?",
+      a: "ENIGMA2.0 is the flagship 24-hour national hackathon hosted by Rajasthan Institute of Engineering and Technology (RIET), Jaipur on 17-18 December 2026. Any undergraduate, postgraduate, or diploma student enrolled in an accredited educational institution across India is eligible to form a team and apply.",
     },
     {
-      category: "reg",
-      question: "Is there any registration or participation fee?",
-      answer: "No, participation in ENIGMA2.0 is 100% completely FREE! Shortlisted teams will receive full campus entry, meals, Wi-Fi, mentorship, swags, and accommodation at zero cost.",
+      q: "Is there any registration fee?",
+      a: "No! Participation in ENIGMA2.0 is 100% free of charge. Selected teams receive complimentary meals, snacks, RedBull drinks, hacker kits, Wi-Fi access, and stay accommodations at the RIET campus throughout the 24 hours.",
     },
     {
-      category: "reg",
-      question: "What is the team size requirement?",
-      answer: "Teams must have between 2 and 4 members. Solo participation is not permitted to foster collaborative development and real-world team dynamics.",
+      q: "What is the allowed team size?",
+      a: "Teams can have between 2 to 4 members. Inter-college and inter-branch teams are completely welcome! Solo hackers are encouraged to join our Discord/WhatsApp community to find teammates before registration closes.",
     },
     {
-      category: "stay",
-      question: "Will accommodation and food be provided during the 24 hours?",
-      answer: "Yes! High-speed Wi-Fi, AC hack labs, power strips, overnight resting zones, and all meals (lunch, dinner, midnight coffee/energy snacks, and breakfast) are provided on the RIET Jaipur campus.",
+      q: "What accommodations and facilities are provided on campus?",
+      a: "Outstation and local participants will have access to air-conditioned coding labs, continuous high-speed Wi-Fi, separate secure rest zones for boys and girls, 24/7 security, medical first-aid, washrooms, and continuous food & coffee stations.",
     },
     {
-      category: "rules",
-      question: "Can we start building our project before the event?",
-      answer: "No. All core application code, databases, and architectures must be initiated after the 24-hour timer starts on Dec 17, 11:00 AM. You are allowed to use standard open-source libraries, UI components, and public APIs.",
+      q: "What should each participant bring along?",
+      a: "Every hacker must carry their valid College ID card, a personal laptop with charger, power extension strip, any specialized hardware (e.g. ESP32, sensors) if competing in the IoT track, and personal toiletries/jacket for the overnight stay.",
     },
     {
-      category: "rules",
-      question: "Are AI tools like ChatGPT or GitHub Copilot allowed?",
-      answer: "Yes, standard AI dev tools are allowed for productivity and debugging. However, your team must be able to explain all architecture, algorithms, and system logic during jury evaluation.",
+      q: "I am a first-year student / beginner. Can I still win?",
+      a: "Absolutely! ENIGMA2.0 welcomes hackers of all skill levels. We have dedicated industry mentors conducting architectural reviews and technical office hours, plus a dedicated 'Best Freshman Team' cash prize.",
     },
     {
-      category: "stay",
-      question: "How do we travel to the RIET Jaipur campus?",
-      answer: "RIET is located at Bhankrota on Ajmer Road, Jaipur. It is approximately 12 km from Jaipur Junction Railway Station and 14 km from Jaipur International Airport. App-based cabs (Ola/Uber) and city buses are readily available 24/7.",
-    },
-    {
-      category: "general",
-      question: "Will all participants receive certificates?",
-      answer: "Yes! Every participant who submits an MVP and pitches before the jury will receive an official National Level Certificate of Participation along with swags and partner vouchers.",
+      q: "Can we start building our project beforehand?",
+      a: "No. All code, wireframes, and prototypes must be authored during the 24-hour hackathon window starting 11:00 AM on December 17, 2026. You can use open-source libraries, public APIs, and pre-trained foundation models.",
     },
   ];
-
-  const categories = [
-    { id: "all", label: "// ALL_QUERIES" },
-    { id: "general", label: "// GENERAL" },
-    { id: "reg", label: "// REGISTRATION" },
-    { id: "stay", label: "// LOGISTICS_STAY" },
-    { id: "rules", label: "// RULES_CODE" },
-  ];
-
-  const filteredFaqs = selectedCategory === "all"
-    ? faqs
-    : faqs.filter((f) => f.category === selectedCategory);
 
   return (
-    <section id="faq" className="relative py-24 px-4 sm:px-6 max-w-5xl mx-auto">
-      
-      {/* Background Accent */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-600/10 blur-[150px] pointer-events-none -z-10 rounded-full" />
-
-      {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-14">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-wider mb-3">
-          <HelpCircle className="w-3.5 h-3.5" />
-          <span>// KNOWLEDGE_BASE_FAQ</span>
+    <section id="faqs" className="py-20 relative overflow-hidden bg-black/20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-violet-500/10 border border-violet-500/25 text-violet-300 text-xs font-mono uppercase tracking-widest mb-4">
+            <HelpCircle className="w-3.5 h-3.5 text-violet-400" />
+            <span>Got Questions?</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+            Frequently Asked{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400">
+              Questions
+            </span>
+          </h2>
+          <p className="text-white/60 text-base">
+            Everything you need to know about participating, staying, and competing in ENIGMA2.0.
+          </p>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-serif font-black text-white tracking-tight leading-tight">
-          Frequently Asked{" "}
-          <span className="font-mono text-emerald-400 drop-shadow-[0_0_20px_rgba(34,197,94,0.6)]">
-            Questions
-          </span>
-        </h2>
-        <p className="text-white/60 font-mono text-xs sm:text-sm mt-2 max-w-xl mx-auto">
-          Everything you need to know about the registration, campus logistics, judging, and prizes.
-        </p>
-      </div>
 
-      {/* Category Filter Pills */}
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => setSelectedCategory(cat.id)}
-            className={`px-4 py-2 text-xs font-mono transition-all cursor-pointer ${
-              selectedCategory === cat.id
-                ? "bg-emerald-500/20 text-emerald-300 border border-emerald-400 font-bold"
-                : "bg-black/60 text-white/60 hover:text-emerald-300 hover:bg-emerald-950/20 border border-emerald-500/20"
-            }`}
-          >
-            {cat.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Accordion List */}
-      <div className="space-y-3">
-        {filteredFaqs.map((faq, idx) => {
-          const isOpen = openIndex === idx;
-
-          return (
-            <div
-              key={idx}
-              className={`border transition-all duration-300 ${
-                isOpen
-                  ? "bg-[#050b07] border-emerald-400 shadow-xl shadow-emerald-950/30"
-                  : "bg-[#030604] hover:bg-[#050b07] border-emerald-500/20"
-              }`}
-            >
-              <button
-                onClick={() => setOpenIndex(isOpen ? null : idx)}
-                className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer"
+        {/* Accordion List */}
+        <div className="space-y-3">
+          {faqs.map((faq, idx) => {
+            const isOpen = openIdx === idx;
+            return (
+              <div
+                key={idx}
+                className="rounded-2xl bg-white/[0.03] border border-white/10 hover:border-violet-500/30 transition-all overflow-hidden"
               >
-                <span className="text-sm sm:text-base font-bold text-white font-mono leading-snug">
-                  {faq.question}
-                </span>
-                <div className={`p-1.5 border shrink-0 transition-transform ${
-                  isOpen ? "bg-emerald-500/20 border-emerald-400 text-emerald-300 rotate-180" : "bg-black/60 border-emerald-500/30 text-emerald-400"
-                }`}>
-                  <ChevronDown className="w-4 h-4" />
-                </div>
-              </button>
+                <button
+                  onClick={() => setOpenIdx(isOpen ? null : idx)}
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-semibold text-white hover:text-violet-200 transition-colors"
+                >
+                  <span className="text-base sm:text-lg">{faq.q}</span>
+                  <div
+                    className={`w-8 h-8 rounded-full bg-white/[0.05] border border-white/10 flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                      isOpen ? "rotate-180 bg-violet-600/30 text-violet-300 border-violet-500/40" : "text-white/60"
+                    }`}
+                  >
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
+                </button>
 
-              {isOpen && (
-                <div className="px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-white/70 leading-relaxed border-t border-emerald-500/15 pt-3 font-sans">
-                  {faq.answer}
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Help Desk Callout */}
-      <div className="mt-12 text-center p-6 bg-[#040805] border border-emerald-500/30">
-        <p className="text-xs sm:text-sm text-white/70 font-sans mb-3">
-          Have a specific query not listed here? Our organizing committee is here to assist!
-        </p>
-        <a
-          href="mailto:hackathon@rietjaipur.ac.in"
-          className="inline-flex items-center gap-2 text-xs font-mono font-bold text-emerald-400 hover:text-emerald-300 transition-colors uppercase tracking-wider"
-        >
-          <MessageCircle className="w-4 h-4" />
-          <span>Email Us: hackathon@rietjaipur.ac.in</span>
-        </a>
+                {isOpen && (
+                  <div className="px-5 pb-6 sm:px-6 text-sm text-white/70 leading-relaxed border-t border-white/5 pt-4 animate-in fade-in duration-200">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

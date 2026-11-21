@@ -1,253 +1,224 @@
 import React, { useState, useEffect } from "react";
-import { Sparkles, Menu, X, ArrowRight } from "lucide-react";
-import { Link, useLocation } from "wouter";
 import { useTemplate } from "@/context/TemplateContext";
 import { loadingSounds } from "@/components/loadingSounds";
+import { Menu, X, Volume2, ArrowRight, Terminal, Shield, Zap } from "lucide-react";
 
 interface T2NavbarProps {
-  onRegisterClick: () => void;
+  onRegisterClick?: () => void;
 }
 
 export default function T2Navbar({ onRegisterClick }: T2NavbarProps) {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [location] = useLocation();
-  const [activeSection, setActiveSection] = useState<string>("overview");
   const { playLaunchAnimation } = useTemplate();
+  const [activeSection, setActiveSection] = useState<string>("home");
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const triggerLaunchWithSound = () => {
+  const navItems = [
+    { label: "Home", href: "#home", id: "home" },
+    { label: "Moments", href: "#moments", id: "moments" },
+    { label: "Campaign", href: "#campaign", id: "campaign" },
+    { label: "Rules", href: "#rules", id: "rules" },
+    { label: "Tracks", href: "#tracks", id: "tracks" },
+    { label: "Schedule", href: "#schedule", id: "schedule" },
+    { label: "Speakers", href: "#speakers", id: "speakers" },
+    { label: "Prizes", href: "#prizes", id: "prizes" },
+    { label: "Sponsors", href: "#sponsors", id: "sponsors" },
+    { label: "FAQ", href: "#faq", id: "faq" },
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 30);
+
+      const scrollPosition = window.scrollY + 200;
+      for (let i = navItems.length - 1; i >= 0; i--) {
+        const item = navItems[i];
+        const el = document.getElementById(item.id);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveSection(item.id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    setActiveSection(id);
+    setIsMobileMenuOpen(false);
+
+    if (id === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (window.location.hash) {
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+      return;
+    }
+
+    const element = document.getElementById(id);
+    if (element) {
+      const switcherOffset = 50;
+      const navOffset = 70;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - switcherOffset - navOffset;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: "smooth"
+      });
+      history.replaceState(null, "", `#${id}`);
+    }
+  };
+
+  const handleLogoClick = () => {
     loadingSounds.ensureRunning();
     playLaunchAnimation();
   };
 
-  const navLinks = [
-    { name: "Home", href: "#overview" },
-    { name: "Event Moments", href: "#moments" },
-    { name: "Campaign", href: "#campaign" },
-    { name: "Rules", href: "#rules" },
-    { name: "Tracks", href: "#tracks" },
-    { name: "Schedule", href: "#timeline" },
-    { name: "Prizes", href: "#prizes" },
-    { name: "Sponsors", href: "#sponsors" },
-    { name: "FAQs", href: "#faqs" },
-  ];
-
-  useEffect(() => {
-    // Ensure on page load / refresh the page always starts at the top (Home/Overview)
-    if (typeof window !== "undefined") {
-      if ("scrollRestoration" in window.history) {
-        window.history.scrollRestoration = "manual";
-      }
-      window.scrollTo(0, 0);
-      if (window.location.hash) {
-        window.history.replaceState(null, "", window.location.pathname);
-      }
-      setActiveSection("overview");
-    }
-
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-
-      if (location !== "/" && location !== "" && location !== "/template-2") return;
-
-      if (window.scrollY < 80) {
-        setActiveSection("overview");
-        return;
-      }
-
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 70) {
-        setActiveSection("faqs");
-        return;
-      }
-
-      const navbarOffset = 180;
-      let foundSection = "overview";
-
-      for (const item of navLinks) {
-        const id = item.href.replace("#", "");
-        const el = document.getElementById(id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= navbarOffset && rect.bottom > 60) {
-            foundSection = id;
-          }
-        }
-      }
-
-      setActiveSection(foundSection);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [location]);
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    const id = href.replace("#", "");
-    if (id === "overview") {
-      e.preventDefault();
-      setActiveSection("overview");
-      setMobileMenuOpen(false);
-      window.history.pushState(null, "", "#overview");
-      triggerLaunchWithSound();
-      return;
-    }
-
-    if (location === "/" || location === "" || location === "/template-2") {
-      e.preventDefault();
-      setActiveSection(id);
-      setMobileMenuOpen(false);
-      const element = document.getElementById(id);
-      if (element) {
-        const headerOffset = 90;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-        window.history.pushState(null, "", href);
-      }
-    } else {
-      setMobileMenuOpen(false);
-    }
-  };
-
   return (
-    <header
-      style={{ top: "calc(var(--switcher-height, 40px) + 8px)" }}
-      className={`sticky z-40 transition-all duration-300 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto`}
-    >
-      <div
-        className={`rounded-2xl transition-all duration-300 border ${
-          scrolled
-            ? "bg-[#0b0c1e]/90 backdrop-blur-xl border-violet-500/25 shadow-2xl shadow-violet-950/40 py-2.5"
-            : "bg-[#0f1129]/75 backdrop-blur-md border-white/10 py-3.5"
-        } px-4 sm:px-6 flex items-center justify-between`}
-      >
-        {/* Brand / Logo */}
-        <Link
-          href="/"
-          onClick={(e) => {
-            e.preventDefault();
-            setActiveSection("overview");
-            window.history.pushState(null, "", "#overview");
-            triggerLaunchWithSound();
-          }}
-          className="flex items-center gap-3 group cursor-pointer"
-        >
-          <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-600 to-fuchsia-500 p-0.5 shadow-lg shadow-violet-500/25 group-hover:scale-105 transition-transform">
-            <div className="w-full h-full bg-[#0a0a14] rounded-[10px] flex items-center justify-center overflow-hidden">
-              <img
-                src="/rietlogo.png"
-                alt="RIET Logo"
-                className="w-7 h-7 object-contain group-hover:rotate-6 transition-transform"
-                onError={(e) => {
-                  (e.target as HTMLElement).style.display = "none";
-                }}
-              />
-            </div>
+    <header className="fixed top-12 left-0 right-0 z-50 px-3 sm:px-6 pointer-events-none transition-all duration-300">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        
+        {/* Cyber-Matrix Floating Dynamic Island Pill */}
+        <div className={`pointer-events-auto flex items-center justify-between w-full rounded-none sm:rounded-full px-3.5 sm:px-6 py-2.5 transition-all duration-300 ${
+          isScrolled 
+            ? "bg-[#040806]/95 backdrop-blur-2xl border border-emerald-500/40 shadow-[0_12px_40px_rgba(0,0,0,0.8)] shadow-emerald-950/40 ring-1 ring-emerald-500/20" 
+            : "bg-[#050b08]/80 backdrop-blur-xl border border-emerald-500/25 shadow-[0_8px_32px_rgba(0,0,0,0.6)]"
+        }`}>
+          
+          {/* Brand Logo with Replay Sound Trigger */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleLogoClick}
+              className="flex items-center gap-2 group text-left transition-transform hover:scale-105 active:scale-95 cursor-pointer"
+              title="Click to replay launch sound & hacker terminal"
+            >
+              <div className="relative w-8 h-8 rounded bg-[#020503] border border-emerald-500/50 flex items-center justify-center p-0.5 shadow-md shadow-emerald-500/30 group-hover:border-emerald-400 group-hover:shadow-emerald-400/60 transition-all">
+                <Terminal className="w-4 h-4 text-emerald-400 group-hover:rotate-12 transition-transform" />
+                <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-black animate-ping" />
+              </div>
+
+              <div className="flex flex-col">
+                <span className="font-mono font-black tracking-tight text-white text-base sm:text-lg flex items-baseline leading-none">
+                  <span className="group-hover:text-emerald-300 transition-colors">ENIGMA</span>
+                  <span className="text-emerald-400 scale-y-135 inline-block origin-bottom font-black ml-0.5 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)]">
+                    2.0
+                  </span>
+                </span>
+                <span className="text-[8px] font-mono tracking-widest text-emerald-400/70 uppercase">
+                  RIET // JAIPUR
+                </span>
+              </div>
+            </button>
           </div>
-          <div className="flex flex-col">
-            <div className="flex items-baseline">
-              <span className="font-extrabold text-lg sm:text-xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-violet-200 to-fuchsia-200 font-sans">
-                ENIGMA
+
+          {/* Desktop Single-Page Navigation Menu (10 Items strictly in sequence) */}
+          <nav className="hidden xl:flex items-center gap-1 bg-[#020503]/80 border border-emerald-500/20 rounded-full px-3 py-1 backdrop-blur-md">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.id)}
+                  className={`relative px-3 py-1 text-xs font-mono font-medium rounded-full transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? "text-emerald-300 font-bold bg-emerald-500/20 border border-emerald-500/50 shadow-[0_0_12px_rgba(16,185,129,0.35)]"
+                      : "text-white/70 hover:text-emerald-300 hover:bg-white/5"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </nav>
+
+          {/* Right Action Elements */}
+          <div className="flex items-center gap-2">
+            {/* Audio Replay Button */}
+            <button
+              onClick={handleLogoClick}
+              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-950/40 hover:bg-emerald-900/50 border border-emerald-500/30 text-[11px] font-mono text-emerald-300 transition-colors cursor-pointer"
+              title="Play Launch Audio & Hacker Intro"
+            >
+              <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+              <span className="hidden lg:inline">AUDIO: ON</span>
+            </button>
+
+            {/* Direct Register CTA Button (Google Form) */}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSe8WhPNn5GqrEhduyX8juD-kzTwGS9TJ0uDqpQs0hc4Yhwlzg/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={onRegisterClick}
+              className="relative group overflow-hidden flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full font-mono text-xs font-bold text-black bg-emerald-400 hover:bg-emerald-300 transition-all duration-300 shadow-[0_0_25px_rgba(52,211,153,0.5)] hover:shadow-[0_0_35px_rgba(52,211,153,0.8)] hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              <span className="relative flex items-center gap-1.5 uppercase tracking-wider">
+                <span>Register</span>
+                <span className="hidden sm:inline">Now</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </span>
-              <span className="font-black text-xl sm:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-pink-400 scale-y-130 inline-block origin-bottom tracking-tighter drop-shadow-[0_0_12px_rgba(232,121,249,0.8)]">
-                2.0
-              </span>
-            </div>
-            <span className="text-[10px] text-white/50 tracking-wider font-mono">
-              RIET JAIPUR • 24H HACKATHON
-            </span>
+            </a>
+
+            {/* Mobile Hamburger Menu Toggle */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="xl:hidden p-2 rounded-lg bg-emerald-950/30 hover:bg-emerald-900/40 border border-emerald-500/30 text-emerald-400 transition-colors cursor-pointer"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X className="w-5 h-5 text-emerald-300" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
-        </Link>
-
-        {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5">
-          {navLinks.map((link) => {
-            const sectionId = link.href.replace("#", "");
-            const isActive = activeSection === sectionId;
-            const targetHref =
-              location === "/" || location === "" || location === "/template-2"
-                ? link.href
-                : `/${link.href}`;
-
-            return (
-              <a
-                key={link.name}
-                href={targetHref}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`px-3 py-1.5 rounded-xl text-xs xl:text-sm transition-all font-medium border ${
-                  isActive
-                    ? "text-violet-200 font-bold bg-white/[0.12] border-violet-500/40 shadow-lg shadow-violet-500/20 backdrop-blur-md"
-                    : "text-white/70 hover:text-white hover:bg-white/[0.06] border-transparent"
-                }`}
-              >
-                {link.name}
-              </a>
-            );
-          })}
-        </nav>
-
-        {/* Right CTA Button */}
-        <div className="hidden sm:flex items-center gap-3">
-          <button
-            onClick={onRegisterClick}
-            className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-xs sm:text-sm text-white overflow-hidden shadow-lg shadow-violet-600/30 hover:shadow-violet-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all group bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600"
-          >
-            <Sparkles className="w-4 h-4 text-violet-200 group-hover:rotate-12 transition-transform" />
-            <span>Register Team</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-          </button>
         </div>
-
-        {/* Mobile Hamburger Toggle */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 rounded-xl text-white/70 hover:text-white hover:bg-white/10 transition-colors"
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
       </div>
 
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden mt-2 p-4 rounded-2xl bg-[#0b0c1e]/95 backdrop-blur-2xl border border-violet-500/20 shadow-2xl flex flex-col gap-1 animate-in fade-in slide-in-from-top-4 duration-200">
-          {navLinks.map((link) => {
-            const sectionId = link.href.replace("#", "");
-            const isActive = activeSection === sectionId;
-            const targetHref =
-              location === "/" || location === "" || location === "/template-2"
-                ? link.href
-                : `/${link.href}`;
+      {/* Mobile Slide-Down Cyber Drawer */}
+      {isMobileMenuOpen && (
+        <div className="pointer-events-auto xl:hidden mt-2 max-w-7xl mx-auto rounded-2xl bg-[#040806]/98 backdrop-blur-2xl border border-emerald-500/30 p-5 shadow-2xl shadow-black ring-1 ring-emerald-500/20 animate-fade-in font-mono">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.id)}
+                  className={`flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-medium transition-all ${
+                    isActive
+                      ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold shadow-sm"
+                      : "bg-white/[0.03] text-white/70 hover:text-emerald-300 hover:bg-white/10 border border-white/5"
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />}
+                </a>
+              );
+            })}
+          </div>
 
-            return (
-              <a
-                key={link.name}
-                href={targetHref}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-colors border ${
-                  isActive
-                    ? "text-violet-200 font-bold bg-white/10 border-violet-500/40 shadow-sm"
-                    : "text-white/80 hover:text-white hover:bg-white/5 border-transparent"
-                }`}
-              >
-                {link.name}
-              </a>
-            );
-          })}
-          <div className="pt-2 mt-1 border-t border-white/10">
+          <div className="mt-4 pt-3 border-t border-emerald-500/20 flex items-center justify-between gap-3">
             <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onRegisterClick();
-              }}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-medium text-sm text-white bg-gradient-to-r from-violet-600 to-fuchsia-600 shadow-lg shadow-violet-600/30"
+              onClick={handleLogoClick}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-950/40 text-xs text-emerald-400 hover:text-emerald-300"
             >
-              <Sparkles className="w-4 h-4" />
-              <span>Register Team</span>
+              <Volume2 className="w-3.5 h-3.5" />
+              <span>Replay Intro</span>
             </button>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSe8WhPNn5GqrEhduyX8juD-kzTwGS9TJ0uDqpQs0hc4Yhwlzg/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 text-center py-2 px-4 rounded-lg font-bold text-xs text-black bg-emerald-400 shadow-md shadow-emerald-500/30 uppercase tracking-wider"
+            >
+              Register Team Now →
+            </a>
           </div>
         </div>
       )}

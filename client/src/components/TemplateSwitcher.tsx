@@ -26,10 +26,10 @@ export default function TemplateSwitcher() {
         >
           <Layers className="w-3.5 h-3.5 text-violet-400 group-hover:rotate-12 transition-transform" />
           <span>
-            {template === "template3"
-              ? "Template 3 (Cyber Pro ✨)"
-              : template === "template2"
-              ? "Template 2 (Cosmic)"
+            {template === "template2"
+              ? "Template 2 (Cyber Pro ✨)"
+              : template === "template3"
+              ? "Template 3 (Cosmic)"
               : "Template 1 (Hacker)"}
           </span>
           <ChevronDown className="w-3.5 h-3.5 opacity-60" />
@@ -70,30 +70,30 @@ export default function TemplateSwitcher() {
               </button>
 
               <button
-                onClick={() => setTemplate("template3")}
+                onClick={() => setTemplate("template2")}
                 className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-xs font-medium transition-all ${
-                  template === "template3"
+                  template === "template2"
                     ? "bg-gradient-to-r from-emerald-500/30 via-emerald-600/40 to-teal-500/40 text-emerald-200 border border-emerald-400/60 shadow-md shadow-emerald-500/25 font-bold"
                     : "text-white/60 hover:text-white/90 hover:bg-white/5"
                 }`}
               >
                 <Terminal className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-                <span>Template 3</span>
+                <span>Template 2</span>
                 <span className="px-1.5 py-0.2 rounded-full bg-emerald-400/20 text-[9px] font-mono text-emerald-300 border border-emerald-400/40 uppercase font-black tracking-wider">
                   CYBER PRO ✨
                 </span>
               </button>
 
               <button
-                onClick={() => setTemplate("template2")}
+                onClick={() => setTemplate("template3")}
                 className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-xs font-medium transition-all ${
-                  template === "template2"
+                  template === "template3"
                     ? "bg-gradient-to-r from-violet-600/40 to-fuchsia-600/40 text-violet-200 border border-violet-500/50 shadow-sm shadow-violet-500/20 font-semibold"
                     : "text-white/60 hover:text-white/90 hover:bg-white/5"
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-fuchsia-400" />
-                <span>Template 2</span>
+                <span>Template 3</span>
                 <span className="hidden xl:inline text-[10px] opacity-75 font-mono">(Cosmic)</span>
               </button>
             </div>
@@ -104,9 +104,9 @@ export default function TemplateSwitcher() {
                 <Eye className="w-3 h-3" />
                 Active:{" "}
                 <span className="text-white font-medium">
-                  {template === "template3"
+                  {template === "template2"
                     ? "Matrix Cyber Pro ✨"
-                    : template === "template2"
+                    : template === "template3"
                     ? "Cosmic Aurora"
                     : "Cyber Hacker"}
                 </span>
