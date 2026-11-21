@@ -39,7 +39,7 @@ export function TemplateProvider({ children }: { children: React.ReactNode }) {
   };
 
   const toggleTemplate = () => {
-    setTemplate(template === "template1" ? "template2" : template === "template2" ? "template3" : "template1");
+    setTemplate(template === "template1" ? "template3" : template === "template3" ? "template2" : "template1");
   };
 
   useEffect(() => {

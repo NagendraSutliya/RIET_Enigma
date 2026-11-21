@@ -70,19 +70,6 @@ export default function TemplateSwitcher() {
               </button>
 
               <button
-                onClick={() => setTemplate("template2")}
-                className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-xs font-medium transition-all ${
-                  template === "template2"
-                    ? "bg-gradient-to-r from-violet-600/40 to-fuchsia-600/40 text-violet-200 border border-violet-500/50 shadow-sm shadow-violet-500/20 font-semibold"
-                    : "text-white/60 hover:text-white/90 hover:bg-white/5"
-                }`}
-              >
-                <Sparkles className="w-3.5 h-3.5 text-fuchsia-400" />
-                <span>Template 2</span>
-                <span className="hidden xl:inline text-[10px] opacity-75 font-mono">(Cosmic)</span>
-              </button>
-
-              <button
                 onClick={() => setTemplate("template3")}
                 className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-xs font-medium transition-all ${
                   template === "template3"
@@ -95,6 +82,19 @@ export default function TemplateSwitcher() {
                 <span className="px-1.5 py-0.2 rounded-full bg-emerald-400/20 text-[9px] font-mono text-emerald-300 border border-emerald-400/40 uppercase font-black tracking-wider">
                   CYBER PRO ✨
                 </span>
+              </button>
+
+              <button
+                onClick={() => setTemplate("template2")}
+                className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-xs font-medium transition-all ${
+                  template === "template2"
+                    ? "bg-gradient-to-r from-violet-600/40 to-fuchsia-600/40 text-violet-200 border border-violet-500/50 shadow-sm shadow-violet-500/20 font-semibold"
+                    : "text-white/60 hover:text-white/90 hover:bg-white/5"
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-fuchsia-400" />
+                <span>Template 2</span>
+                <span className="hidden xl:inline text-[10px] opacity-75 font-mono">(Cosmic)</span>
               </button>
             </div>
 
