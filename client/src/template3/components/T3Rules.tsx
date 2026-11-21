@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { ShieldCheck, Search, CheckCircle2, AlertTriangle, FileText, Download, Code2, Users, Cpu, Award } from "lucide-react";
+import { ShieldCheck, Search, CheckCircle2, AlertTriangle, FileText, Download, Code2, Users, Cpu, Award, Terminal } from "lucide-react";
+import { TechCorner } from "@/components/TechDecorations";
 
 export default function T3Rules() {
   const [activeTab, setActiveTab] = useState<string>("general");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const categories = [
-    { id: "general", label: "Eligibility & Teams", icon: Users },
-    { id: "code", label: "Code & AI Policy", icon: Code2 },
-    { id: "submission", label: "Submissions & Demos", icon: Cpu },
-    { id: "judging", label: "Judging Criteria", icon: Award },
+    { id: "general", label: "// TEAMS & ELIGIBILITY", icon: Users },
+    { id: "code", label: "// CODE INTEGRITY", icon: Code2 },
+    { id: "submission", label: "// REPOS & DEMOS", icon: Cpu },
+    { id: "judging", label: "// JUDGING MATRIX", icon: Award },
   ];
 
   const rulesData = {
@@ -109,30 +110,32 @@ export default function T3Rules() {
     <section id="rules" className="relative py-24 px-4 sm:px-6 max-w-7xl mx-auto">
       
       {/* Background Accent */}
-      <div className="absolute top-1/3 right-10 w-[500px] h-[350px] bg-cyan-600/10 blur-[150px] pointer-events-none -z-10 rounded-full" />
+      <div className="absolute top-1/3 right-10 w-[500px] h-[350px] bg-emerald-600/10 blur-[150px] pointer-events-none -z-10 rounded-full" />
 
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-14">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-mono uppercase tracking-wider mb-4">
-          <ShieldCheck className="w-3.5 h-3.5" />
-          <span>Fair Play & Compliance</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-wider mb-3">
+          <Terminal className="w-3.5 h-3.5" />
+          <span>// PROTOCOL_COMPLIANCE</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+        <h2 className="text-3xl sm:text-5xl font-serif font-black text-white tracking-tight leading-tight">
           Official{" "}
-          <span className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400">
+          <span className="font-mono text-emerald-400 drop-shadow-[0_0_20px_rgba(34,197,94,0.6)]">
             Rules & Regulations
           </span>
         </h2>
-        <p className="text-white/60 text-sm sm:text-base mt-3 max-w-xl mx-auto">
-          Clear guidelines to ensure an ethical, intense, and level playing field for every participating innovator.
+        <p className="text-white/60 font-mono text-xs sm:text-sm mt-2 max-w-xl mx-auto">
+          Strict guidelines to ensure an ethical, intense, and level playing field for every participating innovator.
         </p>
       </div>
 
       {/* Rulebook Container */}
-      <div className="rounded-3xl bg-[#070b1a]/90 border border-white/15 backdrop-blur-2xl p-6 sm:p-8 shadow-2xl">
-        
+      <div className="relative rounded-none bg-[#050b07] border border-emerald-500/30 p-6 sm:p-8 shadow-2xl">
+        <TechCorner position="tl" />
+        <TechCorner position="br" />
+
         {/* Top Controls: Tabs & Search Filter */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pb-6 border-b border-white/10">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pb-6 border-b border-emerald-500/20">
           
           {/* Tab Selector */}
           <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
@@ -143,10 +146,10 @@ export default function T3Rules() {
                 <button
                   key={cat.id}
                   onClick={() => setActiveTab(cat.id)}
-                  className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-mono font-medium transition-all cursor-pointer ${
+                  className={`flex items-center gap-2 px-3.5 py-2 text-xs font-mono transition-all cursor-pointer ${
                     isActive
-                      ? "bg-gradient-to-r from-cyan-500/25 to-violet-500/25 text-cyan-300 border border-cyan-400/40 shadow-sm"
-                      : "bg-white/5 text-white/65 hover:text-white hover:bg-white/10 border border-white/5"
+                      ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/50 shadow-sm font-bold"
+                      : "bg-black/60 text-white/70 hover:text-emerald-300 hover:bg-emerald-950/20 border border-emerald-500/20"
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -158,13 +161,13 @@ export default function T3Rules() {
 
           {/* Search Input */}
           <div className="relative w-full md:w-72">
-            <Search className="w-4 h-4 text-white/40 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-emerald-400/60 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search rules..."
+              placeholder="Search rulebook..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs text-white placeholder-white/40 focus:outline-none focus:border-cyan-400/50 transition-colors font-mono"
+              className="w-full pl-9 pr-4 py-2 bg-black/80 border border-emerald-500/30 text-xs text-white placeholder-emerald-400/40 focus:outline-none focus:border-emerald-400 font-mono"
             />
           </div>
         </div>
@@ -174,27 +177,27 @@ export default function T3Rules() {
           {filteredRules.map((rule, idx) => (
             <div
               key={idx}
-              className="group p-5 rounded-2xl bg-white/[0.02] hover:bg-white/[0.05] border border-white/10 hover:border-cyan-500/30 transition-all duration-300 flex items-start gap-4"
+              className="group p-5 bg-[#030704] border border-emerald-500/20 hover:border-emerald-500/50 transition-all duration-300 flex items-start gap-4"
             >
-              <div className="p-2 rounded-xl bg-white/5 border border-white/10 mt-0.5">
+              <div className="p-2 bg-black border border-emerald-500/30 text-emerald-400 mt-0.5">
                 {rule.isMust ? (
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 ) : (
-                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  <ShieldCheck className="w-4 h-4 text-cyan-400" />
                 )}
               </div>
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                  <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
                     {rule.title}
                   </h3>
                   {rule.isMust && (
-                    <span className="text-[9px] font-mono font-bold uppercase px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                    <span className="text-[9px] font-mono font-bold uppercase px-1.5 py-0.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
                       MANDATORY
                     </span>
                   )}
                 </div>
-                <p className="text-xs sm:text-sm text-white/65 leading-relaxed">
+                <p className="text-xs sm:text-sm text-white/65 leading-relaxed font-sans">
                   {rule.detail}
                 </p>
               </div>
@@ -203,25 +206,25 @@ export default function T3Rules() {
 
           {filteredRules.length === 0 && (
             <div className="col-span-2 py-12 text-center text-white/50 text-xs font-mono">
-              No rules matched your search query "{searchQuery}".
+              // NO_RULES_MATCHED: "{searchQuery}"
             </div>
           )}
         </div>
 
-        {/* Bottom Banner with PDF Download Note */}
-        <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-white/60">
+        {/* Bottom Banner */}
+        <div className="mt-8 pt-6 border-t border-emerald-500/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-white/60">
           <div className="flex items-center gap-2">
             <AlertTriangle className="w-4 h-4 text-amber-400" />
-            <span>Violations may lead to immediate revocation of entry and certifications.</span>
+            <span>Violations lead to instant disqualification & reporting.</span>
           </div>
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSe8WhPNn5GqrEhduyX8juD-kzTwGS9TJ0uDqpQs0hc4Yhwlzg/viewform"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-cyan-400 hover:text-cyan-300 font-semibold transition-colors"
+            className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors uppercase tracking-wider"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Download Official PDF Handbook</span>
+            <span>Download Official Handbook</span>
           </a>
         </div>
       </div>

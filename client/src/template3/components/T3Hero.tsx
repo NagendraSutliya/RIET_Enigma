@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { ArrowRight, Sparkles, Trophy, Clock, Users, Building, Terminal, ExternalLink, Flame, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Trophy, Clock, Users, Building, Terminal, ExternalLink, Flame, CheckCircle2, MapPin } from "lucide-react";
+import { TechCorner, FloatingDots, CodeLine } from "@/components/TechDecorations";
 
 interface T3HeroProps {
   onRegisterClick?: () => void;
 }
 
 export default function T3Hero({ onRegisterClick }: T3HeroProps) {
-  // Live Countdown to Dec 17, 2026 09:00 AM IST
   const targetDate = new Date("2026-12-17T09:00:00+05:30").getTime();
 
   const [timeLeft, setTimeLeft] = useState({
@@ -52,62 +52,89 @@ export default function T3Hero({ onRegisterClick }: T3HeroProps) {
 
   const metrics = [
     { label: "Grand Prize Pool", value: "₹50,000+", icon: Trophy, color: "text-amber-400" },
-    { label: "Non-Stop Hackathon", value: "24 Hours", icon: Clock, color: "text-cyan-400" },
-    { label: "Elite Innovators", value: "500+ Hackers", icon: Users, color: "text-violet-400" },
-    { label: "Institutions Across India", value: "50+ Colleges", icon: Building, color: "text-fuchsia-400" },
+    { label: "Non-Stop Hackathon", value: "24 Hours", icon: Clock, color: "text-emerald-400" },
+    { label: "Elite Innovators", value: "800+ Hackers", icon: Users, color: "text-cyan-400" },
+    { label: "Universities Across India", value: "50+ Colleges", icon: Building, color: "text-emerald-300" },
   ];
 
   return (
-    <section className="relative min-h-[92vh] flex flex-col justify-center items-center text-center px-4 sm:px-6 pt-24 sm:pt-32 pb-16 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 pt-28 sm:pt-36 pb-20 overflow-hidden bg-[#030604]">
       
-      {/* Background Kinetic Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[450px] bg-gradient-to-tr from-cyan-600/15 via-violet-600/15 to-fuchsia-600/15 blur-[160px] pointer-events-none -z-10 rounded-full" />
-      <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none -z-10 opacity-60" />
+      {/* Tech corner decorations inspired by Template 1 */}
+      <div className="hidden sm:block">
+        <TechCorner position="tl" />
+        <TechCorner position="tr" />
+        <TechCorner position="bl" />
+        <TechCorner position="br" />
+      </div>
+
+      {/* Floating dots inspired by Template 1 */}
+      <div className="hidden md:block">
+        <FloatingDots count={8} />
+      </div>
+
+      {/* Background Matrix Circuit Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00ff8808_1px,transparent_1px),linear-gradient(to_bottom,#00ff8808_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[450px] bg-emerald-600/10 blur-[180px] pointer-events-none -z-10 rounded-full" />
+
+      {/* Code comment decoration */}
+      <div className="hidden sm:block mb-4">
+        <div className="inline-flex items-center gap-2 text-xs font-mono text-emerald-400/60 bg-emerald-950/20 px-3 py-1 rounded-full border border-emerald-500/20">
+          <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+          <span>// system_init --hackathon=enigma20 --runtime=24h</span>
+        </div>
+      </div>
 
       {/* Top Meta Capsule Badge */}
-      <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/15 backdrop-blur-xl mb-6 shadow-lg shadow-black/40 animate-fade-in">
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#06100a] border border-emerald-500/30 backdrop-blur-xl mb-6 shadow-lg shadow-emerald-950/40">
         <span className="flex h-2 w-2 relative">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </span>
-        <span className="text-[11px] sm:text-xs font-mono tracking-wider uppercase text-white/90">
+        <span className="text-[11px] sm:text-xs font-mono tracking-wider uppercase text-emerald-300 font-semibold">
           Rajasthan Institute of Engineering & Technology, Jaipur
         </span>
-        <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-300 font-mono border border-cyan-500/30 font-semibold">
+        <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] bg-emerald-500/20 text-emerald-300 font-mono border border-emerald-500/30 font-bold">
           DEC 17–18, 2026
         </span>
       </div>
 
-      {/* Main Neo-Kinetic Typography */}
+      {/* Main Neo-Matrix Hacker Title (Inspired by Template 1) */}
       <div className="max-w-5xl mx-auto space-y-4">
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white flex flex-col items-center justify-center leading-[1.05]">
-          <span className="text-white/80 font-medium text-2xl sm:text-4xl md:text-5xl font-mono tracking-normal mb-1">
-            24H NATIONAL HACKATHON
-          </span>
-          <span className="flex items-baseline font-mono tracking-tighter uppercase drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
-            <span className="bg-gradient-to-r from-white via-cyan-100 to-white/90 bg-clip-text text-transparent">
-              ENIGMA
-            </span>
-            <span className="scale-y-125 inline-block origin-bottom font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 ml-1 drop-shadow-[0_0_30px_rgba(34,211,238,0.7)]">
-              2.0
-            </span>
+        <p className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.35em] text-emerald-400/80">
+          24-Hour Hackathon · Jaipur · 17-18 Dec 2026
+        </p>
+
+        <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-serif font-black text-white tracking-tight leading-none">
+          <span className="inline-block hover:text-emerald-400 hover:scale-110 transition-all duration-300 hover:-translate-y-1">E</span>
+          <span className="inline-block hover:text-emerald-400 hover:scale-110 transition-all duration-300 hover:-translate-y-1">N</span>
+          <span className="inline-block hover:text-emerald-400 hover:scale-110 transition-all duration-300 hover:-translate-y-1">I</span>
+          <span className="inline-block hover:text-emerald-400 hover:scale-110 transition-all duration-300 hover:-translate-y-1">G</span>
+          <span className="inline-block hover:text-emerald-400 hover:scale-110 transition-all duration-300 hover:-translate-y-1">M</span>
+          <span className="inline-block hover:text-emerald-400 hover:scale-110 transition-all duration-300 hover:-translate-y-1">A</span>
+          <span className="inline-block text-emerald-400 font-black text-[1.15em] sm:text-[1.25em] scale-y-135 origin-bottom tracking-tighter hover:scale-125 transition-transform duration-300 drop-shadow-[0_0_35px_rgba(34,197,94,0.7)] ml-1">
+            2.0
           </span>
         </h1>
 
-        <p className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-white/70 font-normal leading-relaxed pt-2">
-          Step into Rajasthan’s premier national hackathon. Assemble your team of 2–4 developers, solve hard problems, and ship production-ready innovations in 24 hours.
+        <p className="text-sm sm:text-lg md:text-xl font-mono uppercase tracking-[0.2em] text-emerald-400/90 font-semibold">
+          Code · Collaborate · Innovate
+        </p>
+
+        <p className="text-sm sm:text-base lg:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed pt-2">
+          Join 800+ elite engineers, designers, and innovators for 24 hours of non-stop code, mentorship, and high-impact software deployment at Rajasthan’s premier national hackathon.
         </p>
 
         {/* Highlight Perks Strip */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 pt-2 text-xs font-mono text-white/75">
-          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 pt-2 text-xs font-mono text-emerald-300/80">
+          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30">
             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Free Registration
           </span>
-          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
-            <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" /> Free Accommodation & Meals
+          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Free Accommodation & Meals
           </span>
-          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
-            <CheckCircle2 className="w-3.5 h-3.5 text-violet-400" /> Swags & Cloud Credits
+          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Swags & Cloud Credits
           </span>
         </div>
       </div>
@@ -119,31 +146,28 @@ export default function T3Hero({ onRegisterClick }: T3HeroProps) {
           target="_blank"
           rel="noopener noreferrer"
           onClick={onRegisterClick}
-          className="relative group w-full sm:w-auto flex-1 overflow-hidden px-8 py-3.5 rounded-full font-bold text-sm text-white transition-all duration-300 shadow-[0_0_30px_rgba(6,182,212,0.35)] hover:shadow-[0_0_45px_rgba(6,182,212,0.6)] hover:scale-105 active:scale-95 cursor-pointer"
+          className="w-full sm:w-auto flex-1 font-mono uppercase tracking-[0.15em] font-bold text-sm text-black bg-emerald-400 hover:bg-emerald-300 px-8 py-3.5 rounded-none shadow-[0_0_30px_rgba(34,197,94,0.5)] hover:shadow-[0_0_45px_rgba(34,197,94,0.8)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
         >
-          <span className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-violet-600 to-fuchsia-600 transition-all duration-300 group-hover:scale-105" />
-          <span className="relative flex items-center justify-center gap-2 tracking-wide font-sans">
-            <span>Register Team Now</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </span>
+          <ExternalLink className="w-4 h-4" />
+          <span>Register Team Now</span>
         </a>
 
         <a
           href="#tracks"
           onClick={scrollToTracks}
-          className="w-full sm:w-auto flex-1 px-6 py-3.5 rounded-full font-medium text-sm text-white/90 bg-white/[0.04] hover:bg-white/[0.08] border border-white/15 hover:border-white/30 backdrop-blur-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+          className="w-full sm:w-auto flex-1 font-mono uppercase tracking-[0.15em] border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/10 hover:border-emerald-400 px-6 py-3.5 rounded-none text-sm transition-all hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
         >
-          <Terminal className="w-4 h-4 text-cyan-400" />
+          <Terminal className="w-4 h-4 text-emerald-400" />
           <span>Explore Tracks</span>
         </a>
       </div>
 
-      {/* Live Flip Countdown Component */}
+      {/* Live Matrix Flip Countdown Component */}
       <div className="mt-12 w-full max-w-2xl mx-auto">
         <div className="flex items-center justify-center gap-2 mb-3">
-          <Flame className="w-4 h-4 text-amber-400 animate-pulse" />
-          <span className="text-xs font-mono uppercase tracking-widest text-white/60">
-            HACKATHON COMMENCES IN
+          <Flame className="w-4 h-4 text-emerald-400 animate-pulse" />
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400/70 font-semibold">
+            // HACKATHON COMMENCES IN
           </span>
         </div>
 
@@ -156,13 +180,13 @@ export default function T3Hero({ onRegisterClick }: T3HeroProps) {
           ].map((item, idx) => (
             <div
               key={idx}
-              className="relative group rounded-2xl bg-[#080c1f]/80 backdrop-blur-xl border border-white/10 p-3 sm:p-4 text-center shadow-xl shadow-black/50 hover:border-cyan-500/40 transition-colors"
+              className="relative group rounded-none bg-[#050b07] border border-emerald-500/30 p-3 sm:p-4 text-center shadow-lg shadow-emerald-950/40 hover:border-emerald-400 transition-colors"
             >
-              <div className="absolute -top-px left-1/2 -translate-x-1/2 w-8 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-75" />
-              <div className="text-2xl sm:text-4xl md:text-5xl font-mono font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-white/90 to-white/60">
+              <div className="absolute -top-px left-1/2 -translate-x-1/2 w-8 h-[2px] bg-emerald-400 opacity-75" />
+              <div className="text-2xl sm:text-4xl md:text-5xl font-mono font-black text-emerald-300 drop-shadow-[0_0_15px_rgba(52,211,153,0.5)]">
                 {String(item.value).padStart(2, "0")}
               </div>
-              <div className="text-[10px] sm:text-xs font-mono font-semibold tracking-wider text-cyan-400/80 mt-1 uppercase">
+              <div className="text-[10px] sm:text-xs font-mono font-semibold tracking-wider text-emerald-400/60 mt-1 uppercase">
                 {item.label}
               </div>
             </div>
@@ -170,26 +194,24 @@ export default function T3Hero({ onRegisterClick }: T3HeroProps) {
         </div>
       </div>
 
-      {/* Live Metrics Glass Ribbon */}
-      <div className="mt-12 w-full max-w-5xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      {/* Stats Row in Template 1 Grid Style */}
+      <div className="mt-12 w-full max-w-4xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-px bg-emerald-500/20 border border-emerald-500/30">
         {metrics.map((metric, i) => {
           const Icon = metric.icon;
           return (
             <div
               key={i}
-              className="group relative rounded-2xl bg-white/[0.02] hover:bg-white/[0.05] border border-white/10 hover:border-white/20 p-4 sm:p-5 backdrop-blur-md transition-all duration-300 text-left flex items-center gap-3.5"
+              className="bg-[#040805] hover:bg-[#07100a] p-4 sm:p-5 text-center group transition-colors"
             >
-              <div className={`p-2.5 rounded-xl bg-white/5 border border-white/10 ${metric.color} group-hover:scale-110 transition-transform`}>
+              <div className="flex justify-center text-emerald-400 mb-2 group-hover:scale-110 transition-transform">
                 <Icon className="w-5 h-5" />
               </div>
-              <div>
-                <div className="text-lg sm:text-xl font-mono font-black text-white tracking-tight">
-                  {metric.value}
-                </div>
-                <div className="text-xs text-white/60 font-sans">
-                  {metric.label}
-                </div>
-              </div>
+              <p className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.15em] text-emerald-400/60 mb-1">
+                {metric.label}
+              </p>
+              <p className="text-base sm:text-lg font-mono font-bold text-white group-hover:text-emerald-300 transition-colors">
+                {metric.value}
+              </p>
             </div>
           );
         })}

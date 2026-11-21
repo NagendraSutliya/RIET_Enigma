@@ -27,7 +27,7 @@ export default function TemplateSwitcher() {
           <Layers className="w-3.5 h-3.5 text-violet-400 group-hover:rotate-12 transition-transform" />
           <span>
             {template === "template3"
-              ? "Template 3 (Neo-Luxe ✨)"
+              ? "Template 3 (Cyber Pro ✨)"
               : template === "template2"
               ? "Template 2 (Cosmic)"
               : "Template 1 (Hacker)"}
@@ -86,14 +86,14 @@ export default function TemplateSwitcher() {
                 onClick={() => setTemplate("template3")}
                 className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-xs font-medium transition-all ${
                   template === "template3"
-                    ? "bg-gradient-to-r from-cyan-500/30 via-violet-600/40 to-fuchsia-500/40 text-cyan-200 border border-cyan-400/50 shadow-md shadow-cyan-500/25 font-bold"
+                    ? "bg-gradient-to-r from-emerald-500/30 via-emerald-600/40 to-teal-500/40 text-emerald-200 border border-emerald-400/60 shadow-md shadow-emerald-500/25 font-bold"
                     : "text-white/60 hover:text-white/90 hover:bg-white/5"
                 }`}
               >
-                <Layers className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
+                <Terminal className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
                 <span>Template 3</span>
-                <span className="px-1.5 py-0.2 rounded-full bg-cyan-400/20 text-[9px] font-mono text-cyan-300 border border-cyan-400/30 uppercase font-black tracking-wider">
-                  HOT ✨
+                <span className="px-1.5 py-0.2 rounded-full bg-emerald-400/20 text-[9px] font-mono text-emerald-300 border border-emerald-400/40 uppercase font-black tracking-wider">
+                  CYBER PRO ✨
                 </span>
               </button>
             </div>
@@ -105,7 +105,7 @@ export default function TemplateSwitcher() {
                 Active:{" "}
                 <span className="text-white font-medium">
                   {template === "template3"
-                    ? "Neo-Luxe Modern ✨"
+                    ? "Matrix Cyber Pro ✨"
                     : template === "template2"
                     ? "Cosmic Aurora"
                     : "Cyber Hacker"}

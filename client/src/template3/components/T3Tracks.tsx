@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { Brain, Shield, Coins, HeartPulse, Cpu, Sparkles, ArrowUpRight, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
+import { Brain, Shield, Coins, HeartPulse, Cpu, Sparkles, Terminal, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
+import { TechCorner } from "@/components/TechDecorations";
 
 interface TrackItem {
   id: string;
+  command: string;
   title: string;
   tagline: string;
   icon: any;
   bounty: string;
-  color: string;
-  accentBorder: string;
   techStack: string[];
   description: string;
   sampleProblems: string[];
@@ -20,12 +20,11 @@ export default function T3Tracks() {
   const tracks: TrackItem[] = [
     {
       id: "ai",
+      command: "$ ./run --track=ai_ml",
       title: "AI & Generative Intelligence",
-      tagline: "Autonomous Agents, Multimodal Models & Applied Machine Learning",
+      tagline: "Autonomous Agents, LLMs & Applied Machine Learning",
       icon: Brain,
       bounty: "₹15,000 Bounty",
-      color: "from-cyan-500/20 to-blue-600/20 text-cyan-400",
-      accentBorder: "hover:border-cyan-400/50",
       techStack: ["LangChain", "PyTorch", "RAG Pipelines", "Whisper", "Vector DBs"],
       description: "Harness the frontier of generative AI and autonomous workflows to construct intelligent systems that understand, reason, and execute complex workflows without human intervention.",
       sampleProblems: [
@@ -36,12 +35,11 @@ export default function T3Tracks() {
     },
     {
       id: "web3",
+      command: "$ ./run --track=web3_defi",
       title: "Web3 & Decentralized Systems",
       tagline: "Smart Contracts, Account Abstraction & Zero-Knowledge Cryptography",
       icon: Coins,
       bounty: "₹10,000 Bounty",
-      color: "from-violet-500/20 to-purple-600/20 text-violet-400",
-      accentBorder: "hover:border-violet-400/50",
       techStack: ["Solidity", "Rust", "EVM", "zk-SNARKs", "IPFS"],
       description: "Architect trustless, censorship-resistant networks and protocols. Build decentralized finance primitives, verifiable on-chain reputation systems, or zero-knowledge data proofs.",
       sampleProblems: [
@@ -52,12 +50,11 @@ export default function T3Tracks() {
     },
     {
       id: "health",
+      command: "$ ./run --track=healthtech",
       title: "HealthTech & Bio-Informatics",
       tagline: "Remote Diagnostics, Predictive Triage & Patient Security",
       icon: HeartPulse,
       bounty: "₹8,000 Bounty",
-      color: "from-rose-500/20 to-red-600/20 text-rose-400",
-      accentBorder: "hover:border-rose-400/50",
       techStack: ["Computer Vision", "FHIR APIs", "Edge ML", "Bio-Sensors"],
       description: "Revolutionize healthcare accessibility and predictive clinical diagnostics. Build AI tools for rural tele-health, automated medical imaging triage, or tamper-proof health records.",
       sampleProblems: [
@@ -68,12 +65,11 @@ export default function T3Tracks() {
     },
     {
       id: "iot",
+      command: "$ ./run --track=iot_smartcity",
       title: "Smart Cities & Clean Energy IoT",
       tagline: "Connected Sensors, Grid Optimization & Environmental Monitoring",
       icon: Cpu,
       bounty: "₹7,000 Bounty",
-      color: "from-emerald-500/20 to-teal-600/20 text-emerald-400",
-      accentBorder: "hover:border-emerald-400/50",
       techStack: ["ESP32 / Arduino", "MQTT", "Time-Series DB", "Edge AI"],
       description: "Merge physical hardware with cloud intelligence. Engineer high-impact systems for municipal water management, dynamic traffic congestion relief, or renewable microgrids.",
       sampleProblems: [
@@ -84,12 +80,11 @@ export default function T3Tracks() {
     },
     {
       id: "fintech",
+      command: "$ ./run --track=cyber_sec",
       title: "FinTech & Cyber Defense",
       tagline: "Fraud Interception, Secure Payments & Algorithmic Security",
       icon: Shield,
       bounty: "₹6,000 Bounty",
-      color: "from-amber-500/20 to-orange-600/20 text-amber-400",
-      accentBorder: "hover:border-amber-400/50",
       techStack: ["Graph Neural Nets", "OAuth 2.1", "WebAuthn", "Kafka"],
       description: "Defend against sophisticated cyber attacks and modernize financial technology. Build real-time anomaly detection pipelines, anti-phishing shields, or automated KYC systems.",
       sampleProblems: [
@@ -100,12 +95,11 @@ export default function T3Tracks() {
     },
     {
       id: "open",
+      command: "$ ./run --track=moonshots",
       title: "Open Innovation & Moonshots",
       tagline: "EdTech, GovTech, SpaceTech & Unconventional Breakthroughs",
       icon: Sparkles,
       bounty: "₹4,000 Bounty",
-      color: "from-fuchsia-500/20 to-pink-600/20 text-fuchsia-400",
-      accentBorder: "hover:border-fuchsia-400/50",
       techStack: ["React", "Flutter", "FastAPI", "WebSockets", "Cloud"],
       description: "Have a radical concept that transcends defined boundaries? Build whatever solves a significant bottleneck in education, accessibility, governance, or developer tooling.",
       sampleProblems: [
@@ -120,22 +114,22 @@ export default function T3Tracks() {
     <section id="tracks" className="relative py-24 px-4 sm:px-6 max-w-7xl mx-auto">
       
       {/* Background Accent */}
-      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-violet-600/10 blur-[160px] pointer-events-none -z-10 rounded-full" />
+      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-emerald-600/10 blur-[160px] pointer-events-none -z-10 rounded-full" />
 
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 text-xs font-mono uppercase tracking-wider mb-4">
-          <Cpu className="w-3.5 h-3.5" />
-          <span>6 Core Engineering Domains</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-wider mb-3">
+          <Terminal className="w-3.5 h-3.5" />
+          <span>// CHALLENGE_DOMAINS</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+        <h2 className="text-3xl sm:text-5xl font-serif font-black text-white tracking-tight leading-tight">
           Challenge{" "}
-          <span className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-cyan-400 to-fuchsia-400">
+          <span className="font-mono text-emerald-400 drop-shadow-[0_0_20px_rgba(34,197,94,0.6)]">
             Tracks & Bounties
           </span>
         </h2>
-        <p className="text-white/60 text-sm sm:text-base mt-3 max-w-xl mx-auto">
-          Choose your domain, architect your project, and compete for dedicated track bounties alongside the main grand prize!
+        <p className="text-white/60 font-mono text-xs sm:text-sm mt-2 max-w-xl mx-auto">
+          Choose your sector, architect your solution, and battle for dedicated track bounties alongside the main grand prize!
         </p>
       </div>
 
@@ -148,27 +142,33 @@ export default function T3Tracks() {
           return (
             <div
               key={track.id}
-              className={`group relative rounded-3xl bg-[#070b1a]/90 backdrop-blur-2xl border border-white/10 ${track.accentBorder} p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-950/30 hover:-translate-y-1`}
+              className="group relative rounded-none bg-[#050b07] border border-emerald-500/25 hover:border-emerald-400 p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-950/50 hover:-translate-y-1"
             >
+              <TechCorner position="tr" />
+
               <div>
-                {/* Top Row: Icon + Bounty Badge */}
-                <div className="flex items-center justify-between mb-5">
-                  <div className={`p-3 rounded-2xl bg-white/5 border border-white/10 ${track.color}`}>
+                {/* Command & Bounty Row */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-3 bg-black border border-emerald-500/40 text-emerald-400">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/5 text-amber-300 border border-amber-400/30 shadow-sm shadow-amber-500/10">
+                  <span className="px-3 py-1 text-xs font-mono font-bold bg-amber-500/15 text-amber-300 border border-amber-500/40">
                     {track.bounty}
                   </span>
                 </div>
 
+                <div className="text-[11px] font-mono text-emerald-400/80 mb-2">
+                  {track.command}
+                </div>
+
                 {/* Title & Tagline */}
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+                <h3 className="text-xl font-bold text-white mb-1 group-hover:text-emerald-300 transition-colors">
                   {track.title}
                 </h3>
                 <p className="text-xs font-mono text-white/50 mb-4 uppercase tracking-wider">
                   {track.tagline}
                 </p>
-                <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-6">
+                <p className="text-xs sm:text-sm text-white/70 font-sans leading-relaxed mb-6">
                   {track.description}
                 </p>
 
@@ -177,7 +177,7 @@ export default function T3Tracks() {
                   {track.techStack.map((tech, i) => (
                     <span
                       key={i}
-                      className="px-2.5 py-1 rounded-md text-[10px] font-mono bg-white/[0.04] text-white/80 border border-white/10"
+                      className="px-2.5 py-1 text-[10px] font-mono bg-black/60 text-emerald-300 border border-emerald-500/20"
                     >
                       {tech}
                     </span>
@@ -186,13 +186,13 @@ export default function T3Tracks() {
 
                 {/* Expanded Problem Statements */}
                 {isExpanded && (
-                  <div className="pt-4 border-t border-white/10 space-y-2 mb-4 animate-fade-in">
-                    <span className="text-[11px] font-mono uppercase text-cyan-400 font-bold block">
-                      Sample Problem Statements:
+                  <div className="pt-4 border-t border-emerald-500/20 space-y-2 mb-4 animate-fade-in">
+                    <span className="text-[11px] font-mono uppercase text-emerald-400 font-bold block">
+                      // SAMPLE_PROBLEM_STATEMENTS:
                     </span>
                     {track.sampleProblems.map((prob, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-white/80">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 mt-0.5 shrink-0" />
+                      <div key={idx} className="flex items-start gap-2 text-xs text-white/80 font-sans">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
                         <span>{prob}</span>
                       </div>
                     ))}
@@ -203,9 +203,9 @@ export default function T3Tracks() {
               {/* Bottom Expand Toggle Button */}
               <button
                 onClick={() => setExpandedTrack(isExpanded ? null : track.id)}
-                className="w-full mt-2 py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-white/80 hover:text-white flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="w-full mt-2 py-2.5 px-4 bg-black/70 hover:bg-emerald-950/40 border border-emerald-500/30 text-xs font-mono text-emerald-300 hover:text-white flex items-center justify-center gap-1.5 transition-colors cursor-pointer uppercase tracking-wider"
               >
-                <span>{isExpanded ? "Hide Details" : "View Problem Statements"}</span>
+                <span>{isExpanded ? "[-] Hide Details" : "[+] View Problem Statements"}</span>
                 {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
               </button>
             </div>

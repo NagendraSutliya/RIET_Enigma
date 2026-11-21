@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { HelpCircle, ChevronDown, ChevronUp, Sparkles, MessageCircle } from "lucide-react";
+import { HelpCircle, ChevronDown, Terminal, MessageCircle } from "lucide-react";
 
 interface FAQItem {
   question: string;
@@ -55,11 +55,11 @@ export default function T3FAQ() {
   ];
 
   const categories = [
-    { id: "all", label: "All Questions" },
-    { id: "general", label: "General" },
-    { id: "reg", label: "Registration" },
-    { id: "stay", label: "Food & Stay" },
-    { id: "rules", label: "Rules & Code" },
+    { id: "all", label: "// ALL_QUERIES" },
+    { id: "general", label: "// GENERAL" },
+    { id: "reg", label: "// REGISTRATION" },
+    { id: "stay", label: "// LOGISTICS_STAY" },
+    { id: "rules", label: "// RULES_CODE" },
   ];
 
   const filteredFaqs = selectedCategory === "all"
@@ -70,21 +70,21 @@ export default function T3FAQ() {
     <section id="faq" className="relative py-24 px-4 sm:px-6 max-w-5xl mx-auto">
       
       {/* Background Accent */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-violet-600/10 blur-[150px] pointer-events-none -z-10 rounded-full" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-600/10 blur-[150px] pointer-events-none -z-10 rounded-full" />
 
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-14">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 text-xs font-mono uppercase tracking-wider mb-4">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-wider mb-3">
           <HelpCircle className="w-3.5 h-3.5" />
-          <span>Got Questions?</span>
+          <span>// KNOWLEDGE_BASE_FAQ</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+        <h2 className="text-3xl sm:text-5xl font-serif font-black text-white tracking-tight leading-tight">
           Frequently Asked{" "}
-          <span className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-cyan-400 to-fuchsia-400">
+          <span className="font-mono text-emerald-400 drop-shadow-[0_0_20px_rgba(34,197,94,0.6)]">
             Questions
           </span>
         </h2>
-        <p className="text-white/60 text-sm sm:text-base mt-3 max-w-xl mx-auto">
+        <p className="text-white/60 font-mono text-xs sm:text-sm mt-2 max-w-xl mx-auto">
           Everything you need to know about the registration, campus logistics, judging, and prizes.
         </p>
       </div>
@@ -95,10 +95,10 @@ export default function T3FAQ() {
           <button
             key={cat.id}
             onClick={() => setSelectedCategory(cat.id)}
-            className={`px-4 py-2 rounded-full text-xs font-mono transition-all cursor-pointer ${
+            className={`px-4 py-2 text-xs font-mono transition-all cursor-pointer ${
               selectedCategory === cat.id
-                ? "bg-gradient-to-r from-cyan-500/25 to-violet-500/25 text-cyan-300 border border-cyan-400/40 shadow-sm"
-                : "bg-white/5 text-white/60 hover:text-white hover:bg-white/10 border border-white/5"
+                ? "bg-emerald-500/20 text-emerald-300 border border-emerald-400 font-bold"
+                : "bg-black/60 text-white/60 hover:text-emerald-300 hover:bg-emerald-950/20 border border-emerald-500/20"
             }`}
           >
             {cat.label}
@@ -114,28 +114,28 @@ export default function T3FAQ() {
           return (
             <div
               key={idx}
-              className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+              className={`border transition-all duration-300 ${
                 isOpen
-                  ? "bg-[#070b1a]/95 border-cyan-500/40 shadow-xl shadow-cyan-950/20"
-                  : "bg-white/[0.02] hover:bg-white/[0.04] border-white/10"
+                  ? "bg-[#050b07] border-emerald-400 shadow-xl shadow-emerald-950/30"
+                  : "bg-[#030604] hover:bg-[#050b07] border-emerald-500/20"
               }`}
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? null : idx)}
                 className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer"
               >
-                <span className="text-sm sm:text-base font-bold text-white leading-snug">
+                <span className="text-sm sm:text-base font-bold text-white font-mono leading-snug">
                   {faq.question}
                 </span>
-                <div className={`p-1.5 rounded-full border shrink-0 transition-transform ${
-                  isOpen ? "bg-cyan-500/20 border-cyan-500/40 text-cyan-300 rotate-180" : "bg-white/5 border-white/10 text-white/60"
+                <div className={`p-1.5 border shrink-0 transition-transform ${
+                  isOpen ? "bg-emerald-500/20 border-emerald-400 text-emerald-300 rotate-180" : "bg-black/60 border-emerald-500/30 text-emerald-400"
                 }`}>
                   <ChevronDown className="w-4 h-4" />
                 </div>
               </button>
 
               {isOpen && (
-                <div className="px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-white/70 leading-relaxed border-t border-white/5 pt-3 animate-fade-in font-sans">
+                <div className="px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-white/70 leading-relaxed border-t border-emerald-500/15 pt-3 font-sans">
                   {faq.answer}
                 </div>
               )}
@@ -144,14 +144,14 @@ export default function T3FAQ() {
         })}
       </div>
 
-      {/* Still Have Questions Box */}
-      <div className="mt-12 text-center p-6 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-xl">
-        <p className="text-xs sm:text-sm text-white/70 mb-3">
+      {/* Help Desk Callout */}
+      <div className="mt-12 text-center p-6 bg-[#040805] border border-emerald-500/30">
+        <p className="text-xs sm:text-sm text-white/70 font-sans mb-3">
           Have a specific query not listed here? Our organizing committee is here to assist!
         </p>
         <a
           href="mailto:hackathon@rietjaipur.ac.in"
-          className="inline-flex items-center gap-2 text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-mono font-bold text-emerald-400 hover:text-emerald-300 transition-colors uppercase tracking-wider"
         >
           <MessageCircle className="w-4 h-4" />
           <span>Email Us: hackathon@rietjaipur.ac.in</span>
