@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTemplate } from "@/context/TemplateContext";
 import { loadingSounds } from "@/components/loadingSounds";
-import { Menu, X, Volume2, ArrowRight, Terminal, Shield, Zap } from "lucide-react";
+import { Menu, X, ArrowRight, Terminal, Shield, Zap } from "lucide-react";
 
 interface T2NavbarProps {
   onRegisterClick?: () => void;
@@ -142,16 +142,6 @@ export default function T2Navbar({ onRegisterClick }: T2NavbarProps) {
 
           {/* Right Action Elements */}
           <div className="flex items-center gap-2">
-            {/* Audio Replay Button */}
-            <button
-              onClick={handleLogoClick}
-              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-950/40 hover:bg-emerald-900/50 border border-emerald-500/30 text-[11px] font-mono text-emerald-300 transition-colors cursor-pointer"
-              title="Play Launch Audio & Hacker Intro"
-            >
-              <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-              <span className="hidden lg:inline">AUDIO: ON</span>
-            </button>
-
             {/* Direct Register CTA Button (Google Form) */}
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSe8WhPNn5GqrEhduyX8juD-kzTwGS9TJ0uDqpQs0hc4Yhwlzg/viewform"
@@ -203,19 +193,12 @@ export default function T2Navbar({ onRegisterClick }: T2NavbarProps) {
             })}
           </div>
 
-          <div className="mt-4 pt-3 border-t border-emerald-500/20 flex items-center justify-between gap-3">
-            <button
-              onClick={handleLogoClick}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-950/40 text-xs text-emerald-400 hover:text-emerald-300"
-            >
-              <Volume2 className="w-3.5 h-3.5" />
-              <span>Replay Intro</span>
-            </button>
+          <div className="mt-4 pt-3 border-t border-emerald-500/20">
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSe8WhPNn5GqrEhduyX8juD-kzTwGS9TJ0uDqpQs0hc4Yhwlzg/viewform"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 text-center py-2 px-4 rounded-lg font-bold text-xs text-black bg-emerald-400 shadow-md shadow-emerald-500/30 uppercase tracking-wider"
+              className="block w-full text-center py-2.5 px-4 rounded-lg font-bold text-xs text-black bg-emerald-400 shadow-md shadow-emerald-500/30 uppercase tracking-wider"
             >
               Register Team Now →
             </a>
