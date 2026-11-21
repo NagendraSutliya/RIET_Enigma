@@ -13,6 +13,7 @@ import EnhancedLoadingScreen from "@/components/EnhancedLoadingScreen";
 import { TemplateProvider, useTemplate } from "@/context/TemplateContext";
 import TemplateSwitcher from "@/components/TemplateSwitcher";
 import Template2Home from "@/template2/Template2Home";
+import Template3Home from "@/template3/Template3Home";
 import T2Rules from "@/template2/pages/T2Rules";
 import T2Campaign from "@/template2/pages/T2Campaign";
 
@@ -21,7 +22,9 @@ const LOADING_SHOWN_KEY = "enigma26_loading_shown";
 
 function DynamicHome() {
   const { template } = useTemplate();
-  return template === "template1" ? <Home /> : <Template2Home />;
+  if (template === "template3") return <Template3Home />;
+  if (template === "template2") return <Template2Home />;
+  return <Home />;
 }
 
 function RedirectToSection({ section }: { section: string }) {
@@ -43,6 +46,7 @@ function Router() {
       <Route path="/" component={DynamicHome} />
       <Route path="/template-1" component={Home} />
       <Route path="/template-2" component={Template2Home} />
+      <Route path="/template-3" component={Template3Home} />
       <Route path="/register" component={Register} />
       <Route path="/campaign">
         <RedirectToSection section="campaign" />
