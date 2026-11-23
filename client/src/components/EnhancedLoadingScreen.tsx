@@ -13,18 +13,29 @@ export default function EnhancedLoadingScreen({ onComplete }: EnhancedLoadingScr
   const [audioActive, setAudioActive] = useState(false);
   const completedRef = useRef(false);
   const soundStartedRef = useRef(false);
+  const playedMilestonesRef = useRef<Set<number>>(new Set());
 
   // Sound unlock and start
-  const startAudio = useCallback(() => {
-    loadingSounds.ensureRunning().then((isRunning) => {
-      setAudioActive(true);
-      if (!soundStartedRef.current) {
-        soundStartedRef.current = true;
-        try {
-          loadingSounds.systemBoot();
-        } catch (e) {}
+  const startAudio = useCallback(async () => {
+    try {
+      const isRunning = await loadingSounds.ensureRunning();
+      if (isRunning) {
+        setAudioActive(true);
+        if (!soundStartedRef.current) {
+          soundStartedRef.current = true;
+          try {
+            loadingSounds.systemBoot();
+          } catch (e) {}
+        }
+        return true;
+      } else {
+        setAudioActive(false);
+        return false;
       }
-    });
+    } catch (e) {
+      setAudioActive(false);
+      return false;
+    }
   }, []);
 
   const finishLoading = useCallback(() => {
@@ -53,9 +64,11 @@ export default function EnhancedLoadingScreen({ onComplete }: EnhancedLoadingScr
 
     // Browser autoplay policy fallback: unlock on the very first touch/click/key
     const unlockEvents = ["pointerdown", "touchstart", "keydown", "click", "mousedown"];
-    const handleUnlock = () => {
-      startAudio();
-      unlockEvents.forEach((evt) => window.removeEventListener(evt, handleUnlock));
+    const handleUnlock = async () => {
+      const ok = await startAudio();
+      if (ok) {
+        unlockEvents.forEach((evt) => window.removeEventListener(evt, handleUnlock));
+      }
     };
 
     unlockEvents.forEach((evt) => window.addEventListener(evt, handleUnlock, { passive: true }));
@@ -64,7 +77,7 @@ export default function EnhancedLoadingScreen({ onComplete }: EnhancedLoadingScr
     };
   }, [startAudio]);
 
-  // Fast, cinematic progress counter (total ~2.2s)
+  // Fast, cinematic progress counter (total ~2.4s)
   useEffect(() => {
     const statusUpdates = [
       { at: 15, text: "CONNECTING TO RIET JAIPUR HACKNET..." },
@@ -75,7 +88,7 @@ export default function EnhancedLoadingScreen({ onComplete }: EnhancedLoadingScr
     ];
 
     const startTime = Date.now();
-    const duration = 2100; // 2.1s total duration
+    const duration = 2400; // 2.4s total duration for cinematic feel
 
     const interval = setInterval(() => {
       const elapsed = Date.now() - startTime;
@@ -83,12 +96,16 @@ export default function EnhancedLoadingScreen({ onComplete }: EnhancedLoadingScr
 
       setProgress(pct);
 
-      // Sound blips at key milestones
-      if (pct % 25 === 0 && pct > 0 && pct < 100) {
-        try {
-          loadingSounds.dataBlip();
-        } catch (e) {}
-      }
+      // Sound blips at key milestones (25%, 50%, 75%)
+      const milestones = [25, 50, 75];
+      milestones.forEach((m) => {
+        if (pct >= m && !playedMilestonesRef.current.has(m)) {
+          playedMilestonesRef.current.add(m);
+          try {
+            loadingSounds.dataBlip();
+          } catch (e) {}
+        }
+      });
 
       for (let i = statusUpdates.length - 1; i >= 0; i--) {
         if (pct >= statusUpdates[i].at) {
@@ -101,31 +118,43 @@ export default function EnhancedLoadingScreen({ onComplete }: EnhancedLoadingScr
         clearInterval(interval);
         setTimeout(() => {
           finishLoading();
-        }, 250);
+        }, 300);
       }
     }, 25);
 
     return () => clearInterval(interval);
   }, [finishLoading]);
 
-  // Allow instant skip with keyboard (Space, Enter, Esc) or click
+  // Allow instant skip with keyboard (Space, Enter, Esc)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === " " || e.key === "Enter" || e.key === "Escape") {
-        startAudio();
+      if (e.key === "Escape") {
         finishLoading();
+      } else if (e.key === " " || e.key === "Enter") {
+        if (!audioActive) {
+          startAudio();
+        } else {
+          finishLoading();
+        }
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [finishLoading, startAudio]);
+  }, [finishLoading, startAudio, audioActive]);
+
+  const handleContainerClick = async () => {
+    if (!audioActive) {
+      const ok = await startAudio();
+      if (ok) {
+        return; // Activated audio, let user enjoy the intro!
+      }
+    }
+    finishLoading();
+  };
 
   return (
     <div
-      onClick={() => {
-        startAudio();
-        finishLoading();
-      }}
+      onClick={handleContainerClick}
       className={`fixed inset-0 z-[99999] bg-[#05060f] text-white flex flex-col items-center justify-center overflow-hidden cursor-pointer select-none transition-all duration-500 ${
         isExiting ? "opacity-0 scale-105 pointer-events-none filter blur-sm" : "opacity-100 scale-100"
       }`}
@@ -171,18 +200,18 @@ export default function EnhancedLoadingScreen({ onComplete }: EnhancedLoadingScr
       {/* Sound Status Indicator Pill */}
       <button
         type="button"
-        onClick={(e) => {
+        onClick={async (e) => {
           e.stopPropagation();
-          startAudio();
+          await startAudio();
         }}
         className={`absolute top-6 right-6 sm:top-8 sm:right-8 z-30 flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-mono transition-all backdrop-blur-md cursor-pointer ${
           audioActive
             ? "bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 shadow-[0_0_15px_rgba(34,197,94,0.25)]"
-            : "bg-white/[0.04] border border-emerald-400/40 text-emerald-300 animate-pulse hover:bg-emerald-500/20 shadow-[0_0_20px_rgba(34,197,94,0.35)]"
+            : "bg-emerald-500/20 border-2 border-emerald-400 text-emerald-200 animate-pulse hover:bg-emerald-500/30 shadow-[0_0_25px_rgba(34,197,94,0.5)] font-bold"
         }`}
       >
         <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
-        <span>{audioActive ? "SOUND: ON" : "TAP FOR SOUND 🔊"}</span>
+        <span>{audioActive ? "SOUND: ON" : "ACTIVATE SOUND 🔊"}</span>
       </button>
 
       {/* Center Cinematic Showcase */}
@@ -232,7 +261,7 @@ export default function EnhancedLoadingScreen({ onComplete }: EnhancedLoadingScr
         </div>
 
         {/* Event Key Meta Tags */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6">
           <span className="px-3 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-[11px] sm:text-xs font-mono text-emerald-300">
             ⚡ 24-HOUR HACKATHON
           </span>
@@ -243,6 +272,23 @@ export default function EnhancedLoadingScreen({ onComplete }: EnhancedLoadingScr
             📍 RIET JAIPUR CAMPUS
           </span>
         </div>
+
+        {/* Prominent Audio Callout if browser blocked initial autoplay */}
+        {!audioActive && (
+          <div className="mb-6 animate-bounce">
+            <button
+              type="button"
+              onClick={async (e) => {
+                e.stopPropagation();
+                await startAudio();
+              }}
+              className="px-6 py-2.5 rounded-full bg-emerald-500/20 border-2 border-emerald-400 text-emerald-300 font-mono text-xs font-bold shadow-[0_0_35px_rgba(34,197,94,0.7)] hover:bg-emerald-500/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer"
+            >
+              <Volume2 className="w-4 h-4 text-emerald-400 animate-pulse" />
+              <span>TAP ANYWHERE FOR SOUND 🔊</span>
+            </button>
+          </div>
+        )}
 
         {/* High-Tech Progress Gauge */}
         <div className="w-full max-w-md">
@@ -266,10 +312,17 @@ export default function EnhancedLoadingScreen({ onComplete }: EnhancedLoadingScr
       </div>
 
       {/* Bottom Skip Callout */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 text-[11px] font-mono text-white/40 hover:text-emerald-400 transition-colors px-4 py-2 rounded-xl bg-white/[0.02] border border-white/5 hover:border-emerald-500/30">
-        <span>Click anywhere or press [SPACE] to enter</span>
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          finishLoading();
+        }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 text-[11px] font-mono text-white/40 hover:text-emerald-400 transition-colors px-4 py-2 rounded-xl bg-white/[0.02] border border-white/5 hover:border-emerald-500/30 cursor-pointer"
+      >
+        <span>Skip intro [ESC]</span>
         <ChevronRight className="w-3.5 h-3.5" />
-      </div>
+      </button>
 
       <style>{`
         @keyframes spin {
