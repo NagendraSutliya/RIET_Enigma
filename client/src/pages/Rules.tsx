@@ -568,11 +568,9 @@ export default function Rules() {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
-                { name: "Priyanshu Agarwal", phone: "9588810249" },
-                { name: "Pawan Singh", phone: "8306440385" },
-                { name: "Uday Raniwal", phone: "9650674245" },
-                { name: "Mukesh Firoda", phone: "7742334950" },
-                { name: "Rohaan Singh", phone: "9875874278" }
+                { name: "Naman Gupta", phone: "+91 90395 99101" },
+                { name: "Abhinandan", phone: "+91 83404 92369" },
+                { name: "Shreya Khandelwal", phone: "+91 74268 53859" }
               ].map((contact, idx) => (
                 <div key={idx} className="p-6 bg-background border border-border hover:border-primary/50 transition-all hover:shadow-lg">
                   <div className="flex flex-col items-center text-center gap-3">
@@ -580,7 +578,7 @@ export default function Rules() {
                     <div>
                       <p className="font-semibold text-foreground mb-1">{contact.name}</p>
                       <a 
-                        href={`tel:${contact.phone}`}
+                        href={`tel:${contact.phone.replace(/\s+/g, "")}`}
                         className="text-sm text-primary hover:underline font-mono"
                       >
                         {contact.phone}

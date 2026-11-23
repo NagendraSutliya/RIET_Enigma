@@ -35,7 +35,9 @@ export default function T3VenueContact() {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>+91 98290 XXXXX / Student Lead Helpdesk</span>
+                <a href="tel:+919039599101" className="hover:text-white transition-colors">
+                  +91 90395 99101 (Naman Gupta)
+                </a>
               </div>
             </div>
 

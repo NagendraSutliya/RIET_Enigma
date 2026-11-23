@@ -3,9 +3,9 @@ import { FaWhatsapp } from "react-icons/fa";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const contacts = [
-  { name: "Pawan Singh", phone: "8306440385" },
-  { name: "Rohaan Singh", phone: "9875874278" },
-  { name: "Priyanshu Agarwal", phone: "9588810249" },
+  { name: "Naman Gupta", phone: "+91 90395 99101" },
+  { name: "Abhinandan", phone: "+91 83404 92369" },
+  { name: "Shreya Khandelwal", phone: "+91 74268 53859" },
 ];
 
 export default function ContactSection() {
@@ -48,7 +48,7 @@ export default function ContactSection() {
                 {contact.name}
               </p>
               <a
-                href={`tel:${contact.phone}`}
+                href={`tel:${contact.phone.replace(/\s+/g, "")}`}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {contact.phone}

@@ -50,8 +50,8 @@ export default function FooterSection() {
                 <Mail className="w-4 h-4 flex-shrink-0 text-primary" /> 
                 <span className="break-all font-mono">enigma@rietjaipur.ac.in</span>
               </a>
-              <a href="tel:+918306440385" className="flex items-center gap-2 hover:text-foreground transition-colors touch-target">
-                <Phone className="w-4 h-4 flex-shrink-0" /> +91 8306440385
+              <a href="tel:+919039599101" className="flex items-center gap-2 hover:text-foreground transition-colors touch-target">
+                <Phone className="w-4 h-4 flex-shrink-0" /> +91 90395 99101
               </a>
               <a href="https://chat.whatsapp.com/Edu1sqGp4HFHzk3t9A0VUG?s=cl&p=a&iam=2" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors touch-target pt-1 font-mono text-xs">
                 <FaWhatsapp className="w-4 h-4 flex-shrink-0" />
