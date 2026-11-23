@@ -16,38 +16,28 @@ const TEMPLATE_STORAGE_KEY = "enigma_active_template";
 const TemplateContext = createContext<TemplateContextType | undefined>(undefined);
 
 export function TemplateProvider({ children }: { children: React.ReactNode }) {
-  const [template, setTemplateState] = useState<TemplateMode>(() => {
-    if (typeof window !== "undefined") {
-      // Check URL query param first: ?template=1, ?template=2, ?template=3
-      const params = new URLSearchParams(window.location.search);
-      const urlTemplate = params.get("template");
-      if (urlTemplate === "3" || urlTemplate === "template3") return "template3";
-      if (urlTemplate === "2" || urlTemplate === "template2") return "template2";
-      if (urlTemplate === "1" || urlTemplate === "template1") return "template1";
-
-      const stored = localStorage.getItem(TEMPLATE_STORAGE_KEY) as TemplateMode;
-      if (stored === "template3" || stored === "template2" || stored === "template1") return stored;
-    }
-    return "template2"; // default to Template 2 (Cyber Pro ✨)
-  });
+  const [template, setTemplateState] = useState<TemplateMode>("template1");
 
   const setTemplate = (newTemplate: TemplateMode) => {
-    setTemplateState(newTemplate);
+    setTemplateState("template1");
     if (typeof window !== "undefined") {
-      localStorage.setItem(TEMPLATE_STORAGE_KEY, newTemplate);
+      localStorage.setItem(TEMPLATE_STORAGE_KEY, "template1");
     }
   };
 
   const toggleTemplate = () => {
-    setTemplate(template === "template1" ? "template2" : template === "template2" ? "template3" : "template1");
+    setTemplate("template1");
   };
 
   useEffect(() => {
-    // Sync document title and theme class if needed
     if (typeof document !== "undefined") {
-      document.documentElement.dataset.template = template;
+      document.documentElement.dataset.template = "template1";
+      document.documentElement.style.setProperty("--switcher-height", "0px");
+      if (typeof window !== "undefined") {
+        localStorage.setItem(TEMPLATE_STORAGE_KEY, "template1");
+      }
     }
-  }, [template]);
+  }, []);
 
   const [isLaunchAnimationActive, setIsLaunchAnimationActive] = useState(true);
 
