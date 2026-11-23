@@ -1,4 +1,5 @@
-import { Phone } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const contacts = [
@@ -55,6 +56,43 @@ export default function ContactSection() {
               <div className="mt-4 h-px w-8 bg-border group-hover:bg-primary transition-colors duration-300" />
             </div>
           ))}
+        </div>
+
+        {/* Email & WhatsApp Channels */}
+        <div className={`mt-8 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+          <a
+            href="mailto:enigma@rietjaipur.ac.in"
+            className="p-5 bg-background border border-border hover:border-primary/50 flex items-center justify-between group transition-colors"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+                <Mail className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Official Email</p>
+                <p className="text-sm font-semibold text-foreground font-mono group-hover:text-primary transition-colors">enigma@rietjaipur.ac.in</p>
+              </div>
+            </div>
+            <span className="text-xs font-mono text-muted-foreground group-hover:text-primary">Send Email →</span>
+          </a>
+
+          <a
+            href="https://chat.whatsapp.com/Edu1sqGp4HFHzk3t9A0VUG?s=cl&p=a&iam=2"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-5 bg-emerald-950/20 border border-emerald-500/30 hover:border-emerald-500/60 flex items-center justify-between group transition-colors"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:scale-105 transition-transform">
+                <FaWhatsapp className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-[10px] font-mono uppercase tracking-widest text-emerald-400/80">Hacker Community</p>
+                <p className="text-sm font-semibold text-foreground font-mono group-hover:text-emerald-300 transition-colors">WhatsApp Group</p>
+              </div>
+            </div>
+            <span className="text-xs font-mono font-bold text-emerald-400 group-hover:underline">Join Group →</span>
+          </a>
         </div>
       </div>
     </section>

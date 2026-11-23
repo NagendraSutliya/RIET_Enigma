@@ -3,7 +3,7 @@ import { Calendar, MapPin, Users, ExternalLink, Trophy } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { TechCorner, FloatingDots, CodeLine } from "./TechDecorations";
 
-const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe8WhPNn5GqrEhduyX8juD-kzTwGS9TJ0uDqpQs0hc4Yhwlzg/viewform";
+const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdboLzWGuW84d9MhK9b59nWlYbKe3iHlPCuq6_qF3EXlqgMvQ/viewform?usp=header";
 
 export default function HeroSection() {
   const { ref: sectionRef, isVisible } = useScrollAnimation();

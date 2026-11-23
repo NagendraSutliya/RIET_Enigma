@@ -103,7 +103,7 @@ export default function T2Sponsors() {
           </p>
         </div>
         <a
-          href="mailto:hackathon@rietjaipur.ac.in"
+          href="mailto:enigma@rietjaipur.ac.in"
           className="px-6 py-3 rounded-none bg-emerald-400 hover:bg-emerald-300 text-xs font-mono font-bold text-black flex items-center gap-2 transition-all hover:scale-105 shrink-0 uppercase tracking-wider"
         >
           <Mail className="w-4 h-4" />

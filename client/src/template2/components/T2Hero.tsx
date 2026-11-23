@@ -142,7 +142,7 @@ export default function T2Hero({ onRegisterClick }: T2HeroProps) {
       {/* Dual High-Impact Action CTAs */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-8 w-full max-w-md mx-auto">
         <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSe8WhPNn5GqrEhduyX8juD-kzTwGS9TJ0uDqpQs0hc4Yhwlzg/viewform"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdboLzWGuW84d9MhK9b59nWlYbKe3iHlPCuq6_qF3EXlqgMvQ/viewform?usp=header"
           target="_blank"
           rel="noopener noreferrer"
           onClick={onRegisterClick}

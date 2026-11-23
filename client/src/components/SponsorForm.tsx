@@ -149,7 +149,7 @@ export default function SponsorForm({ open, onOpenChange }: SponsorFormProps) {
 
             <div className="p-4 bg-primary/10 border border-primary/30 rounded-lg">
               <p className="text-sm text-muted-foreground">
-                For sponsorship inquiries, email us at <span className="font-semibold text-sky-400">hackorizon@gmail.com</span>
+                For sponsorship inquiries, email us at <span className="font-semibold text-sky-400">enigma@rietjaipur.ac.in</span>
               </p>
             </div>
           </div>

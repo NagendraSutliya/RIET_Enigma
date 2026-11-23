@@ -144,7 +144,7 @@ export default function T2Navbar({ onRegisterClick }: T2NavbarProps) {
           <div className="flex items-center gap-2">
             {/* Direct Register CTA Button (Google Form) */}
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSe8WhPNn5GqrEhduyX8juD-kzTwGS9TJ0uDqpQs0hc4Yhwlzg/viewform"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdboLzWGuW84d9MhK9b59nWlYbKe3iHlPCuq6_qF3EXlqgMvQ/viewform?usp=header"
               target="_blank"
               rel="noopener noreferrer"
               onClick={onRegisterClick}
@@ -195,7 +195,7 @@ export default function T2Navbar({ onRegisterClick }: T2NavbarProps) {
 
           <div className="mt-4 pt-3 border-t border-emerald-500/20">
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSe8WhPNn5GqrEhduyX8juD-kzTwGS9TJ0uDqpQs0hc4Yhwlzg/viewform"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdboLzWGuW84d9MhK9b59nWlYbKe3iHlPCuq6_qF3EXlqgMvQ/viewform?usp=header"
               target="_blank"
               rel="noopener noreferrer"
               className="block w-full text-center py-2.5 px-4 rounded-lg font-bold text-xs text-black bg-emerald-400 shadow-md shadow-emerald-500/30 uppercase tracking-wider"

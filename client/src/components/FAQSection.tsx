@@ -1,9 +1,11 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { TechCorner } from "./TechDecorations";
 import { ChevronRight } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const faqs = [
   { question: "Who can participate in Enigma2.0?", answer: "Enigma2.0 is open to all students currently enrolled in any recognized educational institution. Teams must have 1-6 members. We welcome beginners as well as experienced hackers!" },
+  { question: "Is there an official WhatsApp group or community?", answer: "Yes! You can join our official WhatsApp community group for live updates, announcements, and team pairing: https://chat.whatsapp.com/Edu1sqGp4HFHzk3t9A0VUG?s=cl&p=a&iam=2" },
   { question: "What should I bring?", answer: "Bring your laptop, chargers, a valid student ID, and any hardware you plan to use. We'll provide internet, power outlets, and workspaces. Don't forget your enthusiasm and creativity!" },
   { question: "Is there any registration fee?", answer: "Registrations are completely free." },
   { question: "What are the judging criteria?", answer: "Projects will be judged on innovation (30%), technical implementation (30%), design & user experience (20%), impact & feasibility (15%), and presentation (5%). Make sure your solution is both creative and practical!" },
@@ -58,12 +60,23 @@ export default function FAQSection() {
 
         <div className={`mt-8 sm:mt-12 text-center transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
           <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">Still have questions?</p>
-          <a
-            href="mailto:hackorizon@gmail.com"
-            className="inline-block text-[10px] sm:text-xs font-mono uppercase tracking-[0.15em] sm:tracking-[0.2em] text-foreground border border-border px-5 sm:px-6 py-2.5 sm:py-3 hover:border-primary hover:text-primary transition-colors touch-target"
-          >
-            Contact Us
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="mailto:enigma@rietjaipur.ac.in"
+              className="inline-block text-[10px] sm:text-xs font-mono uppercase tracking-[0.15em] sm:tracking-[0.2em] text-foreground border border-border px-5 sm:px-6 py-2.5 sm:py-3 hover:border-primary hover:text-primary transition-colors touch-target"
+            >
+              Email Us (enigma@rietjaipur.ac.in)
+            </a>
+            <a
+              href="https://chat.whatsapp.com/Edu1sqGp4HFHzk3t9A0VUG?s=cl&p=a&iam=2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-[0.15em] sm:tracking-[0.2em] text-emerald-300 border border-emerald-500/40 bg-emerald-500/10 px-5 sm:px-6 py-2.5 sm:py-3 hover:bg-emerald-500/20 transition-colors touch-target"
+            >
+              <FaWhatsapp className="w-3.5 h-3.5" />
+              Join WhatsApp Group
+            </a>
+          </div>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Terminal } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function FooterSection() {
   return (
@@ -26,14 +27,17 @@ export default function FooterSection() {
             <p className="text-xs sm:text-sm text-muted-foreground mb-1 sm:mb-2">24-Hour Hackathon · 17-18 Dec 2026</p>
             <p className="text-xs sm:text-sm text-muted-foreground">Cash + Swags + Certificates + Perks</p>
             <div className="flex gap-4 mt-4">
-              <a href="https://www.linkedin.com/school/riet-jaipur/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors touch-target">
+              <a href="https://www.linkedin.com/school/riet-jaipur/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors touch-target" title="LinkedIn">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://x.com/RIET_JAIPUR" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors touch-target">
+              <a href="https://x.com/RIET_JAIPUR" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors touch-target" title="X (Twitter)">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="https://www.instagram.com/riet_official?igsh=MmJobzltNHd3cXJu" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors touch-target">
+              <a href="https://www.instagram.com/riet_official?igsh=MmJobzltNHd3cXJu" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors touch-target" title="Instagram">
                 <Instagram className="w-5 h-5" />
+              </a>
+              <a href="https://chat.whatsapp.com/Edu1sqGp4HFHzk3t9A0VUG?s=cl&p=a&iam=2" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-emerald-400 transition-colors touch-target" title="Join WhatsApp Group">
+                <FaWhatsapp className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -42,12 +46,16 @@ export default function FooterSection() {
           <div>
             <h4 className="text-xs sm:text-sm font-semibold text-foreground mb-3 sm:mb-4">Contact</h4>
             <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground">
-              <a href="mailto:hackorizon@gmail.com" className="flex items-center gap-2 hover:text-foreground transition-colors touch-target">
-                <Mail className="w-4 h-4 flex-shrink-0" /> 
-                <span className="break-all">hackorizon@gmail.com</span>
+              <a href="mailto:enigma@rietjaipur.ac.in" className="flex items-center gap-2 hover:text-foreground transition-colors touch-target">
+                <Mail className="w-4 h-4 flex-shrink-0 text-primary" /> 
+                <span className="break-all font-mono">enigma@rietjaipur.ac.in</span>
               </a>
               <a href="tel:+918306440385" className="flex items-center gap-2 hover:text-foreground transition-colors touch-target">
                 <Phone className="w-4 h-4 flex-shrink-0" /> +91 8306440385
+              </a>
+              <a href="https://chat.whatsapp.com/Edu1sqGp4HFHzk3t9A0VUG?s=cl&p=a&iam=2" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors touch-target pt-1 font-mono text-xs">
+                <FaWhatsapp className="w-4 h-4 flex-shrink-0" />
+                <span>WhatsApp Group</span>
               </a>
             </div>
           </div>

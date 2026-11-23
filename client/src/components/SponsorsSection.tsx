@@ -116,10 +116,10 @@ export default function SponsorsSection() {
           <div className="max-w-lg mx-auto text-center">
             <p className="text-sm sm:text-base text-muted-foreground mb-4">Interested in sponsoring?</p>
             <a 
-              href="mailto:hackorizon@gmail.com" 
+              href="mailto:enigma@rietjaipur.ac.in" 
               className="inline-flex items-center gap-2 text-sm sm:text-base font-mono uppercase tracking-[0.1em] text-primary hover:text-foreground transition-colors group"
             >
-              Get in Touch
+              Get in Touch (enigma@rietjaipur.ac.in)
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>

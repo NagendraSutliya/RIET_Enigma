@@ -150,11 +150,11 @@ export default function T2FAQ() {
           Have a specific query not listed here? Our organizing committee is here to assist!
         </p>
         <a
-          href="mailto:hackathon@rietjaipur.ac.in"
+          href="mailto:enigma@rietjaipur.ac.in"
           className="inline-flex items-center gap-2 text-xs font-mono font-bold text-emerald-400 hover:text-emerald-300 transition-colors uppercase tracking-wider"
         >
           <MessageCircle className="w-4 h-4" />
-          <span>Email Us: hackathon@rietjaipur.ac.in</span>
+          <span>Email Us: enigma@rietjaipur.ac.in</span>
         </a>
       </div>
     </section>

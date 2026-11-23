@@ -99,7 +99,7 @@ export default function T3Sponsors({ onSponsorClick }: T3SponsorsProps) {
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-3">
             <a
-              href="mailto:hackathon@rietjaipur.ac.in"
+              href="mailto:enigma@rietjaipur.ac.in"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-violet-600 to-fuchsia-600 shadow-lg shadow-violet-600/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
               <Mail className="w-4 h-4" />

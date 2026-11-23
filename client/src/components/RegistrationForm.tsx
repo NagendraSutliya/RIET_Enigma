@@ -8,7 +8,8 @@ interface RegistrationFormProps {
   onOpenChange: (open: boolean) => void;
 }
 
-const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe8WhPNn5GqrEhduyX8juD-kzTwGS9TJ0uDqpQs0hc4Yhwlzg/viewform";
+const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdboLzWGuW84d9MhK9b59nWlYbKe3iHlPCuq6_qF3EXlqgMvQ/viewform?usp=header";
+const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/Edu1sqGp4HFHzk3t9A0VUG?s=cl&p=a&iam=2";
 
 export default function RegistrationForm({ open, onOpenChange }: RegistrationFormProps) {
   const handleRegister = () => {
@@ -57,6 +58,17 @@ export default function RegistrationForm({ open, onOpenChange }: RegistrationFor
           <p className="mt-4 text-sm text-muted-foreground">
             You will be redirected to the registration form
           </p>
+
+          <div className="mt-4 pt-4 border-t border-border/40">
+            <a
+              href={WHATSAPP_GROUP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-md text-xs font-mono font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 transition-colors"
+            >
+              <span>Join Official WhatsApp Community Group →</span>
+            </a>
+          </div>
         </div>
       </DialogContent>
     </Dialog>

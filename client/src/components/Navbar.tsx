@@ -169,7 +169,7 @@ export default function Navbar() {
          {/* Right Action Button (Desktop) */}
           {/* <div className="hidden lg:flex items-center">
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSe8WhPNn5GqrEhduyX8juD-kzTwGS9TJ0uDqpQs0hc4Yhwlzg/viewform"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdboLzWGuW84d9MhK9b59nWlYbKe3iHlPCuq6_qF3EXlqgMvQ/viewform?usp=header"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-1.5 text-xs font-mono uppercase tracking-wider font-bold bg-primary text-primary-foreground border border-primary hover:bg-primary/90 shadow-[0_0_15px_rgba(34,197,94,0.35)] hover:shadow-[0_0_25px_rgba(34,197,94,0.6)] transition-all cursor-pointer"
@@ -216,7 +216,7 @@ export default function Navbar() {
             })}
             <div className="pt-2 mt-2 border-t border-border">
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSe8WhPNn5GqrEhduyX8juD-kzTwGS9TJ0uDqpQs0hc4Yhwlzg/viewform"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdboLzWGuW84d9MhK9b59nWlYbKe3iHlPCuq6_qF3EXlqgMvQ/viewform?usp=header"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMenuOpen(false)}
