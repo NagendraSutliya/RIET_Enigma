@@ -1,4 +1,5 @@
-import { SiReact, SiPython, SiJavascript, SiTypescript, SiNodedotjs, SiDocker, SiKubernetes, SiAmazon, SiGooglecloud, SiMongodb, SiPostgresql, SiRedis, SiGit, SiGithub, SiVuedotjs, SiAngular, SiDjango, SiFlask, SiTensorflow, SiPytorch, SiFigma, SiTailwindcss } from "react-icons/si";
+import { SiReact, SiPython, SiJavascript, SiTypescript, SiNodedotjs, SiDocker, SiKubernetes, SiGooglecloud, SiMongodb, SiPostgresql, SiRedis, SiGit, SiGithub, SiVuedotjs, SiAngular, SiDjango, SiFlask, SiTensorflow, SiPytorch, SiFigma, SiTailwindcss } from "react-icons/si";
+import { FaAws } from "react-icons/fa";
 
 const techLogos = [
   { Icon: SiReact, name: "React", color: "#61DAFB" },
@@ -8,7 +9,7 @@ const techLogos = [
   { Icon: SiNodedotjs, name: "Node.js", color: "#339933" },
   { Icon: SiDocker, name: "Docker", color: "#2496ED" },
   { Icon: SiKubernetes, name: "Kubernetes", color: "#326CE5" },
-  { Icon: SiAmazon, name: "AWS", color: "#FF9900" },
+  { Icon: FaAws, name: "AWS", color: "#FF9900" },
   { Icon: SiGooglecloud, name: "GCP", color: "#4285F4" },
   { Icon: SiMongodb, name: "MongoDB", color: "#47A248" },
   { Icon: SiPostgresql, name: "PostgreSQL", color: "#4169E1" },
