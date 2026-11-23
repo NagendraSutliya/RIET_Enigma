@@ -180,7 +180,7 @@ export default function Rules() {
                 "Registration must be completed with accurate details",
                 "Participants must join official communication channels for updates",
                 "Offline participation is subject to venue capacity and follows a first-come basis",
-                "A minimal participation fee will apply to cover food and accommodation logistics",
+                "A nominal registration fee of ₹100 per participant applies (covering basic essentials), with an optional ₹400 food pass",
                 "Providing false information or proxy attendance may result in disqualification"
               ].map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3 p-5 bg-card border border-card-border hover:shadow-md transition-all">
@@ -473,27 +473,20 @@ export default function Rules() {
             {/* Participation Fee Details */}
             <div className="mt-8 ml-0 sm:ml-16">
               <div className="p-6 bg-primary/5 border-2 border-primary">
-                <h3 className="text-lg font-semibold text-foreground mb-4">Participation Fee Breakdown</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-4">Registration & Food Fee Breakdown</h3>
                 <div className="space-y-3">
                   <div className="flex items-start gap-4">
                     <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0 mt-2"></div>
                     <div>
-                      <p className="font-semibold text-foreground">Fee: ₹400 per head</p>
-                      <p className="text-sm text-muted-foreground mt-1">Covers food and accommodation logistics</p>
+                      <p className="font-semibold text-foreground">Base Registration Fee: ₹100 per head</p>
+                      <p className="text-sm text-muted-foreground mt-1">Covers hackathon entry, workspace access, high-speed Wi-Fi, and basic required items & participation essentials.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0 mt-2"></div>
                     <div>
-                      <p className="font-semibold text-foreground">Lunch & Dinner on 17 Dec 2026</p>
-                      <p className="text-sm text-muted-foreground mt-1">Full meals provided during hackathon day</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0 mt-2"></div>
-                    <div>
-                      <p className="font-semibold text-foreground">Breakfast on 18 Dec 2026</p>
-                      <p className="text-sm text-muted-foreground mt-1">Nutritious breakfast before final submission</p>
+                      <p className="font-semibold text-foreground">Food & Meals Pass (Optional): ₹400 per head</p>
+                      <p className="text-sm text-muted-foreground mt-1">Covers full meals and refreshments across the 24 hours: Lunch & Dinner on 17 Dec 2026, and Breakfast on 18 Dec 2026.</p>
                     </div>
                   </div>
                 </div>

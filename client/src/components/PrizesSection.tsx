@@ -6,36 +6,42 @@ import { TechCorner, FloatingDots } from "./TechDecorations";
 const prizeTiers = [
   {
     title: "1st Place",
+    subtitle: "Grand Champion",
+    amount: "₹11,000",
     icon: Trophy,
     perks: [
-      "Cash prize",
-      "$5,000 OpenAI API credits",
-      "Swags",
-      "Physical certificate",
+      "₹11,000 Direct Cash Prize",
+      "Official Winner Trophy & Medals",
+      "Certificate of Excellence",
+      "Exclusive Winner Swag Kit",
     ],
     color: "from-yellow-500 to-orange-500",
     position: 1,
   },
   {
     title: "2nd Place",
+    subtitle: "First Runner-Up",
+    amount: "₹7,000",
     icon: Medal,
     perks: [
-      "Cash prize",
-      "$3,500 OpenAI API credits",
-      "Swags",
-      "Physical certificate",
+      "₹7,000 Direct Cash Prize",
+      "Runner-Up Trophy & Medals",
+      "Certificate of Excellence",
+      "Special Swag Kit",
     ],
     color: "from-gray-400 to-gray-500",
     position: 2,
   },
   {
     title: "3rd Place",
+    subtitle: "Second Runner-Up",
+    amount: "₹5,000",
     icon: Award,
     perks: [
-      "Cash prize",
-      "$1,500 OpenAI API credits",
-      "Swags",
-      "Physical certificate",
+      "₹5,000 Direct Cash Prize",
+      "Second Runner-Up Trophy & Medals",
+      "Certificate of Excellence",
+      "Special Swag Kit",
     ],
     color: "from-orange-600 to-amber-700",
     position: 3,
@@ -85,11 +91,11 @@ export default function PrizesSection() {
               <Star className="hidden sm:block w-2 h-2 text-primary/30 absolute -bottom-1 -left-2 pulse-dot" style={{ animationDelay: "0.5s" }} />
             </div>
             <p className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.15em] sm:tracking-[0.2em] text-muted-foreground mb-1 sm:mb-2">Prize Pool</p>
-            <p className="text-base sm:text-lg font-semibold text-primary group-hover:text-secondary transition-colors">
-              ₹1 Lac+ Prize Pool
+            <p className="text-2xl sm:text-3xl font-bold font-serif text-primary group-hover:text-secondary transition-colors">
+              ₹23,000+ Cash Prize Pool
             </p>
             <p className="text-xs sm:text-sm text-muted-foreground mt-3 sm:mt-4">
-              Cash + Swags + Certificates + Perks. Includes OpenAI API credits for winners and participants.
+              Guaranteed cash rewards for top 3 teams, plus trophies, certificates, swags & additional sponsor perks!
             </p>
             
             {/* Animated decorative line */}
@@ -98,8 +104,9 @@ export default function PrizesSection() {
             </div>
 
             {/* Badge */}
-            <div className="mt-4 inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-[0.1em]">
-              🎉 Total Value
+            <div className="mt-4 inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-[0.1em]">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-ping" />
+              <span>More Perks Announcing Soon</span>
             </div>
           </div>
 
@@ -142,11 +149,22 @@ export default function PrizesSection() {
                             isHovered ? 'rotate-12 animate-bounce' : ''
                           }`} />
                         </div>
-                        <p className={`text-lg font-semibold transition-colors duration-300 ${
-                          isHovered ? 'text-primary' : 'text-foreground'
-                        }`}>
-                          {tier.title}
-                        </p>
+                        <div>
+                          <p className={`text-lg font-semibold transition-colors duration-300 ${
+                            isHovered ? 'text-primary' : 'text-foreground'
+                          }`}>
+                            {tier.title}
+                          </p>
+                          <p className="text-[11px] font-mono text-muted-foreground uppercase tracking-wider">
+                            {tier.subtitle}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="mb-3">
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-primary/10 border border-primary/20 text-xs sm:text-sm font-mono font-bold text-primary">
+                          <span>{tier.amount} Cash Prize</span>
+                        </div>
                       </div>
 
                       <ul className="text-xs sm:text-sm text-muted-foreground space-y-2">
@@ -174,7 +192,7 @@ export default function PrizesSection() {
                         <div className="pt-3 border-t border-primary/20">
                           <p className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.1em] text-primary animate-pulse flex items-center gap-2">
                             <Zap className="w-3 h-3" />
-                            Amazing opportunity!
+                            Guaranteed Cash + Awards!
                           </p>
                         </div>
                       </div>
@@ -196,7 +214,7 @@ export default function PrizesSection() {
                 </p>
               </div>
               <p className="text-xs sm:text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                🎁 $50 OpenAI API credits for every participant, plus free domains and perks.
+                🎁 Official Certificate of Participation, partner perks, developer tool credits & exclusive swags for all participants.
               </p>
 
               <div className="mt-4 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent group-hover:via-primary transition-all duration-300" />

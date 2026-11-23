@@ -7,7 +7,10 @@ const faqs = [
   { question: "Who can participate in Enigma2.0?", answer: "Enigma2.0 is open to all students currently enrolled in any recognized educational institution. Teams must have 1-6 members. We welcome beginners as well as experienced hackers!" },
   { question: "Is there an official WhatsApp group or community?", answer: "Yes! You can join our official WhatsApp community group for live updates, announcements, and team pairing: https://chat.whatsapp.com/Edu1sqGp4HFHzk3t9A0VUG?s=cl&p=a&iam=2" },
   { question: "What should I bring?", answer: "Bring your laptop, chargers, a valid student ID, and any hardware you plan to use. We'll provide internet, power outlets, and workspaces. Don't forget your enthusiasm and creativity!" },
-  { question: "Is there any registration fee?", answer: "Registrations are completely free." },
+  { 
+    question: "Is there any registration fee?", 
+    answer: "The base registration fee is ₹100 per participant, which covers hackathon entry, workstation access, high-speed Wi-Fi, and basic required items / essentials. Additionally, an optional food pass of ₹400 per participant is available to cover complete 24-hour meals (lunch, dinner, breakfast) and refreshments throughout the event." 
+  },
   { question: "What are the judging criteria?", answer: "Projects will be judged on innovation (30%), technical implementation (30%), design & user experience (20%), impact & feasibility (15%), and presentation (5%). Make sure your solution is both creative and practical!" },
   { question: "What if I'm a beginner?", answer: "Perfect! We encourage beginners to participate. We'll have workshops, mentors, and resources to help you learn and build your project. Every expert was once a beginner!" },
   { question: "Can I start working on my project before the hackathon?", answer: "No, all code must be written during the hackathon. However, you can come with ideas and do research beforehand. Any pre-written code will lead to disqualification." },

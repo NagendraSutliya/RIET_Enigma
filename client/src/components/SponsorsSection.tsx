@@ -1,8 +1,8 @@
-import { ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, Handshake } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
-const sponsors = [
+// Existing sponsors list preserved for upcoming announcement
+const upcomingSponsors = [
   {
     name: "OpenAI",
     role: "API Sponsor",
@@ -36,7 +36,6 @@ const sponsors = [
 
 export default function SponsorsSection() {
   const { ref: sectionRef, isVisible } = useScrollAnimation();
-  const [hoveredSponsor, setHoveredSponsor] = useState<string | null>(null);
 
   return (
     <section id="sponsors" ref={sectionRef} className="py-16 sm:py-20 lg:py-24 bg-background relative overflow-hidden">
@@ -48,78 +47,59 @@ export default function SponsorsSection() {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Header - minimal and clean */}
-        <div className={`text-center mb-12 sm:mb-16 lg:mb-20 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+        <div className={`text-center mb-10 sm:mb-14 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
           <p className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] sm:tracking-[0.3em] text-muted-foreground mb-3 sm:mb-4 animate-pulse">
-            <span className="text-primary">{"< "}</span>Partners<span className="text-primary">{" />"}</span>
+            <span className="text-primary">{"< "}</span>Partners & Ecosystem<span className="text-primary">{" />"}</span>
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-foreground">
-            Supported By
+            Sponsors & Partners
           </h2>
         </div>
 
-        {/* Sponsors grid - responsive layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-16 max-w-6xl mx-auto">
-          {sponsors.map((sponsor, idx) => {
-            const isHovered = hoveredSponsor === sponsor.name;
+        {/* Announcing Soon Showcase Card */}
+        <div className={`max-w-3xl mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+          <div className="border border-border/80 bg-background/80 backdrop-blur-sm p-8 sm:p-14 text-center relative overflow-hidden group hover:border-primary/50 transition-all shadow-lg">
+            {/* Ambient background glow */}
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
             
-            return (
-              <div
-                key={sponsor.name}
-                onMouseEnter={() => setHoveredSponsor(sponsor.name)}
-                onMouseLeave={() => setHoveredSponsor(null)}
-                className={`transition-opacity duration-700 ${
-                  isVisible ? "opacity-100" : "opacity-0"
-                }`}
-                style={{ transitionDelay: isVisible ? `${idx * 100}ms` : "0ms" }}
-              >
-                <div className="group cursor-default">
-                  {/* Logo display */}
-                  <div className="mb-8 flex items-center justify-center bg-white/5 border border-border group-hover:border-primary/70 rounded-lg p-8 transition-all duration-300 h-40">
-                    <img
-                      src={sponsor.logo}
-                      alt={`${sponsor.name} logo`}
-                      loading="lazy"
-                      className="max-h-32 max-w-xs object-contain group-hover:scale-110 transition-transform duration-300"
-                    />
-                  </div>
-
-                  {/* Sponsor info - minimal and clean */}
-                  <div className="space-y-2 sm:space-y-3">
-                    <a
-                      href={sponsor.link || "#"}
-                      target={sponsor.link ? "_blank" : undefined}
-                      rel={sponsor.link ? "noopener noreferrer" : undefined}
-                      className="group/link"
-                    >
-                      <h3 className="text-lg sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                        {sponsor.name}
-                      </h3>
-                    </a>
-                    <p className="text-xs sm:text-sm font-mono uppercase tracking-[0.1em] text-muted-foreground group-hover:text-primary/70 transition-colors">
-                      {sponsor.role}
-                    </p>
-                    <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors duration-300">
-                      {sponsor.description}
-                    </p>
-                  </div>
-
-                  {/* Subtle underline on hover */}
-                  <div className={`mt-4 sm:mt-6 h-px bg-border group-hover:bg-primary transition-colors duration-300 w-8`} />
-                </div>
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono uppercase tracking-widest mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-ping" />
+                <span>Revealing Soon</span>
               </div>
-            );
-          })}
+              
+              <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 mx-auto flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+                <Handshake className="w-6 h-6" />
+              </div>
+
+              <h3 className="text-2xl sm:text-3xl font-serif font-black text-foreground mb-4">
+                Announcing Soon
+              </h3>
+              
+              <p className="text-sm sm:text-base text-muted-foreground max-w-lg mx-auto font-mono leading-relaxed mb-8">
+                We are teaming up with premier tech companies, developer platforms, and industry innovators. Official partners and sponsors will be unveiled soon!
+              </p>
+
+              {/* Tier Badges preview */}
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 text-xs font-mono text-muted-foreground">
+                <span className="px-3 py-1.5 border border-border bg-card/50 rounded">Title Sponsor</span>
+                <span className="px-3 py-1.5 border border-border bg-card/50 rounded">Cloud & AI Partner</span>
+                <span className="px-3 py-1.5 border border-border bg-card/50 rounded">API & Tooling Partners</span>
+                <span className="px-3 py-1.5 border border-border bg-card/50 rounded">Media & Community</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Contact CTA - minimal */}
-        <div className="mt-16 sm:mt-20 pt-12 sm:pt-16 border-t border-border">
+        {/* Contact CTA */}
+        <div className="mt-12 sm:mt-16 pt-10 border-t border-border">
           <div className="max-w-lg mx-auto text-center">
-            <p className="text-sm sm:text-base text-muted-foreground mb-4">Interested in sponsoring?</p>
+            <p className="text-sm sm:text-base text-muted-foreground mb-4">Interested in sponsoring ENIGMA 2.0?</p>
             <a 
               href="mailto:enigma@rietjaipur.ac.in" 
               className="inline-flex items-center gap-2 text-sm sm:text-base font-mono uppercase tracking-[0.1em] text-primary hover:text-foreground transition-colors group"
             >
-              Get in Touch (enigma@rietjaipur.ac.in)
+              <span>Contact Sponsorship Team</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>

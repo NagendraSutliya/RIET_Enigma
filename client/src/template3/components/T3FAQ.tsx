@@ -11,7 +11,7 @@ export default function T3FAQ() {
     },
     {
       q: "Is there any registration fee?",
-      a: "No! Participation in ENIGMA2.0 is 100% free of charge. Selected teams receive complimentary meals, snacks, RedBull drinks, hacker kits, Wi-Fi access, and stay accommodations at the RIET campus throughout the 24 hours.",
+      a: "The base registration fee is ₹100 per participant, which covers hackathon entry, basic required essentials, Wi-Fi, and venue workspace access. An optional food pass of ₹400 is available for complete 24-hour meals (lunch, dinner, breakfast) and refreshments.",
     },
     {
       q: "What is the allowed team size?",

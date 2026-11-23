@@ -26,8 +26,8 @@ export default function T2Rules() {
         isMust: true,
       },
       {
-        title: "Zero Registration Fee",
-        detail: "Participation in ENIGMA2.0 is 100% free. Selected teams will receive full campus access, food, snacks, high-speed Wi-Fi, and swags at no cost.",
+        title: "Nominal Registration Fee",
+        detail: "The base registration fee is ₹100 per head covering entry and basic required essentials. An optional food pass of ₹400 is available for all 24-hour meals and refreshments.",
         isMust: false,
       },
       {

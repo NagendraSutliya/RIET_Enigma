@@ -77,13 +77,13 @@ export default function FooterSection() {
             <h4 className="text-xs sm:text-sm font-semibold text-foreground mb-3 sm:mb-4">Venue</h4>
             <div className="w-full h-28 sm:h-32 border border-border overflow-hidden mb-2">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.0123456789!2d75.6825!3d26.8205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396dc977c6a00001%3A0x9d41e52e68c5c7c5!2sRajasthan%20Institute%20of%20Engineering%20%26%20Technology%20(RIET)!5e0!3m2!1sen!2sin!4v1737500000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6077.468903267517!2d75.69150961657478!3d26.88213732533714!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4b160ee1e697%3A0x6ee599da3001ec94!2sRajasthan%20Institute%20of%20Engineering%20%26%20Technology%2C%20Jaipur!5e1!3m2!1sen!2sin!4v1795439762845!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                referrerPolicy="strict-origin-when-cross-origin"
                 title="RIET Jaipur Location"
               />
             </div>

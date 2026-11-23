@@ -20,7 +20,7 @@ export default function T2FAQ() {
     {
       category: "reg",
       question: "Is there any registration or participation fee?",
-      answer: "No, participation in ENIGMA2.0 is 100% completely FREE! Shortlisted teams will receive full campus entry, meals, Wi-Fi, mentorship, swags, and accommodation at zero cost.",
+      answer: "The base registration fee is ₹100 per participant, covering hackathon entry, workstation access, high-speed Wi-Fi, and basic required items / essentials. An optional food pass of ₹400 per participant is available to cover complete 24-hour meals (lunch, dinner, breakfast) and refreshments.",
     },
     {
       category: "reg",
