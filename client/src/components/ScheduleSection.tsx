@@ -57,7 +57,7 @@ export default function ScheduleSection() {
                   .map((item, idx) => (
                     <div
                       key={`${day}-${item.time}`}
-                      className={`group border border-border transition-all duration-500 p-4 sm:p-6 hover:border-primary/50 cursor-default ${
+                      className={`relative group border border-border transition-all duration-500 p-4 sm:p-6 hover:border-primary/50 cursor-default ${
                         isVisible ? "opacity-100" : "opacity-0"
                       }`}
                       style={{ transitionDelay: isVisible ? `${idx * 50}ms` : "0ms" }}

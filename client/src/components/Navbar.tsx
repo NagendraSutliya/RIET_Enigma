@@ -191,7 +191,7 @@ export default function Navbar() {
       </div>
 
       {menuOpen && (
-        <div className="lg:hidden absolute w-96 right-0 border-t border-border bg-background/95 backdrop-blur-xl">
+        <div className="lg:hidden absolute top-full left-0 right-0 w-full border-t border-b border-border bg-background/95 backdrop-blur-xl shadow-2xl">
           <div className="px-6 py-4 space-y-1">
             {navItems.map((item) => {
               const sectionId = item.href.replace("#", "");
