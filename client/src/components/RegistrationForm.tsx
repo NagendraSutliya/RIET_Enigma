@@ -8,12 +8,12 @@ interface RegistrationFormProps {
   onOpenChange: (open: boolean) => void;
 }
 
-const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdboLzWGuW84d9MhK9b59nWlYbKe3iHlPCuq6_qF3EXlqgMvQ/viewform?usp=header";
+const UNSTOP_REGISTRATION_URL = "https://unstop.com/o/aSClEqd?lb=use8upTu&utm_medium=Share&utm_source=enigmrie19036&utm_campaign=Online_coding_challenge";
 const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/Edu1sqGp4HFHzk3t9A0VUG?s=cl&p=a&iam=2";
 
 export default function RegistrationForm({ open, onOpenChange }: RegistrationFormProps) {
   const handleRegister = () => {
-    window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
+    window.open(UNSTOP_REGISTRATION_URL, "_blank", "noopener,noreferrer");
     onOpenChange(false);
   };
 
@@ -56,7 +56,7 @@ export default function RegistrationForm({ open, onOpenChange }: RegistrationFor
           </Button>
 
           <p className="mt-4 text-sm text-muted-foreground">
-            You will be redirected to the registration form
+            You will be redirected to the official Unstop registration page
           </p>
 
           <div className="mt-4 pt-4 border-t border-border/40">

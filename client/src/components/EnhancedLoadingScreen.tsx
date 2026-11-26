@@ -4,13 +4,15 @@ import { loadingSounds } from "./loadingSounds";
 
 interface EnhancedLoadingScreenProps {
   onComplete: () => void;
+  requireButton?: boolean;
 }
 
-export default function EnhancedLoadingScreen({ onComplete }: EnhancedLoadingScreenProps) {
+export default function EnhancedLoadingScreen({ onComplete, requireButton = false }: EnhancedLoadingScreenProps) {
   const [progress, setProgress] = useState(0);
   const [statusText, setStatusText] = useState("INITIALIZING ENIGMA2.0 CORE...");
   const [isExiting, setIsExiting] = useState(false);
   const [audioActive, setAudioActive] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const completedRef = useRef(false);
   const soundStartedRef = useRef(false);
   const playedMilestonesRef = useRef<Set<number>>(new Set());
@@ -52,6 +54,13 @@ export default function EnhancedLoadingScreen({ onComplete }: EnhancedLoadingScr
       onComplete();
     }, 450);
   }, [onComplete]);
+
+  const handleProceed = useCallback(async () => {
+    if (!audioActive) {
+      await startAudio();
+    }
+    finishLoading();
+  }, [audioActive, startAudio, finishLoading]);
 
   // Ensure scroll is at top on mount & initialize audio
   useEffect(() => {
@@ -116,40 +125,41 @@ export default function EnhancedLoadingScreen({ onComplete }: EnhancedLoadingScr
 
       if (pct >= 100) {
         clearInterval(interval);
-        setTimeout(() => {
-          finishLoading();
-        }, 300);
+        if (requireButton) {
+          setIsReady(true);
+          setStatusText("SYSTEM READY // ACCESS AUTHORIZED");
+        } else {
+          setTimeout(() => {
+            finishLoading();
+          }, 300);
+        }
       }
     }, 25);
 
     return () => clearInterval(interval);
-  }, [finishLoading]);
+  }, [requireButton, finishLoading]);
 
-  // Allow instant skip with keyboard (Space, Enter, Esc)
+  // Allow proceed with keyboard (Space, Enter, Esc)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        finishLoading();
-      } else if (e.key === " " || e.key === "Enter") {
-        if (!audioActive) {
-          startAudio();
-        } else {
-          finishLoading();
-        }
+      if (e.key === "Escape" || e.key === "Enter" || e.key === " ") {
+        handleProceed();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [finishLoading, startAudio, audioActive]);
+  }, [handleProceed]);
 
   const handleContainerClick = async () => {
     if (!audioActive) {
       const ok = await startAudio();
       if (ok) {
-        return; // Activated audio, let user enjoy the intro!
+        return;
       }
     }
-    finishLoading();
+    if (!requireButton) {
+      finishLoading();
+    }
   };
 
   return (
@@ -303,26 +313,66 @@ export default function EnhancedLoadingScreen({ onComplete }: EnhancedLoadingScr
           {/* Telemetry and Percentage */}
           <div className="flex items-center justify-between mt-3 text-[11px] font-mono text-white/60">
             <span className="truncate pr-4 text-emerald-400/90 flex items-center gap-1.5">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className={`inline-block w-1.5 h-1.5 rounded-full ${isReady ? "bg-emerald-400" : "bg-emerald-400 animate-pulse"}`} />
               {statusText}
             </span>
             <span className="text-white font-bold tracking-wider">{progress}%</span>
           </div>
         </div>
+
+        {/* Proceed Further Interactive Action */}
+        {requireButton && (
+          <div className="mt-7 flex flex-col items-center">
+            {isReady ? (
+              <div className="flex flex-col items-center animate-fade-in">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleProceed();
+                  }}
+                  className="group relative px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-500 hover:from-emerald-400 hover:to-teal-300 text-black font-mono font-black text-xs sm:text-sm uppercase tracking-[0.2em] shadow-[0_0_35px_rgba(52,211,153,0.7)] hover:shadow-[0_0_55px_rgba(52,211,153,1)] hover:scale-105 active:scale-95 transition-all flex items-center gap-3 cursor-pointer animate-pulse"
+                >
+                  <span className="w-2 h-2 rounded-full bg-black animate-ping" />
+                  <span>PROCEED FURTHER</span>
+                  <ChevronRight className="w-4 h-4 stroke-[3] group-hover:translate-x-1 transition-transform" />
+                </button>
+                <p className="mt-2.5 text-[10px] sm:text-[11px] font-mono text-emerald-400/80">
+                  Press [ENTER] or click above to enter website
+                </p>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleProceed();
+                }}
+                className="px-6 py-2.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 hover:border-emerald-400/40 text-white/70 hover:text-emerald-300 font-mono text-xs tracking-wider transition-all flex items-center gap-2 cursor-pointer"
+              >
+                <Cpu className="w-3.5 h-3.5 animate-spin text-emerald-400" />
+                <span>PROCEED TO WEBSITE</span>
+                <ChevronRight className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Bottom Skip Callout */}
-      <button
-        type="button"
-        onClick={(e) => {
-          e.stopPropagation();
-          finishLoading();
-        }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 text-[11px] font-mono text-white/40 hover:text-emerald-400 transition-colors px-4 py-2 rounded-xl bg-white/[0.02] border border-white/5 hover:border-emerald-500/30 cursor-pointer"
-      >
-        <span>Skip intro [ESC]</span>
-        <ChevronRight className="w-3.5 h-3.5" />
-      </button>
+      {(!requireButton || !isReady) && (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            handleProceed();
+          }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 text-[11px] font-mono text-white/40 hover:text-emerald-400 transition-colors px-4 py-2 rounded-xl bg-white/[0.02] border border-white/5 hover:border-emerald-500/30 cursor-pointer"
+        >
+          <span>Skip intro [ESC]</span>
+          <ChevronRight className="w-3.5 h-3.5" />
+        </button>
+      )}
 
       <style>{`
         @keyframes spin {

@@ -28,7 +28,7 @@ export default function RulesSection() {
     teams: {
       title: "Team Formation & Size",
       items: [
-        "Solo hackers are allowed; maximum team size is 6 members.",
+        "Teams must consist of 2 to 4 members; solo participation is not permitted.",
         "A participant may only be a registered member of one team.",
         "Each team must nominate a Team Leader who serves as primary point of contact.",
         "All team members must complete individual registration prior to the kickoff deadline.",

@@ -47,12 +47,15 @@ function Router() {
 }
 
 function AppContent() {
-  const { isLaunchAnimationActive, completeLaunchAnimation } = useTemplate();
+  const { isLaunchAnimationActive, isInitialLaunch, completeLaunchAnimation } = useTemplate();
 
   return (
     <>
       {isLaunchAnimationActive && (
-        <EnhancedLoadingScreen onComplete={completeLaunchAnimation} />
+        <EnhancedLoadingScreen
+          onComplete={completeLaunchAnimation}
+          requireButton={isInitialLaunch}
+        />
       )}
       <TooltipProvider>
         <Toaster />

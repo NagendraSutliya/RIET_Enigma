@@ -8,6 +8,12 @@ interface T3SponsorsProps {
 export default function T3Sponsors({ onSponsorClick }: T3SponsorsProps) {
   const sponsors = [
     {
+      name: "Unstop",
+      category: "Official Platform & Registration Partner",
+      logo: "/unstop.png",
+      tier: "Platform",
+    },
+    {
       name: "OpenAI",
       category: "Official AI & Intelligence Partner",
       logo: "/openai.png",

@@ -1,21 +1,21 @@
 import { useEffect } from "react";
 
-const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdboLzWGuW84d9MhK9b59nWlYbKe3iHlPCuq6_qF3EXlqgMvQ/viewform?usp=header";
+const UNSTOP_REGISTRATION_URL = "https://unstop.com/o/aSClEqd?lb=use8upTu&utm_medium=Share&utm_source=enigmrie19036&utm_campaign=Online_coding_challenge";
 const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/Edu1sqGp4HFHzk3t9A0VUG?s=cl&p=a&iam=2";
 
 export default function Register() {
   useEffect(() => {
-    // Redirect to Google Form immediately
-    window.location.href = GOOGLE_FORM_URL;
+    // Redirect to Unstop registration immediately
+    window.location.href = UNSTOP_REGISTRATION_URL;
   }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
       <div className="text-center max-w-md mx-auto">
-        <h1 className="text-2xl font-bold text-foreground mb-4">Redirecting to Registration Form...</h1>
+        <h1 className="text-2xl font-bold text-foreground mb-4">Redirecting to Unstop Registration...</h1>
         <p className="text-muted-foreground mb-6">
           If you are not redirected automatically,{" "}
-          <a href={GOOGLE_FORM_URL} className="text-primary underline">
+          <a href={UNSTOP_REGISTRATION_URL} className="text-primary underline">
             click here
           </a>
         </p>

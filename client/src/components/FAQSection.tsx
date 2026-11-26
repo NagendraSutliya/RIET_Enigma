@@ -4,7 +4,7 @@ import { ChevronRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 const faqs = [
-  { question: "Who can participate in Enigma2.0?", answer: "Enigma2.0 is open to all students currently enrolled in any recognized educational institution. Teams must have 1-6 members. We welcome beginners as well as experienced hackers!" },
+  { question: "Who can participate in Enigma2.0?", answer: "Enigma2.0 is open to all students currently enrolled in any recognized educational institution. Teams must have 2-4 members. We welcome beginners as well as experienced hackers!" },
   { question: "Is there an official WhatsApp group or community?", answer: "Yes! You can join our official WhatsApp community group for live updates, announcements, and team pairing: https://chat.whatsapp.com/Edu1sqGp4HFHzk3t9A0VUG?s=cl&p=a&iam=2" },
   { question: "What should I bring?", answer: "Bring your laptop, chargers, a valid student ID, and any hardware you plan to use. We'll provide internet, power outlets, and workspaces. Don't forget your enthusiasm and creativity!" },
   { 

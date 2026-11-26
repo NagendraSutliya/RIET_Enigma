@@ -1,4 +1,4 @@
-import { ArrowRight, Handshake } from "lucide-react";
+import { ArrowRight, Handshake, ExternalLink } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 // Existing sponsors list preserved for upcoming announcement
@@ -56,28 +56,77 @@ export default function SponsorsSection() {
           </h2>
         </div>
 
+        {/* Featured Official Sponsor / Platform Partner */}
+        <div className={`max-w-3xl mx-auto mb-10 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+          <div className="border border-border/80 bg-background/90 backdrop-blur-sm p-6 sm:p-10 relative overflow-hidden group hover:border-primary/50 transition-all shadow-xl">
+            {/* Ambient background glow */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-primary/5 to-transparent pointer-events-none" />
+            
+            <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 relative z-10">
+              {/* Logo container */}
+              <div className="w-full sm:w-auto flex-shrink-0 flex items-center justify-center">
+                <a
+                  href="https://unstop.com/o/aSClEqd?lb=use8upTu&utm_medium=Share&utm_source=enigmrie19036&utm_campaign=Online_coding_challenge"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white px-7 py-4 rounded-xl flex items-center justify-center shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-slate-200"
+                  title="Visit ENIGMA 2.0 on Unstop"
+                >
+                  <img
+                    src="/unstop.png"
+                    alt="Unstop - Official Platform Partner"
+                    className="h-10 sm:h-12 w-auto object-contain"
+                  />
+                </a>
+              </div>
+
+              {/* Partner Details */}
+              <div className="flex-1 text-center sm:text-left">
+                <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-[11px] font-mono uppercase tracking-wider mb-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+                  <span>Official Platform Partner</span>
+                </div>
+                
+                <h3 className="text-2xl sm:text-3xl font-serif font-black text-foreground mb-2">
+                  Unstop
+                </h3>
+                
+                <p className="text-xs sm:text-sm text-muted-foreground font-mono leading-relaxed mb-4">
+                  Official registration and competition host for ENIGMA 2.0 National Hackathon. Powering developer participation, team registrations, and nationwide reach.
+                </p>
+
+                <a
+                  href="https://unstop.com/o/aSClEqd?lb=use8upTu&utm_medium=Share&utm_source=enigmrie19036&utm_campaign=Online_coding_challenge"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider text-primary hover:text-primary/80 font-bold transition-colors group/link"
+                >
+                  <span>Explore on Unstop</span>
+                  <ExternalLink className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Announcing Soon Showcase Card */}
         <div className={`max-w-3xl mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-          <div className="border border-border/80 bg-background/80 backdrop-blur-sm p-8 sm:p-14 text-center relative overflow-hidden group hover:border-primary/50 transition-all shadow-lg">
+          <div className="border border-border/80 bg-background/60 backdrop-blur-sm p-6 sm:p-8 text-center relative overflow-hidden group hover:border-primary/40 transition-all shadow-md">
             {/* Ambient background glow */}
             <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
             
             <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono uppercase tracking-widest mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono uppercase tracking-widest mb-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-ping" />
-                <span>Revealing Soon</span>
+                <span>More Partners Revealing Soon</span>
               </div>
               
-              <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 mx-auto flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
-                <Handshake className="w-6 h-6" />
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl font-serif font-black text-foreground mb-4">
-                Announcing Soon
-              </h3>
+              <h4 className="text-xl sm:text-2xl font-serif font-bold text-foreground mb-2">
+                More Sponsors & Partners Joining
+              </h4>
               
-              <p className="text-sm sm:text-base text-muted-foreground max-w-lg mx-auto font-mono leading-relaxed mb-8">
-                We are teaming up with premier tech companies, developer platforms, and industry innovators. Official partners and sponsors will be unveiled soon!
+              <p className="text-xs sm:text-sm text-muted-foreground max-w-lg mx-auto font-mono leading-relaxed mb-6">
+                We are teaming up with premier tech companies, developer platforms, and industry innovators. Additional official partners will be unveiled soon!
               </p>
 
               {/* Tier Badges preview */}

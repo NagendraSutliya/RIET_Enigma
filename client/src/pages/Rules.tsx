@@ -147,8 +147,8 @@ export default function Rules() {
             
             <div className="space-y-4 ml-0 sm:ml-16">
               {[
-                "Solo participation is allowed",
-                "Team size: Minimum 1 and Maximum 6 members",
+                "Team size: Minimum 2 and Maximum 4 members",
+                "Solo participation is not allowed (all projects must be built in teams of 2-4)",
                 "A participant may be part of only one team",
                 "Each team must have a unique name",
                 "All members must be registered through the official registration form"
@@ -563,7 +563,10 @@ export default function Rules() {
               {[
                 { name: "Naman Gupta", phone: "+91 90395 99101" },
                 { name: "Abhinandan", phone: "+91 83404 92369" },
-                { name: "Shreya Khandelwal", phone: "+91 74268 53859" }
+                { name: "Shreya Khandelwal", phone: "+91 74268 53859" },
+                { name: "Adarsh Kumar Jha", phone: "+91 99343 00382" },
+                { name: "Prince Kumar", phone: "+91 91427 99383" },
+                { name: "Nitin Rajawat", phone: "+91 80786 76158" }
               ].map((contact, idx) => (
                 <div key={idx} className="p-6 bg-background border border-border hover:border-primary/50 transition-all hover:shadow-lg">
                   <div className="flex flex-col items-center text-center gap-3">

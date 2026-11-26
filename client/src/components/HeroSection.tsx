@@ -3,13 +3,13 @@ import { Calendar, MapPin, Users, ExternalLink, Trophy } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { TechCorner, FloatingDots, CodeLine } from "./TechDecorations";
 
-const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdboLzWGuW84d9MhK9b59nWlYbKe3iHlPCuq6_qF3EXlqgMvQ/viewform?usp=header";
+const UNSTOP_REGISTRATION_URL = "https://unstop.com/o/aSClEqd?lb=use8upTu&utm_medium=Share&utm_source=enigmrie19036&utm_campaign=Online_coding_challenge";
 
 export default function HeroSection() {
   const { ref: sectionRef, isVisible } = useScrollAnimation();
 
   const handleRegister = () => {
-    window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
+    window.open(UNSTOP_REGISTRATION_URL, "_blank", "noopener,noreferrer");
   };
 
   return (

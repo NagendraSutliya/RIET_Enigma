@@ -7,6 +7,7 @@ interface TemplateContextType {
   setTemplate: (template: TemplateMode) => void;
   toggleTemplate: () => void;
   isLaunchAnimationActive: boolean;
+  isInitialLaunch: boolean;
   playLaunchAnimation: () => void;
   completeLaunchAnimation: () => void;
 }
@@ -40,8 +41,10 @@ export function TemplateProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const [isLaunchAnimationActive, setIsLaunchAnimationActive] = useState(true);
+  const [isInitialLaunch, setIsInitialLaunch] = useState(true);
 
   const playLaunchAnimation = () => {
+    setIsInitialLaunch(false);
     setIsLaunchAnimationActive(true);
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -50,6 +53,7 @@ export function TemplateProvider({ children }: { children: React.ReactNode }) {
 
   const completeLaunchAnimation = () => {
     setIsLaunchAnimationActive(false);
+    setIsInitialLaunch(false);
   };
 
   return (
@@ -59,6 +63,7 @@ export function TemplateProvider({ children }: { children: React.ReactNode }) {
         setTemplate,
         toggleTemplate,
         isLaunchAnimationActive,
+        isInitialLaunch,
         playLaunchAnimation,
         completeLaunchAnimation,
       }}

@@ -124,9 +124,9 @@ export default function Navbar() {
             className="flex items-center gap-3 cursor-pointer"
           >
             <img
-              src="/mainlogo.png"
+              src="/enigma-emblem.png"
               alt="ENIGMA2.0 Logo"
-              className="w-11 h-11 sm:w-12 sm:h-12 object-cover scale-105 hover:scale-110 transition-transform duration-300"
+              className="w-11 h-11 sm:w-12 sm:h-12 object-contain scale-105 hover:scale-110 transition-transform duration-300"
             />
             <div className="flex flex-col">
               <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">
@@ -169,7 +169,7 @@ export default function Navbar() {
          {/* Right Action Button (Desktop) */}
           {/* <div className="hidden lg:flex items-center">
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdboLzWGuW84d9MhK9b59nWlYbKe3iHlPCuq6_qF3EXlqgMvQ/viewform?usp=header"
+              href="https://unstop.com/o/aSClEqd?lb=use8upTu&utm_medium=Share&utm_source=enigmrie19036&utm_campaign=Online_coding_challenge"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-1.5 text-xs font-mono uppercase tracking-wider font-bold bg-primary text-primary-foreground border border-primary hover:bg-primary/90 shadow-[0_0_15px_rgba(34,197,94,0.35)] hover:shadow-[0_0_25px_rgba(34,197,94,0.6)] transition-all cursor-pointer"
@@ -216,7 +216,7 @@ export default function Navbar() {
             })}
             <div className="pt-2 mt-2 border-t border-border">
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdboLzWGuW84d9MhK9b59nWlYbKe3iHlPCuq6_qF3EXlqgMvQ/viewform?usp=header"
+                href="https://unstop.com/o/aSClEqd?lb=use8upTu&utm_medium=Share&utm_source=enigmrie19036&utm_campaign=Online_coding_challenge"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMenuOpen(false)}

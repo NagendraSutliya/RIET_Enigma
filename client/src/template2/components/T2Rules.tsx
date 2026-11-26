@@ -218,7 +218,7 @@ export default function T2Rules() {
             <span>Violations lead to instant disqualification & reporting.</span>
           </div>
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdboLzWGuW84d9MhK9b59nWlYbKe3iHlPCuq6_qF3EXlqgMvQ/viewform?usp=header"
+            href="https://unstop.com/o/aSClEqd?lb=use8upTu&utm_medium=Share&utm_source=enigmrie19036&utm_campaign=Online_coding_challenge"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors uppercase tracking-wider"

@@ -11,6 +11,7 @@ export default function T2Sponsors() {
   };
 
   const keyPartners = [
+    { name: "Unstop", role: "Official Platform Partner", logo: "/unstop.png", url: "https://unstop.com/o/aSClEqd?lb=use8upTu&utm_medium=Share&utm_source=enigmrie19036&utm_campaign=Online_coding_challenge" },
     { name: "OpenAI", role: "AI & API Credits Partner", logo: "/openai.png", url: "https://openai.com" },
     { name: ".XYZ Domains", role: "Official Domain Partner", logo: "/xyz.png", url: "https://gen.xyz" },
     { name: "Eventopia", role: "Event Ticketing & Logistics", logo: "/eventopia.png", url: "#" },

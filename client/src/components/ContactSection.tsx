@@ -6,6 +6,9 @@ const contacts = [
   { name: "Naman Gupta", phone: "+91 90395 99101" },
   { name: "Abhinandan", phone: "+91 83404 92369" },
   { name: "Shreya Khandelwal", phone: "+91 74268 53859" },
+  { name: "Adarsh Kumar Jha", phone: "+91 99343 00382" },
+  { name: "Prince Kumar", phone: "+91 91427 99383" },
+  { name: "Nitin Rajawat", phone: "+91 80786 76158" },
 ];
 
 export default function ContactSection() {
