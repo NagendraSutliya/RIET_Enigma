@@ -3,19 +3,19 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const schedule = [
   // Day 1 - 17 Dec
-  { time: "8:00 AM", endTime: "11:00 AM", title: "Registration, Check-in & Reporting", description: "Welcome hackers! Get your badges, explore the venue, and meet the team.", location: "Registration Desk", day: "Day 1 (17 Dec)", highlight: false, color: "from-blue-500" },
-  { time: "11:00 AM", endTime: "12:00 PM", title: "Orientation & Inaugural Ceremony", description: "Learn about event rules, guidelines, and get inspired by keynote speakers.", location: "Main Ground", day: "Day 1 (17 Dec)", highlight: true, color: "from-purple-500" },
+  { time: "9:00 AM", endTime: "11:00 AM", title: "Registration, Check-in & Reporting", description: "Welcome hackers! Get your registration kit, badges, explore the venue, and meet the team.", location: "RIET, SGI Main Gate", day: "Day 1 (17 Dec)", highlight: false, color: "from-blue-500" },
+  { time: "11:00 AM", endTime: "12:00 PM", title: "Orientation & Inaugural Ceremony", description: "Learn about event rules, guidelines, and get inspired by keynote speakers.", location: "SGI Main Ground", day: "Day 1 (17 Dec)", highlight: true, color: "from-purple-500" },
   { time: "12:00 PM", endTime: "1:00 PM", title: "Hackathon Coding Begins!", description: "Start building your ideas. Let the creative journey begin!", location: "Code Rooms", day: "Day 1 (17 Dec)", highlight: true, color: "from-orange-500" },
   { time: "1:00 PM", endTime: "2:00 PM", title: "Lunch Break", description: "Refuel with delicious food and refreshments.", location: "Food Court", day: "Day 1 (17 Dec)", highlight: false, color: "from-green-500" },
-  { time: "5:00 PM", endTime: "8:00 PM", title: "Mentorship Round", description: "Get expert guidance and feedback from industry professionals.", location: "Code Rooms", day: "Day 1 (17 Dec)", highlight: false, color: "from-yellow-500" },
+  { time: "5:00 PM", endTime: "7:00 PM", title: "Mentorship Round", description: "Get expert guidance and feedback from industry professionals.", location: "Code Rooms", day: "Day 1 (17 Dec)", highlight: false, color: "from-yellow-500" },
+  { time: "7:00 PM", endTime: "9:00 PM", title: "Cultural Break (Band Performance & DJ Night)", description: "Live band performance followed by an energetic DJ night! Unwind, dance, and celebrate with fellow hackers.", location: "SGI Main Ground", day: "Day 1 (17 Dec)", highlight: true, color: "from-fuchsia-500" },
   { time: "9:00 PM", endTime: "10:00 PM", title: "Dinner Break", description: "Energy boost! Grab dinner and recharge.", location: "Food Court", day: "Day 1 (17 Dec)", highlight: false, color: "from-pink-500" },
-  { time: "10:00 PM", endTime: "11:30 PM", title: "Presentation Round", description: "First batch of teams present their progress and get feedback.", location: "Main Ground", day: "Day 1 (17 Dec)", highlight: true, color: "from-cyan-500" },
 
   // Day 2 - 18 Dec
   { time: "8:00 AM", endTime: "9:00 AM", title: "Breakfast", description: "Start your final day with energy and enthusiasm.", location: "Food Court", day: "Day 2 (18 Dec)", highlight: false, color: "from-amber-500" },
-  { time: "9:00 AM", endTime: "1:00 PM", title: "Final Coding Sprint & Submissions", description: "Last hours to polish your project and submit. Make it count!", location: "Code Rooms", day: "Day 2 (18 Dec)", highlight: true, color: "from-red-500" },
-  { time: "2:00 PM", endTime: "3:30 PM", title: "Project Evaluation & Judging", description: "Expert panel evaluates all submissions based on innovation, design, and impact.", location: "Main Ground", day: "Day 2 (18 Dec)", highlight: true, color: "from-indigo-500" },
-  { time: "3:30 PM", endTime: "5:00 PM", title: "Winner Announcements, Prize Ceremony & Closing", description: "Celebrate achievements! Winner announcements, awards, and closing remarks.", location: "Main Ground", day: "Day 2 (18 Dec)", highlight: true, color: "from-violet-500" },
+  { time: "9:00 AM", endTime: "11:00 AM", title: "Final Coding Sprint & Submissions", description: "Last hours to polish your project, push final commits, and submit. Make it count!", location: "Code Rooms", day: "Day 2 (18 Dec)", highlight: true, color: "from-red-500" },
+  { time: "11:00 AM", endTime: "12:00 PM", title: "Project Evaluation & Judging", description: "Expert panel evaluates all submissions based on innovation, design, and impact.", location: "Code Rooms", day: "Day 2 (18 Dec)", highlight: true, color: "from-indigo-500" },
+  { time: "12:00 PM", endTime: "1:00 PM", title: "Winner Announcements, Prize Ceremony & Closing", description: "Celebrate achievements! Winner announcements, awards ceremony, and grand closing remarks.", location: "SGI Main Ground", day: "Day 2 (18 Dec)", highlight: true, color: "from-violet-500" },
 ];
 
 export default function ScheduleSection() {
