@@ -26,7 +26,7 @@ export default function CampaignSection() {
     },
   ];
 
-  const tags = ["#Enigma2.0", "#Unstop", "#RIETJaipur", "#HackathonCreators", "#SapiensGroupofInstitutes"];
+  const tags = ["#Enigma2.0", "#Unstop", "#RIETJaipur", "#HackathonCreators", "#SapiensGroupofInstitutes", "#SGI"];
 
   return (
     <section id="campaign" ref={sectionRef} className="py-16 sm:py-20 lg:py-24 bg-background relative overflow-hidden border-t border-border">

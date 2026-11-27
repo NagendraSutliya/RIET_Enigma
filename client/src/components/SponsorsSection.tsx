@@ -150,34 +150,26 @@ export default function SponsorsSection() {
               Connect With Our Sponsorship Team
             </h3>
             <p className="text-xs sm:text-sm text-muted-foreground font-mono mb-8 max-w-lg mx-auto">
-              Partner with ENIGMA 2.0 to connect with 800+ developers, showcase your brand, and empower student innovators.
+              Partner with ENIGMA 2.0 to connect with 500+ developers, showcase your brand, and empower student innovators.
             </p>
 
-            {/* 3 Members Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-border border border-border mb-6">
-              {[
-                { name: "Mr. Anshul Mathur", phone: "+91 94686 63300" },
-                { name: "Mr. Nitin Rajawat", phone: "+91 80786 76158" },
-                { name: "Mr. Adarsh Kumar Jha", phone: "+91 99343 00382" },
-              ].map((member) => (
-                <div
-                  key={member.phone}
-                  className="bg-background/90 p-5 sm:p-6 text-center group hover:bg-card/40 transition-colors"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 text-primary mx-auto flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <h4 className="text-sm sm:text-base font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-                    {member.name}
-                  </h4>
-                  <a
-                    href={`tel:${member.phone.replace(/\s+/g, "")}`}
-                    className="text-xs sm:text-sm font-mono text-muted-foreground hover:text-primary transition-colors inline-block"
-                  >
-                    {member.phone}
-                  </a>
-                </div>
-              ))}
+            {/* Sponsorship Lead Card */}
+            <div className="max-w-sm mx-auto border border-border bg-background/90 p-6 text-center group hover:border-primary/50 transition-all mb-6 shadow-sm">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 text-primary mx-auto flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <Phone className="w-5 h-5" />
+              </div>
+              <h4 className="text-base sm:text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
+                Mr. Anshul Mathur
+              </h4>
+              <p className="text-[11px] font-mono text-muted-foreground uppercase tracking-wider mb-3">
+                Sponsorship & Corporate Relations
+              </p>
+              <a
+                href="tel:+919468663300"
+                className="inline-flex items-center gap-2 text-sm sm:text-base font-mono font-semibold text-primary hover:text-primary/80 transition-colors"
+              >
+                <span>+91 94686 63300</span>
+              </a>
             </div>
 
             {/* Email link fallback */}

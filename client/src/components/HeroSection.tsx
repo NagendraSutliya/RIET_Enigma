@@ -35,7 +35,7 @@ export default function HeroSection() {
         <div className="absolute bottom-24 left-0 w-full h-px bg-border" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 pt-24 sm:pt-32 pb-16 sm:pb-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 pt-32 sm:pt-36 pb-16 sm:pb-20">
         <div className={`max-w-4xl mx-auto text-center ${isVisible ? "opacity-100" : "opacity-0"} transition-opacity duration-700`}>
           
           {/* Code comment decoration - hidden on mobile */}
@@ -66,7 +66,7 @@ export default function HeroSection() {
 
           {/* Description - responsive */}
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-8 sm:mb-10 px-2">
-            Join 800+ developers for an unforgettable experience of building, learning, and competing at Rajasthan's premier hackathon.
+            Join 500+ developers for an unforgettable experience of building, learning, and competing at Rajasthan's premier hackathon.
           </p>
 
           {/* CTAs - stack on mobile */}
@@ -97,7 +97,7 @@ export default function HeroSection() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-border max-w-2xl mx-auto">
             {[
               { icon: <MapPin className="w-4 h-4" />, label: "Venue", value: "RIET Jaipur" },
-              { icon: <Users className="w-4 h-4" />, label: "Hackers", value: "800+" },
+              { icon: <Users className="w-4 h-4" />, label: "Hackers", value: "500+" },
               { icon: <Trophy className="w-4 h-4" />, label: "Prizes", value: "Cash + Perks" },
             ].map((item, idx) => (
               <div
