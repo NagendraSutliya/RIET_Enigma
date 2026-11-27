@@ -1,4 +1,4 @@
-import { ArrowRight, Handshake, ExternalLink } from "lucide-react";
+import { ArrowRight, Handshake, ExternalLink, Phone, Mail } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 // Existing sponsors list preserved for upcoming announcement
@@ -140,17 +140,56 @@ export default function SponsorsSection() {
           </div>
         </div>
 
-        {/* Contact CTA */}
+        {/* Contact Sponsorship Team */}
         <div className="mt-12 sm:mt-16 pt-10 border-t border-border">
-          <div className="max-w-lg mx-auto text-center">
-            <p className="text-sm sm:text-base text-muted-foreground mb-4">Interested in sponsoring ENIGMA 2.0?</p>
-            <a 
-              href="mailto:enigma@rietjaipur.ac.in" 
-              className="inline-flex items-center gap-2 text-sm sm:text-base font-mono uppercase tracking-[0.1em] text-primary hover:text-foreground transition-colors group"
-            >
-              <span>Contact Sponsorship Team</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-primary mb-2">
+              Sponsorship Inquiries
+            </p>
+            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-foreground mb-2">
+              Connect With Our Sponsorship Team
+            </h3>
+            <p className="text-xs sm:text-sm text-muted-foreground font-mono mb-8 max-w-lg mx-auto">
+              Partner with ENIGMA 2.0 to connect with 800+ developers, showcase your brand, and empower student innovators.
+            </p>
+
+            {/* 3 Members Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-border border border-border mb-6">
+              {[
+                { name: "Mr. Anshul Mathur", phone: "+91 94686 63300" },
+                { name: "Mr. Nitin Rajawat", phone: "+91 80786 76158" },
+                { name: "Mr. Adarsh Kumar Jha", phone: "+91 99343 00382" },
+              ].map((member) => (
+                <div
+                  key={member.phone}
+                  className="bg-background/90 p-5 sm:p-6 text-center group hover:bg-card/40 transition-colors"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 text-primary mx-auto flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <h4 className="text-sm sm:text-base font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
+                    {member.name}
+                  </h4>
+                  <a
+                    href={`tel:${member.phone.replace(/\s+/g, "")}`}
+                    className="text-xs sm:text-sm font-mono text-muted-foreground hover:text-primary transition-colors inline-block"
+                  >
+                    {member.phone}
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            {/* Email link fallback */}
+            <div className="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground">
+              <span>Or email official proposal to:</span>
+              <a
+                href="mailto:enigma@rietjaipur.ac.in"
+                className="text-primary hover:underline font-semibold"
+              >
+                enigma@rietjaipur.ac.in
+              </a>
+            </div>
           </div>
         </div>
       </div>
