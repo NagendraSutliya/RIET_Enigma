@@ -6,7 +6,7 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 const facultyCoordinators = [
   {
     name: "Anshul Mathur",
-    post: "Head of Training and Placement Officer",
+    post: "Head, Training & Placement Office",
     image: "/anshul_mathur.jpg",
   },
   {
