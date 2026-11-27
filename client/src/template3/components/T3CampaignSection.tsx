@@ -47,7 +47,7 @@ export default function T3CampaignSection() {
             </span>
           </h2>
           <p className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Enigma 2.0 – A National-Level Hackathon Powered by <span className="text-white font-semibold">Unstop</span>.
+            Enigma 2.0 – A National-Level Hackathon, Powered by <span className="text-white font-semibold">Unstop</span>, Bringing Together Innovators, Developers, and Problem-Solvers from Across the Nation.
           </p>
         </div>
 

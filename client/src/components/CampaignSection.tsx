@@ -15,7 +15,7 @@ export default function CampaignSection() {
     {
       num: "02",
       title: "Tag & Post Reels",
-      desc: "Upload to Instagram & LinkedIn tagging @enigma_2k26, @riet_official, @unstop & @hackwithindia with #Enigma20 #Unstop #HackWithIndia.",
+      desc: "Upload to Instagram & LinkedIn tagging @enigma_2k26, @riet_official, @unstop with #Enigma20 #Unstop.",
       icon: Hash,
     },
     {
@@ -26,7 +26,7 @@ export default function CampaignSection() {
     },
   ];
 
-  const tags = ["#Enigma20", "#Unstop", "#HackWithIndia", "#HackWithYou", "#RIETJaipur", "#HackathonCreators", "#BuildInPublic"];
+  const tags = ["#Enigma2.0", "#Unstop", "#RIETJaipur", "#HackathonCreators", "#SapiensGroupofInstitutes"];
 
   return (
     <section id="campaign" ref={sectionRef} className="py-16 sm:py-20 lg:py-24 bg-background relative overflow-hidden border-t border-border">
@@ -47,7 +47,7 @@ export default function CampaignSection() {
             Hack The Moment
           </h2>
           <p className="text-xs sm:text-sm sm:text-base font-mono text-muted-foreground mt-3 max-w-2xl mx-auto leading-relaxed">
-            Enigma 2.0 – A National-Level Hackathon Powered by <span className="text-primary font-semibold">Unstop</span>.
+            Enigma 2.0 – A National-Level Hackathon, Powered by <span className="text-primary font-semibold">Unstop</span>, Bringing Together Innovators, Developers, and Problem-Solvers from Across the Nation.
           </p>
         </div>
 

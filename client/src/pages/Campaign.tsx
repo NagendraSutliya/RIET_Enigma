@@ -133,7 +133,7 @@ export default function Campaign() {
               <div className="w-16 h-[2px] bg-primary mx-auto mb-8 animate-fadeInUp" style={{ animationDelay: "0.15s" }}></div>
 
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-6 animate-fadeInUp font-light" style={{ animationDelay: "0.2s" }}>
-                Enigma 2.0 – A National-Level Hackathon Powered by <span className="text-primary font-semibold">Unstop</span>. Capture the energy, build your ideas, and showcase your hackathon journey nationwide.
+                Enigma 2.0 – A National-Level Hackathon, Powered by <span className="text-primary font-semibold">Unstop</span>, Bringing Together Innovators, Developers, and Problem-Solvers from Across the Nation.
               </p>
 
               <p className="text-sm text-muted-foreground/70 font-mono uppercase tracking-widest animate-fadeInUp" style={{ animationDelay: "0.3s" }}>
