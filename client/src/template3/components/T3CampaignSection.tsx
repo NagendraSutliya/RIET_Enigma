@@ -47,7 +47,7 @@ export default function T3CampaignSection() {
             </span>
           </h2>
           <p className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Capture the electric atmosphere of ENIGMA2.0. Share your story and get featured as an official collaborator on <span className="text-white font-medium">Hack With India</span> reaching thousands nationwide.
+            Enigma 2.0 – A National-Level Hackathon Powered by <span className="text-white font-semibold">Unstop</span>.
           </p>
         </div>
 

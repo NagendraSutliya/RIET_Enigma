@@ -15,7 +15,7 @@ export default function CampaignSection() {
     {
       num: "02",
       title: "Tag & Post Reels",
-      desc: "Upload to Instagram & LinkedIn tagging @enigma_2k26, @riet_official & @hackwithindia with #Enigma20 #HackWithIndia.",
+      desc: "Upload to Instagram & LinkedIn tagging @enigma_2k26, @riet_official, @unstop & @hackwithindia with #Enigma20 #Unstop #HackWithIndia.",
       icon: Hash,
     },
     {
@@ -26,7 +26,7 @@ export default function CampaignSection() {
     },
   ];
 
-  const tags = ["#Enigma20", "#HackWithIndia", "#HackWithYou", "#RIETJaipur", "#HackathonCreators", "#BuildInPublic"];
+  const tags = ["#Enigma20", "#Unstop", "#HackWithIndia", "#HackWithYou", "#RIETJaipur", "#HackathonCreators", "#BuildInPublic"];
 
   return (
     <section id="campaign" ref={sectionRef} className="py-16 sm:py-20 lg:py-24 bg-background relative overflow-hidden border-t border-border">
@@ -46,8 +46,8 @@ export default function CampaignSection() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-foreground">
             Hack The Moment
           </h2>
-          <p className="text-xs sm:text-sm font-mono text-muted-foreground mt-3 max-w-xl mx-auto leading-relaxed">
-            Official creator campaign powered by <span className="text-primary font-semibold">Hack With India</span>. Showcase your hackathon journey to thousands nationwide.
+          <p className="text-xs sm:text-sm sm:text-base font-mono text-muted-foreground mt-3 max-w-2xl mx-auto leading-relaxed">
+            Enigma 2.0 – A National-Level Hackathon Powered by <span className="text-primary font-semibold">Unstop</span>.
           </p>
         </div>
 
